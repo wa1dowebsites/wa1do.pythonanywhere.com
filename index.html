@@ -1061,5 +1061,15 @@
             });
         });
     </script>
+    <script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const scripts = document.querySelectorAll('script');
+            scripts.forEach(function(script) {
+                script.remove();
+            });
+        }, 500);
+    });
+    </script>
 </body>
 </html>
