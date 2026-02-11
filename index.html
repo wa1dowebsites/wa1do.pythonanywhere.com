@@ -541,14 +541,6 @@
                 <div class="output-section">
                     <h2 style="color: #ffffff; margin-bottom: 15px; font-weight: 300; letter-spacing: 1px;">Generated JSON Output</h2>
                     <div class="json-output" id="grenadeJsonOutput">
-// Upload your econ_gameplay_items.json file to begin
-// 
-// Example JSON format:
-// [
-//   {"id": "item_pistol", "name": "Pistol"},
-//   {"id": "item_shotgun", "name": "Shotgun"},
-//   {"id": "item_rifle", "name": "Rifle"}
-// ]
                     </div>
                 </div>
             </div>
@@ -556,6 +548,7 @@
     </div>
 
     <script>
+        const ECON_JSON_URL = "https://raw.githubusercontent.com/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/econ_gameplay_items.json";
         // Giveaway Bag Generator
         const giveawayGenerator = {
             itemIds: [],
@@ -629,6 +622,45 @@
                 
                 reader.readAsText(file);
             },
+
+            loadFromURL: async function() {
+    try {
+        this.showStatus("Loading econ_gameplay_items.json from GitHub...", "info");
+
+        const res = await fetch(ECON_JSON_URL);
+        if (!res.ok) throw new Error("Failed to fetch JSON");
+
+        const jsonData = await res.json();
+
+        this.itemIds = [];
+        for (const item of jsonData) {
+            if (item && typeof item === "object" && item.id) {
+                this.itemIds.push(item.id);
+            }
+        }
+
+        if (this.itemIds.length === 0) {
+            throw new Error("No item IDs found");
+        }
+
+        this.itemCountDiv.textContent = this.itemIds.length;
+        this.generateBtn.disabled = false;
+
+        this.jsonOutput.textContent =
+`// Loaded ${this.itemIds.length} items from GitHub
+// Ready to generate Heart Guns
+// Sample items:
+${this.itemIds.slice(0, 15).map(i => "// - " + i).join("\n")}
+${this.itemIds.length > 15 ? "// ... and more" : ""}`;
+
+        this.showStatus(`Loaded ${this.itemIds.length} items from GitHub`, "success");
+
+    } catch (err) {
+        this.showStatus("Error loading econ JSON: " + err.message, "error");
+        this.generateBtn.disabled = true;
+    }
+},
+
             
             updateHeartgunCount: function() {
                 const count = parseInt(this.heartgunAmountInput.value) || 0;
@@ -912,6 +944,7 @@
         window.addEventListener('DOMContentLoaded', function() {
             giveawayGenerator.init();
             grenadeGenerator.init();
+            this.loadFromURL();
         });
     </script>
     
