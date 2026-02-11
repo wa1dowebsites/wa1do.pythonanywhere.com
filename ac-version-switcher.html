@@ -416,13 +416,13 @@
         
         <div id="versionPage" class="detail-page hidden">
             <button id="backBtn" class="back-button">
-                <span>←</span> Back to Versions
+                <span></span> Back to Versions
             </button>
             <div id="versionContent"></div>
             <div id="hotfixSection" class="hotfix-section hidden">
                 <button id="hotfixBtn" class="hotfix-toggle">
-                    <span>⚙ Show Hotfixes</span>
-                    <span>▼</span>
+                    <span>Show Hotfixes</span>
+                    <span></span>
                 </button>
                 <div id="hotfixGrid" class="hotfix-grid hidden"></div>
             </div>
@@ -529,7 +529,7 @@
             // Generate download button if binary ID exists
             const downloadButton = version.BINARY_ID 
                 ? `<a href="${getDownloadUrl(version.BINARY_ID)}" class="download-button" target="_blank" rel="noopener noreferrer">
-                       ⬇ Download Build
+                       Download Build
                    </a>`
                 : '';
 
@@ -554,7 +554,7 @@
                     </div>
                     
                     <div class="features-list">
-                        <h3>★ Features</h3>
+                        <h3>Features</h3>
                         <ul>${featuresHtml}</ul>
                     </div>
                     
@@ -579,10 +579,10 @@
                     if (hotfixGrid.classList.contains('hidden')) {
                         renderHotfixes(version.HOTFIX, hotfixGrid);
                         hotfixGrid.classList.remove('hidden');
-                        newHotfixBtn.innerHTML = '<span>Hide Hotfixes</span><span>▲</span>';
+                        newHotfixBtn.innerHTML = '<span>Hide Hotfixes</span><span></span>';
                     } else {
                         hotfixGrid.classList.add('hidden');
-                        newHotfixBtn.innerHTML = '<span>Show Hotfixes</span><span>▼</span>';
+                        newHotfixBtn.innerHTML = '<span>Show Hotfixes</span><span></span>';
                     }
                 });
             } else {
@@ -605,12 +605,12 @@
                 // Generate download button for hotfix if binary ID exists
                 const downloadButton = hf.BINARY_ID 
                     ? `<a href="${getDownloadUrl(hf.BINARY_ID)}" class="download-button" target="_blank" rel="noopener noreferrer" style="margin-top: 1rem; background: linear-gradient(135deg, #f59e0b, #d97706);">
-                           ⬇ Download Hotfix
+                           Download Hotfix
                        </a>`
                     : '';
                 
                 div.innerHTML = `
-                    <h4>⚙ ${escapeHtml(hfKey)}</h4>
+                    <h4>${escapeHtml(hfKey)}</h4>
                     <div style="display: grid; gap: 0.5rem;">
                         <div style="display: flex; gap: 1rem; font-size: 0.875rem;">
                             <span style="color: var(--text-secondary);">${escapeHtml(hf.DATE || 'Date TBD')}</span>
