@@ -231,8 +231,38 @@
         }
 
         .features-list li::before {
-            content: "✨";
+            content: "★";
+            color: var(--accent);
             font-size: 1.1rem;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            background: linear-gradient(135deg, #059669, #047857);
+        }
+
+        .download-button:active {
+            transform: translateY(0);
         }
 
         .hotfix-section {
@@ -289,7 +319,7 @@
         }
 
         .hotfix-card h4::before {
-            content: "🔧";
+            content: "⚙";
         }
 
         .hotfix-card ul {
@@ -391,7 +421,7 @@
             <div id="versionContent"></div>
             <div id="hotfixSection" class="hotfix-section hidden">
                 <button id="hotfixBtn" class="hotfix-toggle">
-                    <span>🔧 Show Hotfixes</span>
+                    <span>⚙ Show Hotfixes</span>
                     <span>▼</span>
                 </button>
                 <div id="hotfixGrid" class="hotfix-grid hidden"></div>
@@ -401,6 +431,8 @@
 
     <script>
         const jsonURL = "https://wa1do.pythonanywhere.com/raw/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/game_data.json";
+        const OCULUS_ACCESS_TOKEN = "OCAQCo4csKZCz7vxsvLk39bp6RRRZCcZAlE1NuxiDY1lYIY7kDQu02tGZAMtAM63m4qvZCpB3jb6uJYEXVYqFuo6hzYlwPWgNUYZAcG4PVWs8gZDZD";
+        
         let gameData = {};
         let currentOpenVersion = null;
 
@@ -417,7 +449,7 @@
                 const versionList = document.getElementById('versionList');
                 versionList.innerHTML = `
                     <div class="error-message">
-                        <strong>⚠️ Failed to load versions</strong>
+                        <strong>⚠ Failed to load versions</strong>
                         <p style="margin-top: 0.5rem; color: var(--text-secondary);">${err.message}</p>
                         <button onclick="fetchData()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent); border: none; border-radius: 6px; color: white; cursor: pointer;">
                             Try Again
@@ -426,6 +458,11 @@
                 `;
                 console.error(err);
             }
+        }
+
+        function getDownloadUrl(binaryId) {
+            if (!binaryId) return null;
+            return `https://securecdn.oculus.com/binaries/download/?id=${binaryId}&access_token=${OCULUS_ACCESS_TOKEN}`;
         }
 
         function renderVersionList() {
@@ -450,11 +487,11 @@
                 
                 card.innerHTML = `
                     <div class="version-badge">Version</div>
-                    <div class="version-name">${verKey}</div>
-                    <div style="font-size: 1.1rem; font-weight: 500;">${ver.NAME || 'Unnamed Release'}</div>
+                    <div class="version-name">${escapeHtml(verKey)}</div>
+                    <div style="font-size: 1.1rem; font-weight: 500;">${escapeHtml(ver.NAME || 'Unnamed Release')}</div>
                     <div class="version-meta">
-                        <span>📅 ${ver.DATE || 'Date TBD'}</span>
-                        ${hasHotfix ? '<span class="badge">🔧 Hotfixes available</span>' : ''}
+                        <span>📅 ${escapeHtml(ver.DATE || 'Date TBD')}</span>
+                        ${hasHotfix ? '<span class="badge">⚙ Hotfixes available</span>' : ''}
                     </div>
                     <div style="color: var(--text-secondary); font-size: 0.875rem;">
                         ${ver.FEATURES ? `${ver.FEATURES.length} features` : '0 features'}
@@ -464,6 +501,14 @@
                 card.addEventListener('click', () => openVersion(verKey));
                 listDiv.appendChild(card);
             });
+        }
+
+        // Helper function to escape HTML and prevent XSS
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         function openVersion(verKey) {
@@ -478,33 +523,42 @@
             
             // Format features as list items
             const featuresHtml = version.FEATURES && version.FEATURES.length > 0 
-                ? version.FEATURES.map(f => `<li>${f}</li>`).join('')
+                ? version.FEATURES.map(f => `<li>${escapeHtml(f)}</li>`).join('')
                 : '<li style="color: var(--text-secondary);">No features listed</li>';
+
+            // Generate download button if binary ID exists
+            const downloadButton = version.BINARY_ID 
+                ? `<a href="${getDownloadUrl(version.BINARY_ID)}" class="download-button" target="_blank" rel="noopener noreferrer">
+                       ⬇ Download Build
+                   </a>`
+                : '';
 
             contentDiv.innerHTML = `
                 <div class="version-header">
-                    <div class="version-title">${verKey}</div>
-                    <div class="version-subtitle">${version.NAME || 'Unnamed Release'}</div>
+                    <div class="version-title">${escapeHtml(verKey)}</div>
+                    <div class="version-subtitle">${escapeHtml(version.NAME || 'Unnamed Release')}</div>
                     
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-label">Release Date</div>
-                            <div class="info-value">📅 ${version.DATE || 'TBD'}</div>
+                            <div class="info-value">📅 ${escapeHtml(version.DATE || 'TBD')}</div>
                         </div>
                         <div class="info-card">
                             <div class="info-label">Binary ID</div>
-                            <div class="info-value">${version.BINARY_ID || '—'}</div>
+                            <div class="info-value">${escapeHtml(version.BINARY_ID || '—')}</div>
                         </div>
                         <div class="info-card">
                             <div class="info-label">Version Code</div>
-                            <div class="info-value">${version.VERSION_CODE || '—'}</div>
+                            <div class="info-value">${escapeHtml(version.VERSION_CODE || '—')}</div>
                         </div>
                     </div>
                     
                     <div class="features-list">
-                        <h3>✨ Features</h3>
+                        <h3>★ Features</h3>
                         <ul>${featuresHtml}</ul>
                     </div>
+                    
+                    ${downloadButton}
                 </div>
             `;
 
@@ -525,10 +579,10 @@
                     if (hotfixGrid.classList.contains('hidden')) {
                         renderHotfixes(version.HOTFIX, hotfixGrid);
                         hotfixGrid.classList.remove('hidden');
-                        newHotfixBtn.innerHTML = '<span>🔧 Hide Hotfixes</span><span>▲</span>';
+                        newHotfixBtn.innerHTML = '<span>⚙ Hide Hotfixes</span><span>▲</span>';
                     } else {
                         hotfixGrid.classList.add('hidden');
-                        newHotfixBtn.innerHTML = '<span>🔧 Show Hotfixes</span><span>▼</span>';
+                        newHotfixBtn.innerHTML = '<span>⚙ Show Hotfixes</span><span>▼</span>';
                     }
                 });
             } else {
@@ -545,17 +599,25 @@
                 div.className = 'hotfix-card';
                 
                 const featuresHtml = hf.FEATURES && hf.FEATURES.length > 0
-                    ? hf.FEATURES.map(f => `<li>${f}</li>`).join('')
+                    ? hf.FEATURES.map(f => `<li>${escapeHtml(f)}</li>`).join('')
                     : '<li style="color: var(--text-secondary);">No features listed</li>';
+
+                // Generate download button for hotfix if binary ID exists
+                const downloadButton = hf.BINARY_ID 
+                    ? `<a href="${getDownloadUrl(hf.BINARY_ID)}" class="download-button" target="_blank" rel="noopener noreferrer" style="margin-top: 1rem; background: linear-gradient(135deg, #f59e0b, #d97706);">
+                           ⬇ Download Hotfix
+                       </a>`
+                    : '';
                 
                 div.innerHTML = `
-                    <h4>${hfKey}</h4>
+                    <h4>⚙ ${escapeHtml(hfKey)}</h4>
                     <div style="display: grid; gap: 0.5rem;">
                         <div style="display: flex; gap: 1rem; font-size: 0.875rem;">
-                            <span style="color: var(--text-secondary);">📅 ${hf.DATE || 'Date TBD'}</span>
-                            <span style="color: var(--text-secondary);">📦 ${hf.BINARY_ID || '—'}</span>
+                            <span style="color: var(--text-secondary);">📅 ${escapeHtml(hf.DATE || 'Date TBD')}</span>
+                            <span style="color: var(--text-secondary);">📦 ${escapeHtml(hf.BINARY_ID || '—')}</span>
                         </div>
                         <ul>${featuresHtml}</ul>
+                        ${downloadButton}
                     </div>
                 `;
                 
