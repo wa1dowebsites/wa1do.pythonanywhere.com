@@ -490,8 +490,8 @@
                     <div class="version-name">${escapeHtml(verKey)}</div>
                     <div style="font-size: 1.1rem; font-weight: 500;">${escapeHtml(ver.NAME || 'Unnamed Release')}</div>
                     <div class="version-meta">
-                        <span>📅 ${escapeHtml(ver.DATE || 'Date TBD')}</span>
-                        ${hasHotfix ? '<span class="badge">⚙ Hotfixes available</span>' : ''}
+                        <span>${escapeHtml(ver.DATE || 'Date TBD')}</span>
+                        ${hasHotfix ? '<span class="badge">Hotfixes available</span>' : ''}
                     </div>
                     <div style="color: var(--text-secondary); font-size: 0.875rem;">
                         ${ver.FEATURES ? `${ver.FEATURES.length} features` : '0 features'}
@@ -541,7 +541,7 @@
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-label">Release Date</div>
-                            <div class="info-value">📅 ${escapeHtml(version.DATE || 'TBD')}</div>
+                            <div class="info-value">${escapeHtml(version.DATE || 'TBD')}</div>
                         </div>
                         <div class="info-card">
                             <div class="info-label">Binary ID</div>
@@ -579,10 +579,10 @@
                     if (hotfixGrid.classList.contains('hidden')) {
                         renderHotfixes(version.HOTFIX, hotfixGrid);
                         hotfixGrid.classList.remove('hidden');
-                        newHotfixBtn.innerHTML = '<span>⚙ Hide Hotfixes</span><span>▲</span>';
+                        newHotfixBtn.innerHTML = '<span>Hide Hotfixes</span><span>▲</span>';
                     } else {
                         hotfixGrid.classList.add('hidden');
-                        newHotfixBtn.innerHTML = '<span>⚙ Show Hotfixes</span><span>▼</span>';
+                        newHotfixBtn.innerHTML = '<span>Show Hotfixes</span><span>▼</span>';
                     }
                 });
             } else {
@@ -613,8 +613,8 @@
                     <h4>⚙ ${escapeHtml(hfKey)}</h4>
                     <div style="display: grid; gap: 0.5rem;">
                         <div style="display: flex; gap: 1rem; font-size: 0.875rem;">
-                            <span style="color: var(--text-secondary);">📅 ${escapeHtml(hf.DATE || 'Date TBD')}</span>
-                            <span style="color: var(--text-secondary);">📦 ${escapeHtml(hf.BINARY_ID || '—')}</span>
+                            <span style="color: var(--text-secondary);">${escapeHtml(hf.DATE || 'Date TBD')}</span>
+                            <span style="color: var(--text-secondary);">${escapeHtml(hf.BINARY_ID || '—')}</span>
                         </div>
                         <ul>${featuresHtml}</ul>
                         ${downloadButton}
