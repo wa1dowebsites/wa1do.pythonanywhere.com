@@ -62,7 +62,6 @@
             font-size: 1.1rem;
         }
 
-        /* Version List Grid */
         .version-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -113,7 +112,6 @@
             align-items: center;
         }
 
-        /* Detail Page */
         .detail-page {
             animation: slideIn 0.3s ease;
         }
@@ -231,7 +229,7 @@
         }
 
         .features-list li::before {
-            content: "★";
+            content: "*";
             color: var(--accent);
             font-size: 1.1rem;
         }
@@ -319,7 +317,10 @@
         }
 
         .hotfix-card h4::before {
-            content: "⚙";
+            content: "Hotfix";
+            color: var(--warning);
+            font-weight: bold;
+            margin-right: 0.5rem;
         }
 
         .hotfix-card ul {
@@ -335,9 +336,10 @@
         }
 
         .hotfix-card li::before {
-            content: "•";
+            content: "-";
             color: var(--warning);
             font-weight: bold;
+            margin-right: 0.5rem;
         }
 
         .loading {
@@ -416,7 +418,7 @@
         
         <div id="versionPage" class="detail-page hidden">
             <button id="backBtn" class="back-button">
-                <span></span> Back to Versions
+                <span>Back to Versions</span>
             </button>
             <div id="versionContent"></div>
             <div id="hotfixSection" class="hotfix-section hidden">
@@ -475,7 +477,6 @@
 
             listDiv.innerHTML = "";
             
-            // Sort versions in descending order (newest first)
             const sortedVersions = Object.keys(gameData).sort().reverse();
             
             sortedVersions.forEach(verKey => {
@@ -503,7 +504,6 @@
             });
         }
 
-        // Helper function to escape HTML and prevent XSS
         function escapeHtml(text) {
             if (!text) return '';
             const div = document.createElement('div');
@@ -521,12 +521,10 @@
 
             const contentDiv = document.getElementById('versionContent');
             
-            // Format features as list items
             const featuresHtml = version.FEATURES && version.FEATURES.length > 0 
                 ? version.FEATURES.map(f => `<li>${escapeHtml(f)}</li>`).join('')
                 : '<li style="color: var(--text-secondary);">No features listed</li>';
 
-            // Generate download button if binary ID exists
             const downloadButton = version.BINARY_ID 
                 ? `<a href="${getDownloadUrl(version.BINARY_ID)}" class="download-button" target="_blank" rel="noopener noreferrer">
                        Download Build
@@ -562,7 +560,6 @@
                 </div>
             `;
 
-            // Handle hotfixes
             const hotfixSection = document.getElementById('hotfixSection');
             const hotfixBtn = document.getElementById('hotfixBtn');
             const hotfixGrid = document.getElementById('hotfixGrid');
@@ -571,7 +568,6 @@
                 hotfixSection.classList.remove('hidden');
                 hotfixGrid.classList.add('hidden');
                 
-                // Remove old click listeners by cloning
                 const newHotfixBtn = hotfixBtn.cloneNode(true);
                 hotfixBtn.parentNode.replaceChild(newHotfixBtn, hotfixBtn);
                 
@@ -602,7 +598,6 @@
                     ? hf.FEATURES.map(f => `<li>${escapeHtml(f)}</li>`).join('')
                     : '<li style="color: var(--text-secondary);">No features listed</li>';
 
-                // Generate download button for hotfix if binary ID exists
                 const downloadButton = hf.BINARY_ID 
                     ? `<a href="${getDownloadUrl(hf.BINARY_ID)}" class="download-button" target="_blank" rel="noopener noreferrer" style="margin-top: 1rem; background: linear-gradient(135deg, #f59e0b, #d97706);">
                            Download Hotfix
@@ -625,14 +620,12 @@
             });
         }
 
-        // Back button
         document.getElementById('backBtn').addEventListener('click', () => {
             document.getElementById('versionPage').classList.add('hidden');
             document.getElementById('versionList').classList.remove('hidden');
             currentOpenVersion = null;
         });
 
-        // Initialize
         fetchData();
     </script>
 </body>
