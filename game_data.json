@@ -1,0 +1,2301 @@
+{
+  "0.7": {
+    "NAME": "Week 8",
+    "FEATURES": [
+      "🌄 Added a few minor areas to explore in the lobby.",
+      "🎒 Added 4 backpack recolors available from a new shop terminal.",
+      "🎲 Items now respawn randomly, you won’t find the same items in the same places in every server.",
+      "🏋️ New Weight System.",
+      "🕹️ Added snap turning and single controller support.",
+      "🌳 New forest map",
+      "Fixed some holes in the world.",
+      "Fixed some authentication issues causing money to not get saved.",
+      "Reduced the price of the flare gun and shotgun ammo."
+    ],
+    "DATE": "8/30/24 11:32 AM",
+    "BINARY_ID": "7696002933843035",
+    "VERSION_CODE": 455,
+    "HOTFIX": {
+      "0.7.1": {
+        "DATE": "8/30/2024 12:59 PM",
+        "FEATURES": [
+          "Snap turning is now disabled by default.",
+          "You can toggle snap turning by press the menu button on the left controller."
+        ],
+        "BINARY_ID": "7696377790472216",
+        "VERSION_CODE": 457
+      },
+      "0.7.2": {
+        "DATE": "8/30/2024 6:37 PM",
+        "FEATURES": [
+          "Minor fix to address items not always respawning"
+        ],
+        "BINARY_ID": "7697740680335927",
+        "VERSION_CODE": 458
+      },
+      "0.7.3": {
+        "DATE": "8/30/2024 9:38 PM",
+        "FEATURES": [
+          "Minor fix to address some issues with backpack mass calculation"
+        ],
+        "BINARY_ID": "7698311353612193",
+        "VERSION_CODE": 459
+      },
+      "0.7.4": {
+        "DATE": "9/3/2024 8:47 PM",
+        "FEATURES": [
+          "error when adding items to backpacks",
+          "missing colliders",
+          "bug where can earn negative money"
+        ],
+        "BINARY_ID": "7722355434541118",
+        "VERSION_CODE": 466
+      }
+    }
+  },
+  "0.8": {
+    "NAME": "Week 9",
+    "FEATURES": [
+      "🆕 A completely new section of the map has opened up underneath the factory...",
+      "👁️ ..with a new monster...",
+      "🧀 ...and some extremely valuable loot which can be found deep underground....",
+      "💫 ...things might get weird...",
+      "🏹 New Crossbow.",
+      "💀 Added stronger variants of the existing monsters.",
+      "🔊 Added reverb to the different areas (for real this time).",
+      "Purchased items will be spawned in a free hand if possible",
+      "Greatly increased crowbar damage.",
+      "Increase private server size to 20.",
+      "Fixed not seeing hands move sometimes.",
+      "You can feel the wind in your monkey ears as you fly through the air."
+    ],
+    "DATE": "9/5/2024 12:28 PM",
+    "BINARY_ID": "7733647880078540",
+    "VERSION_CODE": 478,
+    "HOTFIX": {
+      "0.8.1": {
+        "DATE": "9/5/2024 4:20 PM",
+        "FEATURES": [
+          "Greatly reduced the value of the briefcase.",
+          "Slightly reduced the value of the chunks.",
+          "Fixed the eyeball not looking at players correctly",
+          "The damaging goop deals more damage",
+          "Fixed allowing 20 players in private servers"
+        ],
+        "BINARY_ID": "7734944339948894",
+        "VERSION_CODE": 480
+      },
+      "0.8.2": {
+        "DATE": "9/6/2024 5:20 PM",
+        "FEATURES": [
+          "Crowbar does more damage when shot with the crossbow",
+          "Loot value adjustments",
+          "Shotgun and ammo price adjustments",
+          "Rubber duck is back",
+          "Fixes issues with login",
+          "Fixes items lagging while in hands"
+        ],
+        "BINARY_ID": "7742183825891612",
+        "VERSION_CODE": 482
+      },
+      "0.8.3": {
+        "DATE": "9/9/2024 4:04 PM",
+        "FEATURES": [
+          "Fixed an issue that could cause the game to freeze",
+          "Limit the amount of items that can be purchased by a single player to 10 per minute",
+          "Fixed an issue that could cause items to be invisible to some players"
+        ],
+        "BINARY_ID": "7761085844001410",
+        "VERSION_CODE": 484
+      }
+    }
+  },
+  "0.9": {
+    "NAME": "Week 10",
+    "FEATURES": [
+      "New Forest & Underground maps",
+      "The full path to the Foundation is longer with a few more dangers along the way.",
+      "Inside the Foundation the mega-valuable loot is in a new extra difficult side area.",
+      "Reduced the value of the loot in the Foundation. There are now multiple sizes of 🧀 chunks with different values.",
+      "Improved player tracking of monsters.",
+      "Fixed Angler fish’s infinite light chasing issue.",
+      "Added Monster hit effects.",
+      "Added shotgun pellet effects.",
+      "🐤"
+    ],
+    "DATE": "9/12/2024 12:16 PM",
+    "BINARY_ID": "7779913638785297",
+    "VERSION_CODE": 498,
+    "HOTFIX": {
+      "0.9.1": {
+        "DATE": "9/12/2024 4:28 PM",
+        "FEATURES": [
+          "Fixes the join random server button",
+          "Fixes cases where some people can't connect to a server"
+        ],
+        "BINARY_ID": "7780641152045879",
+        "VERSION_CODE": 501
+      },
+      "0.9.2": {
+        "DATE": "9/13/2024 4:46 PM",
+        "FEATURES": [
+          "Option to join public lobbies with PVP disabled",
+          "Potential fix for some people stuck on loading screen"
+        ],
+        "BINARY_ID": "7788028157973845",
+        "VERSION_CODE": 506
+      },
+      "0.9.3": {
+        "DATE": "9/17/2024 3:15 PM",
+        "FEATURES": [
+          "Fix for some people being unable to login",
+          "Updated countdown timer to show money reset will happen this Friday"
+        ],
+        "BINARY_ID": "7823457577764236",
+        "VERSION_CODE": 509
+      }
+    }
+  },
+  "0.10": {
+    "NAME": "Week 11",
+    "FEATURES": [
+      "🧪 Animal Lab / Cosmetics - Different Animals and accessories can be purchased with a new currency Company Coins",
+      "Your character is entirely modular. You can mix the head of a gorilla with the body of a frog.",
+      "🪙 Company Coins are a new currency you will be able to earn though gameplay, or through IAP.",
+      "🐸 Exclusive 'Sigma Frog' Bundle - $29.99 for Frog in a suit-n-tie, designer headphones, and limited-time discount on 10,000 Company Coins. Available for 2 weeks only.",
+      "🚨 New Monster Alert: It looks just like you… until you pick up loot.",
+      "Your stumps are now hands with opposable fingers. You can grab items by... grabbing them.",
+      "The currency you earn through selling items, previously “$”, is now called 🔩 Scrap.",
+      "Find and break open crates for loot.",
+      "New forest & underground maps.",
+      "🎥 Content Creator Challenge: Post a video of your new look on TikTok or Youtube using #AnimalLab"
+    ],
+    "DATE": "9/20/2024 3:14 PM",
+    "BINARY_ID": "7851391551637505",
+    "VERSION_CODE": 518,
+    "HOTFIX": {
+      "0.10.2": {
+        "DATE": "9/20/2024 4:36 PM",
+        "FEATURES": [
+          "Fixed some invisible walls killing players in the underground map (for real this time)",
+          "Fixed some cases where you couldnt accept the TOS"
+        ],
+        "BINARY_ID": "7851990871577573",
+        "VERSION_CODE": 520
+      }
+    }
+  },
+  "0.11": {
+    "NAME": "Week 12",
+    "FEATURES": [
+      "🆕💥 New item: Tripwire explosives",
+      "🪠 Plungers can now suction onto surfaces of the environment",
+      "🏹 Grenade pins release when fired from crossbows",
+      "💥 Grenades might explode on high speed impact",
+      "New weekly maps",
+      "Improved hands",
+      "Added new details to animals like cat eyes glowing when illuminated",
+      "Improved look of clothing on animals",
+      "Fixed hand rotation for untracked controllers",
+      "Improved hand/finger interaction with UI Buttons",
+      "Fixed items purchased going into hands of untracked controllers",
+      "Fixed some collisions in the lobby",
+      "Chicken no longer coming out of its area"
+    ],
+    "DATE": "9/26/2024 12:08 PM",
+    "BINARY_ID": "7905824686194191",
+    "VERSION_CODE": 530,
+    "HOTFIX": {
+      "0.11.1": {
+        "DATE": "9/26/2024 3:34 PM",
+        "FEATURES": [
+          "Fixed some errors",
+          "Fixed certain loot items not spawning",
+          "Better looking frog showcase",
+          "Fixed left thumb finger",
+          "Fixed animals look pure black",
+          "Increased threshold for eye shine"
+        ],
+        "BINARY_ID": "7907028562740470",
+        "VERSION_CODE": 534
+      }
+    }
+  },
+  "0.12": {
+    "NAME": "Week 13",
+    "FEATURES": [
+      "☔ New umbrella that slows your fall, can be found as loot",
+      "💥 New stun grenade, stuns monsters and players",
+      "boing boing boing (new secret item that can be found as loot or purchased from a secret shop)",
+      "Added some lore in the minefield 🤨",
+      "A few new loot items 💨",
+      "New weekly maps",
+      "We extended the available time for the SIGMA FROG BUNDLE until the end of the weekend. Sunday 6th, 11:59PM PST",
+      "New clothing options are available in the store!",
+      "Renamed Scrap 🔩 to “Nuts”",
+      "The flare gun now stuns enemies and players rather than dealing explosive damage",
+      "The fan-art board is back",
+      "Clothing fits tighter and looks FRESH on different animals"
+    ],
+    "DATE": "10/3/2024 1:03 PM",
+    "BINARY_ID": "7975002452609747",
+    "VERSION_CODE": 541,
+    "HOTFIX": {
+      "0.12.4": {
+        "DATE": "10/4/2024 4:20 PM",
+        "FEATURES": [
+          "Fixed loot auto despawning",
+          "Fixed glitched crate bombs",
+          "Fixed various smaller errors"
+        ],
+        "BINARY_ID": "7986732194770106",
+        "VERSION_CODE": 548
+      }
+    }
+  },
+  "0.13": {
+    "NAME": "Week 14",
+    "FEATURES": [
+      "Replaced the room code terminal with a computer. Can currently be used to change rooms or enter secret promo codes",
+      "Friends! Added a new board that lets you add friends, mute players in the lobby, and join friends rooms.",
+      "Updated the lobby to be a bit more cozy",
+      "New weekly maps",
+      "lots of minor bug fixes and network optimizations"
+    ],
+    "DATE": "10/9/2024 4:04 PM",
+    "BINARY_ID": "8034475929995732",
+    "VERSION_CODE": 562,
+    "HOTFIX": {
+      "0.13.2": {
+        "DATE": "10/10/2024 2:18 PM",
+        "FEATURES": [
+          "Fixed glitched umbrellas",
+          "Fixed muted players heard on walkie talkie watch",
+          "Improved visuals on FrenNet (Friends board)",
+          "Misc errors"
+        ],
+        "BINARY_ID": "8043198505790141",
+        "VERSION_CODE": 565
+      }
+    }
+  },
+  "0.14": {
+    "NAME": "Week 15",
+    "FEATURES": [
+      "🆕 Hoverboard",
+      "🆕 Backpack with a flashlight attachment.",
+      "🔃 New Bomb Monster variants can be found in different areas.",
+      "🔃 New weekly maps.",
+      "New Halloween cosmetics in the Lab later today!",
+      "New bundle coming next week.",
+      "Reduced the sell price of purchasable equipment.",
+      "Mega flashlight no longer available in the shop for now.",
+      "Reduced the value of the black briefcases in the foundation; the yellow chunks where unchanged."
+    ],
+    "DATE": "10/15/2024 2:17 PM",
+    "BINARY_ID": "8076526279124030",
+    "VERSION_CODE": 569,
+    "HOTFIX": {
+      "0.14.2": {
+        "DATE": "10/16/2024 1:25 PM",
+        "FEATURES": [
+          "Fixed flying/teleport glitch when grabbing items",
+          "Hoverboard adjustments: Hovers better in midair, Increased weight, Shorter charge time"
+        ],
+        "BINARY_ID": "8082234575219867",
+        "VERSION_CODE": 574
+      },
+      "0.14.3": {
+        "DATE": "10/16/2024 5:19 PM",
+        "FEATURES": [
+          "Fixed flying/teleport glitch when grabbing items fr"
+        ],
+        "BINARY_ID": "8083239098452748",
+        "VERSION_CODE": 575
+      }
+    }
+  },
+  "0.15": {
+    "NAME": "Week 16 - Halloween Pt. 1",
+    "FEATURES": [
+      "🏚️ Added a new spooky area hidden in the dark forest with a mysterious locked door.",
+      "👻 New ghostly monsters in this new area.",
+      "📸 Digital Camera item you can use to take pictures of monsters. After taking a spooky picture the camera can be sold for profit.",
+      "☢️ A new weapon, new loot, and secrets we don't want to spoil here 👀",
+      "🪙 Added daily missions you can complete to earn coins.",
+      "New weekly maps and a nutnuts wipe",
+      "Grim Gorilla Bundle: Celebrate Halloween with a grim reaper outfit, and a skeleton gorilla body! Available for only 2 weeks!",
+      "Massively increased the value of the briefcase but it no longer spawns at the entrance to the foundation. You will need to search deeper into the area to find them. Increased the value of yellow chunks as well.",
+      "The two forest caves where combined into a single larger cave system.",
+      "Added an extra minor area to the dark forest with a teleporter."
+    ],
+    "DATE": "10/22/2024 5:04 PM",
+    "BINARY_ID": "8120194794757178",
+    "VERSION_CODE": 595,
+    "HOTFIX": {
+      "0.15.3": {
+        "DATE": "10/23/2024 3:38 PM",
+        "FEATURES": [
+          "Grim Gorilla is now fluorescent in the dark",
+          "Added variations of the Skeleton Shirt cosmetic with different glow in the dark colors",
+          "The Angler monster will stop moving for a moment after attacking.",
+          "Fixed: Ghost Cloth cosmetic makes you blind",
+          "Fixed: Some cosmetics in the shop appear to be missing",
+          "Fixed: Grim Gorilla shows up as backpack in the shop under characters",
+          "Fixed: Daily mission progress appears at 0% after restarting the app.",
+          "Fixed: Others using the camera completes the daily mission for you.",
+          "Fixed: Light passes through a door and causes monsters to attack you.",
+          "Fixed: The monster in the mansion doesn’t kill player instantly."
+        ],
+        "BINARY_ID": "8126087827501208",
+        "VERSION_CODE": 605
+      },
+      "0.15.5": {
+        "DATE": "10/24/2024 3:42 PM",
+        "FEATURES": [
+          "⚠️ You MUST update in order to participate in the TRICK OR TREAT event!!",
+          "Fixed: Flashlight isn't turned off in the Haunted House when there's a monster near it sometimes.",
+          "Fixed: A lady in the house will sometimes come to you closer.",
+          "Adjusted monster behavior."
+        ],
+        "BINARY_ID": "8132804746829516",
+        "VERSION_CODE": 615
+      }
+    }
+  },
+  "0.16": {
+    "NAME": "Week 17 - Monster Outbreak Week",
+    "FEATURES": [
+      "There's more monsters than usual lurking throughout the world. Kill them for extra rewards!",
+      "Pumpkin Drops – Defeat monsters for Halloween pumpkin rewards!",
+      "Shotguns and Crossbow are not available in shops due to a supply chain limitation.",
+      "Pest Control Leaderboard – Track your monster kill count and see who's the top exterminator per server.",
+      "Items you hold or have in equipped backpacks will save across sessions [EXPERIMENTAL]",
+      "Flashbang price drop: $99 (was $199)",
+      "Flaregun price drop: $199 (was $399)",
+      "Reduced camera rewards",
+      "Nut Reset: If you had a nut balance of more than 100k, it will have been capped to 100k."
+    ],
+    "DATE": "10/29/2024 7:47 PM",
+    "BINARY_ID": "8166090190167638",
+    "VERSION_CODE": 636,
+    "HOTFIX": {
+      "0.16.1": {
+        "DATE": "10/30/2024 12:57 PM",
+        "FEATURES": [
+          "Fixed: Black screen issue in sewers and various objects look missing",
+          "Fixed: Removed Bomb monsters for better gameplay and optimization (improves FPS)"
+        ],
+        "BINARY_ID": "8170454473064543",
+        "VERSION_CODE": 638
+      },
+      "0.16.2": {
+        "DATE": "10/31/2024 12:30 PM",
+        "FEATURES": [
+          "Shotguns and crossbows are still out of stock, we're still working out the supply chain issues",
+          "Pumpkins now drop only weapons! (Including shotguns and crossbows)",
+          "Pumpkins won’t roll away, making it easier to pick up",
+          "Increased chance for large Pumpkins to drop shotguns and crossbows",
+          "Bomber monsters will also drop small pumpkins",
+          "You can get points from bomber monsters",
+          "Major Performance optimizations",
+          "Bundle purchases that were purchased outside of the app will now be redeemed upon login",
+          "Fixed: Friend avatars disappear in Fren.Net terminal after a while",
+          "Fixed: Issue where Mimic didn’t retaliate when hit"
+        ],
+        "BINARY_ID": "8176958702414120",
+        "VERSION_CODE": 646
+      },
+      "0.16.3": {
+        "DATE": "11/1/2024 4:10 PM",
+        "FEATURES": [
+          "Fixed items dropped from other players taking up multiple slots on the backpack (and the duplicate glitch)",
+          "Fixed some multiplayer reconnection issues",
+          "Fixed some cases where monsters could get stuck and stay still",
+          "Fixed a chance where breaking a crate could cause a disconnection",
+          "Fixed items staying attached to heart gun when not held"
+        ],
+        "BINARY_ID": "8184907291619261",
+        "VERSION_CODE": 650
+      }
+    }
+  },
+  "0.17": {
+    "NAME": "Week 18",
+    "FEATURES": [
+      "Shotguns and Crossbow are now available in shops.",
+      "Monsters drop boxes containing random weapons.",
+      "The head monster in the Haunted House is now visible when it interferes with your lights.",
+      "Saddle up and give your friends a ride 🤠",
+      "🔃 New weekly maps.",
+      "New cosmetics drop tomorrow",
+      "Improved Animal Lab checkout when insufficient coins",
+      "Fix items floating around when players leave"
+    ],
+    "DATE": "11/5/2024 3:40 PM",
+    "BINARY_ID": "8209969309113059",
+    "VERSION_CODE": 656,
+    "HOTFIX": {
+      "0.17.1": {
+        "DATE": "11/5/2024 7:27 PM",
+        "FEATURES": [
+          "Fixed objects flickering in and out",
+          "Fixed cases where monsters can get stuck and not die",
+          "Improved the grip on saddle handles"
+        ],
+        "BINARY_ID": "8210808752362448",
+        "VERSION_CODE": 658
+      }
+    }
+  },
+  "0.18": {
+    "NAME": "Week 19",
+    "FEATURES": [
+      "New structures added to the lobby. Something is being delivered 🗼",
+      "New weekly maps 🗺️",
+      "Ogre Hands 🥬",
+      "Added a 2nd selling machine far from the safe zone",
+      "Hurting other players temporarily makes you a rogue and disables safe zone protection. Other players will be able to kill you without losing their protection.",
+      "Fixed: Purchasing hazmat from the big tube doesn’t work."
+    ],
+    "DATE": "11/12/2024 2:58 PM",
+    "BINARY_ID": "8248890008554322",
+    "VERSION_CODE": 670,
+    "HOTFIX": {}
+  },
+  "0.19": {
+    "NAME": "Week 20 - Feast Mode",
+    "FEATURES": [
+      "🪞 Mirrors - check out yourself in the lobby and in the Lab",
+      "🥞 FOOD! Find delicious eats around the map, and the ability to consume them",
+      "chick GIF New monster - Catch it if you can! And enjoy what it leaves behind 😉",
+      "🏈 New item - football! Toss it around and have some fun",
+      "🗺️ New weekly map update",
+      "FEAST MODE 🥕🦃🍗🍠: A special Thanksgiving event! Monsters drop food when you kill them - eat and enjoy!!",
+      "Network traffic optimizations",
+      "Fixed cases where items can duplicate"
+    ],
+    "DATE": "11/19/2024 12:43 PM",
+    "BINARY_ID": "8286784021431587",
+    "VERSION_CODE": 680,
+    "HOTFIX": {
+      "0.19.3": {
+        "DATE": "11/19/2024 5:00 PM",
+        "FEATURES": [
+          "Fixes the issue where people freeze up",
+          "Fixes some issues with items not working correctly, including not receiving money from selling items"
+        ],
+        "BINARY_ID": "8287892667987389",
+        "VERSION_CODE": 685
+      },
+      "0.19.4": {
+        "DATE": "11/19/2024 9:28 PM",
+        "FEATURES": [
+          "Fixed some teleporters not working"
+        ],
+        "BINARY_ID": "8288937694549553",
+        "VERSION_CODE": 687
+      },
+      "0.19.5": {
+        "DATE": "11/20/2024 10:49 AM",
+        "FEATURES": [
+          "Fixed a bug with placing items into other people's bags (and infinite ammo glitch)"
+        ],
+        "BINARY_ID": "8292352370874752",
+        "VERSION_CODE": 688
+      }
+    }
+  },
+  "0.20": {
+    "NAME": "Week 21",
+    "FEATURES": [
+      "🛡️ New items: Shield and Lance (knight) - pair it with the saddle for a good ol' bout of jousting!",
+      "🗺️ New weekly maps",
+      "Optimized rendering",
+      "Fixed crates not breaking",
+      "Fixed cases where items can duplicate",
+      "Improved colliders on monsters"
+    ],
+    "DATE": "11/26/2024 4:54 PM",
+    "BINARY_ID": "8327237194052936",
+    "VERSION_CODE": 696,
+    "HOTFIX": {}
+  },
+  "0.21": {
+    "NAME": "Week 22",
+    "FEATURES": [
+      "New Giant Monster",
+      "🎬",
+      "New Weekly Maps",
+      "Fixed Monsters Stop Dropping Food",
+      "Reduced small bird monster speed",
+      "Increased the size of the forest areas",
+      "Fixed backpack with light turning slowly"
+    ],
+    "DATE": "12/3/2024 4:32 PM",
+    "BINARY_ID": "8364715906971731",
+    "VERSION_CODE": 704,
+    "HOTFIX": {}
+  },
+  "1.0": {
+    "NAME": "Week 23 - Tech Tree",
+    "FEATURES": [
+      "Tech Tree: The NutCorp Research Department has developed The Nut Horizon. A virtual environment with a huge explorable Tech Tree.",
+      "Earn Research Points by completing jobs. Spend points to unlock Equipment and Skills in the tree.",
+      "Everyone will start with 5 Research Points. You can exchange 250 Coins for 1 Research Point.",
+      "3 promo codes that reward Research Points hidden throughout the world.",
+      "New items: New backpacks (small, medium, large), Revolver, RPG, Hookshot, new melee weapons (Tree stick, Baseball Bat, Frying Pan, Pickaxe), Dynamite, Teleportation Grenade, Impulse Grenade, Cluster Grenade, Impact Grenade.",
+      "New Skills: + Backpack capacity, + Maximum Health, + Value of sold items, + Damage with guns/melee/explosives.",
+      "New Jobs & Rewards: 3 promo codes in new secret areas, daily jobs reward Research Points, new Weekly Jobs.",
+      "A new streamlined item purchase terminal.",
+      "You go “rogue” only when killing another player instead of dealing damage",
+      "The heart gun uses your blood as fuel",
+      "Fixed: Arms in mirror can sometimes be messed up."
+    ],
+    "DATE": "12/10/2024 3:23 PM",
+    "BINARY_ID": "8403374843105837",
+    "VERSION_CODE": 726,
+    "HOTFIX": {
+      "1.0.2": {
+        "DATE": "12/11/2024 8:28 AM",
+        "FEATURES": [
+          "Players with health upgrades will still be killed by one-shot attacks.",
+          "Fixed issues with the grappling hook item.",
+          "Fixed an issue where the stick item turned into a crowbar upon rejoining.",
+          "Fixed item spawn bugs.",
+          "Fixed an issue where the research headset couldn’t be grabbed.",
+          "Fixed issues with friend notifications."
+        ],
+        "BINARY_ID": "8403968336379821",
+        "VERSION_CODE": 731
+      }
+    }
+  },
+  "1.1": {
+    "NAME": "Week 24 - Winter Update",
+    "FEATURES": [
+      "A snowstorm has blown in 🌬️🌨️",
+      "You can create snowballs by grabbing snow off the ground.",
+      "The lake has frozen ⛸️",
+      "🎁 There are mysterious presents. Try opening them with a weapon or explosives.",
+      "You can now ride the \"chicken\" and a few other monsters with a saddle.",
+      "You can more easily unlock research nodes with only 1 controller.",
+      "Some visual tweaks to computer terminal in lobby."
+    ],
+    "DATE": "12/17/2024 2:17 PM",
+    "BINARY_ID": "8469015039875150",
+    "VERSION_CODE": 765,
+    "HOTFIX": {}
+  },
+  "1.2": {
+    "NAME": "Week 25 - Christmas",
+    "FEATURES": [
+      "New weekly maps",
+      "New Polar Bear in the shop",
+      "New Holiday Coin Bag deal",
+      "New Santa Outfits (with jiggly bellies)",
+      "Elf outfits",
+      "Performance improvements. If you're playing on a Quest 2 you'll hopefully see a noticeable improvement.",
+      "Fixed some skills not applying correctly",
+      "Swag Stag bundle now includes a pair of glasses. If you previously purchased the bundle they will automatically be added to your account."
+    ],
+    "DATE": "12/24/2024 10:22 AM",
+    "BINARY_ID": "8480501282059859",
+    "VERSION_CODE": 772,
+    "HOTFIX": {
+      "1.2.1": {
+        "DATE": "12/25/2024 8:47 AM",
+        "FEATURES": [
+          "Minor hotfix to fix eyes 👀"
+        ],
+        "BINARY_ID": "8488538331256154",
+        "VERSION_CODE": 773
+      }
+    }
+  },
+  "1.4": {
+    "NAME": "Week 26",
+    "FEATURES": [
+      "🚨 Voice Moderation [BETA]: We've implemented a voice moderation system ingame. If you're using particular bad language in game you might lose speaking privileges or potentially be banned from multiplayer.",
+      "The system is designed to flag bad behavior like toxicity, racism, or discrimination. It is not designed to stop you from swearing or friendly trash talk.",
+      "New weekly maps",
+      "Fixed a bug affecting pinch climbing",
+      "Fixed buggy glowsticks",
+      "Removed the Christmas boxes (its still snowy)"
+    ],
+    "DATE": "1/8/2025 9:52 AM",
+    "BINARY_ID": "8559027850873868",
+    "VERSION_CODE": 785,
+    "HOTFIX": {}
+  },
+  "1.5": {
+    "NAME": "Week 27",
+    "FEATURES": [
+      "🎈 Balloon added to the tech tree.",
+      "💥 Impulse grenade added to the tech tree.",
+      "Some memory optimizations"
+    ],
+    "DATE": "1/14/2025 3:31 PM",
+    "BINARY_ID": "8595276160582370",
+    "VERSION_CODE": 796,
+    "HOTFIX": {}
+  },
+  "1.6": {
+    "NAME": "Week 28",
+    "FEATURES": [
+      "New weekly maps",
+      "nutnuts fly into your watch. Sell some stuff to see what i mean.",
+      "fixed balloon position and attaching issues",
+      "improved movement when hitting with melee weapons"
+    ],
+    "DATE": "1/21/2025 3:47 PM",
+    "BINARY_ID": "8634669719976347",
+    "VERSION_CODE": 806,
+    "HOTFIX": {
+      "1.6.1": {
+        "DATE": "1/22/2025 2:30 PM",
+        "FEATURES": [
+          "not all items in backpacks loading",
+          "items dropped would still be saved to your hands"
+        ],
+        "BINARY_ID": "8640565106053475",
+        "VERSION_CODE": 807
+      }
+    }
+  },
+  "1.7": {
+    "NAME": "Week 29 - Mining Update (Part 1)",
+    "FEATURES": [
+      "⛏️ Mining: Almost all loot on the ground has been removed, and replaced with different veins of ore.",
+      "Ore can be mined with anything that deals damage (⛏️ is a good choice).",
+      "Different ores spawn in different areas. Different ores have different rewards.",
+      "🗺️ New Map (part 1): Mine valuable minerals in the new mines area (you can't miss it).",
+      "The forest is now at the end of the minefield.",
+      "🆓 Earning Coins & Research Points: Daily missions have been removed. Mining any ore has a chance to award coins or research points.",
+      "New unlockable hip attachment slots. Allows you to keep more equipment on you and easily reachable. Unlocked in the tech tree.",
+      "New quiver, arrows, and lightbulb arrows.",
+      "New sticky dynamite",
+      "Cosmetics: New Tiger available in the shop, New Miner Mole bundle, New item skins including a dripped out pickaxe available in the tech tree"
+    ],
+    "DATE": "1/28/2025 3:05 PM",
+    "BINARY_ID": "8673405676102751",
+    "VERSION_CODE": 835,
+    "HOTFIX": {
+      "1.7.1": {
+        "DATE": "1/29/2025 1:45 PM",
+        "FEATURES": [
+          "Fixed invisible safe zone indicator",
+          "Fixed arrows applying damage when PvP is disabled",
+          "Improved enemy death FX",
+          "Performance improvements",
+          "Rebalanced melee weapon damage values: The pickaxes now deal significantly more damage to ores compared to other melee weapons, but deals less damage to monsters & players. The baseball bat does the most damage to enemies, but does very little damage to ores."
+        ],
+        "BINARY_ID": "8678408525602466",
+        "VERSION_CODE": 846
+      },
+      "1.7.2": {
+        "DATE": "1/29/2025 5:49 PM",
+        "FEATURES": [
+          "Fixed red and blue ores under the haunted house incorrectly dropping crates. They now drop the funky gems like before.",
+          "Added a Chinese New Year themed RPG reskin to the tech tree"
+        ],
+        "BINARY_ID": "8679244465518872",
+        "VERSION_CODE": 847
+      }
+    }
+  },
+  "1.8": {
+    "NAME": "Week 30",
+    "FEATURES": [
+      "New weekly maps",
+      "Added some ground loot back to some areas.",
+      "Fixed going rogue when hitting a dead player",
+      "Fixed some room code connection bugs",
+      "Fixed some issues where player would not get nuts after a long play session",
+      "Fixed issue where some countdown timers can appear incorrect with a misconfigured clock"
+    ],
+    "DATE": "2/4/2025 2:03 PM",
+    "BINARY_ID": "8709784005798251",
+    "VERSION_CODE": 857,
+    "HOTFIX": {
+      "1.8.1": {
+        "DATE": "2/4/2025 5:29 PM",
+        "FEATURES": [
+          "tiny hotfix to fix a bug. Make sure to update or you might not be able to play with friends 😦"
+        ],
+        "BINARY_ID": "8710318665744785",
+        "VERSION_CODE": 858
+      }
+    }
+  },
+  "1.9": {
+    "NAME": "Week 31 - Mining Update (Part 2)",
+    "FEATURES": [
+      "⛏️ Go Deeper: Explore deeper into the mines.",
+      "New extremely valuable ores to find at the bottom.",
+      "A new monster.",
+      "New Zipline Gun and Zipline Rope items added to the research tree."
+    ],
+    "DATE": "2/11/2025 3:13 PM",
+    "BINARY_ID": "8745477092228942",
+    "VERSION_CODE": 864,
+    "HOTFIX": {}
+  },
+  "1.10": {
+    "NAME": "Week 32 - STASH",
+    "FEATURES": [
+      "Stash: A new stash terminal is available in the lobby.",
+      "Store items for safe keeping and retrieve them later.",
+      "Unlock more slots with Nuts & Coins",
+      "New weekly maps",
+      "Various performance improvements",
+      "Fixed holstered weapons sometimes dealing damage",
+      "Oh also a cool new wooster games intro 🙂"
+    ],
+    "DATE": "2/18/2025 12:31 PM",
+    "BINARY_ID": "8794827883960529",
+    "VERSION_CODE": 905,
+    "HOTFIX": {
+      "1.10.1": {
+        "DATE": "2/18/2025 4:58 PM",
+        "FEATURES": [
+          "Fixed some issues with friends list online status and joining friends rooms.",
+          "Fixed glitched geometry at mines entrance",
+          "Fixed the lava way down under...",
+          "Fixed a case where you could lose items from using the stash machine"
+        ],
+        "BINARY_ID": "8796954190414565",
+        "VERSION_CODE": 907
+      },
+      "1.10.2": {
+        "DATE": "2/19/2025 7:02 PM",
+        "FEATURES": [
+          "Online friends now appear at the top of the list",
+          "Some friends list performance and UX improvements",
+          "Fixed some instances of crashing when approaching the friends board, especially if you have many friends (more fixes on the way)",
+          "Added ability to appear offline to your friends 🥷"
+        ],
+        "BINARY_ID": "8804367866339864",
+        "VERSION_CODE": 914
+      }
+    }
+  },
+  "1.11": {
+    "NAME": "Week 33 - Broccoli Update",
+    "FEATURES": [
+      "🥦 New mega & micro broccoli snacks that grow/shrink your character",
+      "The new 🥦 can be found in a new facility hidden underground in the mines. You'll know it when you see it.",
+      "🐐 A new GOAT bundle is available in the shop!",
+      "Re-added the missing goggle from the miner mole bundle."
+    ],
+    "DATE": "2/25/2025 2:34 PM",
+    "BINARY_ID": "8838422042934446",
+    "VERSION_CODE": 943,
+    "HOTFIX": {}
+  },
+  "1.12": {
+    "NAME": "Week 34 - Teaser Update",
+    "FEATURES": [
+      "New weekly maps with large changes to sewers and mines",
+      "The mines is now more tightly clustered around a single zipline cavern.",
+      "Sections off the \"main path\" should be more rewarding with more monster encounters, loot, and teleport ore.",
+      "Generally increased the amount of monsters and loot available.",
+      "The main path to the lava cavern should be significantly quicker.",
+      "The planetarium is no longer on the main path.",
+      "Slightly restructured the sewers flow to allow for more monster encounters.",
+      "A mysterious facility entrance has been built near the minefield. Unfortunately the elevators seem out of order for now...",
+      "Reduced the brightness of the glowstick. It should be just as useful, but is much less harsh.",
+      "Increased MRE buff effect duration to 30 seconds.",
+      "MRE heals 100 HP.",
+      "Made the bird monster more aggressive in the dark."
+    ],
+    "DATE": "3/4/2025 3:19 PM",
+    "BINARY_ID": "8875655535877763",
+    "VERSION_CODE": 961,
+    "HOTFIX": {}
+  },
+  "1.13": {
+    "NAME": "Week 35 - The Office",
+    "FEATURES": [
+      "Explore a section of the Canopy Group headquarters",
+      "The Canopy Lab has been experimenting with an infinite money glitch...",
+      "👨‍💼👩‍💼 2 New office monsters",
+      "New Box Fan item",
+      "New Nut Shredder item",
+      "Mega & Mini Broccoli have been added to the tech tree.",
+      "Fixed: Unable to unblock users in blocked list."
+    ],
+    "DATE": "3/11/2025 3:19 PM",
+    "BINARY_ID": "8923889521054364",
+    "VERSION_CODE": 985,
+    "HOTFIX": {
+      "1.13.1": {
+        "DATE": "3/11/2025 6:11 PM",
+        "FEATURES": [
+          "Fixed some issues with the elevators",
+          "Fixed nut shredder not displaying its actual value",
+          "Slightly lowered the volume of a particular laugh",
+          "Tweaks and fixes to some AI behavior"
+        ],
+        "BINARY_ID": "8924770934299556",
+        "VERSION_CODE": 989
+      }
+    }
+  },
+  "1.14": {
+    "NAME": "Week 36",
+    "FEATURES": [
+      "New weekly map, including some changes to the office area for you to discover...",
+      "Added gun recoil",
+      "Various performance improvements 🧈",
+      "Allow attaching keycard to hip",
+      "Slightly improved feel of item throwing",
+      "Reduced weight and increased power of the hoverboard",
+      "Nut shredder and box fan can be dropped from loot",
+      "Fixed: Multiple elevator button sounds playing at once when pressing them",
+      "Fixed: Items attached to monster's back will be dropped upon death 💰"
+    ],
+    "DATE": "3/18/2025 4:20 PM",
+    "BINARY_ID": "8966903013419681",
+    "VERSION_CODE": 1040,
+    "HOTFIX": {}
+  },
+  "1.15": {
+    "NAME": "Week 37 - Time-Attack Week",
+    "FEATURES": [
+      "⏳ Time-Attack Week",
+      "📺 TV Portal – Teleport to a random location through the TV screen.",
+      "💣 Sellable Timer Bomb – Timer bombs can be sold for nuts before the timer runs out.",
+      "🐢 A new animal!",
+      "New weekly maps",
+      "misc performance improvements"
+    ],
+    "DATE": "3/25/2025 3:55 PM",
+    "BINARY_ID": "9010715692371746",
+    "VERSION_CODE": 1074,
+    "HOTFIX": {}
+  },
+  "1.16": {
+    "NAME": "Week 38 - April Fools",
+    "FEATURES": [
+      "🧀 Somebody left their cheese in the lobby. Eat to get stinky. (tag somebody to pass on the stinky....)",
+      "The maps might be flipped around...",
+      "The cave has returned to the forest.",
+      "Mining is more responsive with juicy animations and less lag!",
+      "Garbage ore drops 3x as many items.",
+      "Canopy group has made the decision to augment your experience with customized promotional offers."
+    ],
+    "DATE": "4/1/2025 3:29 PM",
+    "BINARY_ID": "9054416148001700",
+    "VERSION_CODE": 1121,
+    "HOTFIX": {}
+  },
+  "1.17": {
+    "NAME": "Week 39 - The Floor is Lava",
+    "FEATURES": [
+      "🌋 The lobby and the mines have been flooded with lava",
+      "The mines is filled with extremely valuable Cinder ore",
+      "GL",
+      "🆕 Sticker Dispenser added to the tech tree",
+      "Theremin added to the tech tree",
+      "New weekly maps"
+    ],
+    "DATE": "4/8/2025 2:05 PM",
+    "BINARY_ID": "9102233006553347",
+    "VERSION_CODE": 1145,
+    "HOTFIX": {
+      "1.17.1": {
+        "DATE": "4/8/2025 5:26 PM",
+        "FEATURES": [
+          "Less Lava: Greatly reduced the amount of lava in the lobby.",
+          "The paths to the forest/sewers should be easily accesible again.",
+          "The mines is still filled with lava (and very expensive ore 😉😉😉😉)"
+        ],
+        "BINARY_ID": "9103259583117356",
+        "VERSION_CODE": 1147
+      },
+      "1.17.2": {
+        "DATE": "4/8/2025 8:39 PM",
+        "FEATURES": [
+          "Clear out stickers when switching servers",
+          "Block more places where stickers can be placed",
+          "Fixed movement bounciness when heavy"
+        ],
+        "BINARY_ID": "9103883243054990",
+        "VERSION_CODE": 1149
+      },
+      "1.17.3": {
+        "DATE": "4/9/2025 3:13 PM",
+        "FEATURES": [
+          "New outfits in the shop",
+          "Fixed issues with items colliding incorrectly",
+          "Fixed an issue where you can glitch out and get stuck in floors/walls",
+          "Fixed keycard not being detected by duplication machine",
+          "Block sticks on the selling machine",
+          "Improved weighted movement",
+          "Increased hand friction"
+        ],
+        "BINARY_ID": "9109416719168309",
+        "VERSION_CODE": 1153
+      }
+    }
+  },
+  "1.18": {
+    "NAME": "Week 40 - Chicken Maze Mayhem",
+    "FEATURES": [
+      "🐔 Chicken Maze Mayhem!",
+      "🌽 The chicken alcove in the forest has grown into a huge maze.",
+      "🌿 Hide & Seek: Use bushes to escape the angry chicken.",
+      "🤝 Teamwork: Friends outside can guide you using the map outside.",
+      "🍗 Buffed Chicken: Now stronger, faster, and more aggressive.",
+      "Josh made some fixes to movement with items. I think it feels really good!",
+      "The big cave is back in the forest.",
+      "The maps are back to normal.",
+      "Increased the speed of zipline ropes created by the zipline gun by 300%",
+      "You can “swim” in the air a little bit when floating 👀"
+    ],
+    "DATE": "4/16/2025 9:32 AM",
+    "BINARY_ID": "9149958718447442",
+    "VERSION_CODE": 1185,
+    "HOTFIX": {
+      "1.18.4": {
+        "DATE": "4/17/2025 9:06 PM",
+        "FEATURES": [
+          "Fixes avatar editor not always showing you all items if you have many many items",
+          "Performance improvements in lobby area"
+        ],
+        "BINARY_ID": "9163448713765109",
+        "VERSION_CODE": 1203
+      }
+    }
+  },
+  "1.19": {
+    "NAME": "Week 41",
+    "FEATURES": [
+      "🆕 \"Black hole\" grenade added to tech tree.",
+      "🆕 Secret area where you can farm these new grenades.",
+      "📦 Added the cardboard box to the tech tree.",
+      "Companion App: The companion app may be unavailable for the next few hours. This is due to Apple review shenanigans.",
+      "Other users can no longer grab your camera by default. You can disable this in settings",
+      "Cameras are colored based on the player.",
+      "Various fixes and improvements.",
+      "Fixed Tiger animal hands",
+      "Loading screen improvements"
+    ],
+    "DATE": "4/22/2025 2:07 PM",
+    "BINARY_ID": "9195169097259737",
+    "VERSION_CODE": 1214,
+    "HOTFIX": {
+      "1.19.2": {
+        "DATE": "4/23/2025 4:39 PM",
+        "FEATURES": [
+          "New arbor day cosmetics in shop",
+          "Fixed: Last item in avatar editor list is bugged (“Giga Frog”)",
+          "Fixed: Both kitten eyes were the same color",
+          "Fixed: Issue where Ores play hit effect when not being hit"
+        ],
+        "BINARY_ID": "9202975773145736",
+        "VERSION_CODE": 1218
+      },
+      "1.19.3": {
+        "DATE": "4/24/2025 4:02 PM",
+        "FEATURES": [
+          "New Egg Launcher RPG",
+          "New Egg RPG Ammo (Cluster bomb like)",
+          "Fixed: Most cases of BulkUserDataFetchFailed error in loading screen (This was caused by mods corrupting the loadout and stash).",
+          "Patched some modding things"
+        ],
+        "BINARY_ID": "9209848782458435",
+        "VERSION_CODE": 1223
+      }
+    }
+  },
+  "1.20": {
+    "NAME": "Week 42 - Ghostie & Reviving",
+    "FEATURES": [
+      "ghostie Ghostie & Reviving: When a player dies they will turn into a small ghostie",
+      "You can revive a player by dragging their ghost back into their body",
+      "There are no requirements or revive limits, we hope this helps keep adventuring teams together!",
+      "🌞 Parkour Tower: There's a new parkour challenge in the office.",
+      "Climb up many themed floors of challenges.",
+      "Reach the top to earn RP and an exclusive 🌞 cosmetic.",
+      "Jump through the TV in the lobby to get to this new area quickly!",
+      "Chicken Jockey: Grab and ride the forest bird monster!"
+    ],
+    "DATE": "4/29/2025 2:43 PM",
+    "BINARY_ID": "9241876369255676",
+    "VERSION_CODE": 1235,
+    "HOTFIX": {
+      "1.20.3": {
+        "DATE": "4/30/2025 1:14 PM",
+        "FEATURES": [
+          "🦝",
+          "🇲🇽🪅🎊"
+        ],
+        "BINARY_ID": "9254720454637934",
+        "VERSION_CODE": 1241
+      },
+      "1.20.4": {
+        "DATE": "4/30/2025 4:48 PM",
+        "FEATURES": [
+          "fixed: fingers not colliding with UI correctly",
+          "fixed: attaching items to back not working correctly",
+          "fixed: regenerating health after being revived"
+        ],
+        "BINARY_ID": "9256166081160038",
+        "VERSION_CODE": 1245
+      }
+    }
+  },
+  "1.21": {
+    "NAME": "Week 43 - Cinco De Mayo",
+    "FEATURES": [
+      "🪅 Piñata event! Piñata horses are now in the forest! Smash them open to collect sweets.",
+      "🆕 Piñata Bat. Creates colorful effects when hitting players or monsters.",
+      "🤝 You can now join your Meta Quest friends through the Quest friends menu.",
+      "Updated bullet trails and hit effects",
+      "This is the weeks update. There will not be an update tomorrow. Next weeks update will be back to tuesday like normal."
+    ],
+    "DATE": "5/5/2025 1:43 PM",
+    "BINARY_ID": "9295539823889330",
+    "VERSION_CODE": 1259,
+    "HOTFIX": {
+      "1.21.3": {
+        "DATE": "5/7/2025 3:34 PM",
+        "FEATURES": [
+          "Some performance improvements",
+          "Fixed: Clothing doesn't update to fit new animal selected in lab",
+          "Fixed: Ghostie isn't muted (blocked players)",
+          "New cosmetics in shop"
+        ],
+        "BINARY_ID": "9313592718750707",
+        "VERSION_CODE": 1265
+      }
+    }
+  },
+  "1.22": {
+    "NAME": "Week 44 - Moon Update",
+    "FEATURES": [
+      "🚀 Get in the rocket and go to the moon.",
+      "🚙 Play with new vehicles on the moons surface",
+      "🦎 New Chameleon animal",
+      "A weird device added to the computer",
+      "Moved the office entrance and brought the forest closer to spawn"
+    ],
+    "DATE": "5/13/2025 5:31 PM",
+    "BINARY_ID": "9364482806995031",
+    "VERSION_CODE": 1278,
+    "HOTFIX": {
+      "1.22.1": {
+        "DATE": "5/14/2025 9:32 AM",
+        "FEATURES": [
+          "Fixed an issue causing lots of effects in the game to be invisible"
+        ],
+        "BINARY_ID": "9366387606804551",
+        "VERSION_CODE": 1280
+      }
+    }
+  },
+  "1.23": {
+    "NAME": "Week 45 - ARENA UPDATE",
+    "FEATURES": [
+      "lfg ARENA MODE (beta): Next to the computer terminal you can switch modes to ARENA",
+      "⚔️ Arena mode is team based PVP where the objective is to mine the other teams ORE.",
+      "🫂 You can host private arena lobbies just like adventure.",
+      "This is a really early beta for arena. Let us know in #📢│feedback-ideas what you think about it.",
+      "If pvp isnt your thing don't worry. We've got lots of adventure updates coming as well 🛠️ 👀"
+    ],
+    "DATE": "5/20/2025 4:47 PM",
+    "BINARY_ID": "9424610000982311",
+    "VERSION_CODE": 1315,
+    "HOTFIX": {
+      "1.23.1": {
+        "DATE": "5/20/2025 7:49 PM",
+        "FEATURES": [
+          "Reduced public lobbies max player count from 12 to 10 (it is now 5v5). Privates still go up to 10v10.",
+          "Increased the HP of team ores. They should take 1 more hit to kill.",
+          "Spread out team ores a bit more. Should be a bit harder to flail about and deal tons of damage.",
+          "Lots of performance improvements and bug fixes"
+        ],
+        "BINARY_ID": "9425360434240601",
+        "VERSION_CODE": 1317
+      },
+      "1.23.2": {
+        "DATE": "5/21/2025 5:15 PM",
+        "FEATURES": [
+          "New Apocalypse outfits",
+          "Arena balancing improvements: Ore has more HP, requires more hits to destroy",
+          "Shotgun is slightly more powerful",
+          "Pistol has more ammo, but deals slightly less damage",
+          "Arena public lobby wait time reduced to 45sec (from 90sec)",
+          "Performance optimizations in Arena map",
+          "Fixed: Red watch no longer applied in arena game mode",
+          "Fixed: Some cases of players appearing invisible",
+          "Fixed: Bug where user attached to research headset appears pink"
+        ],
+        "BINARY_ID": "9431389986970979",
+        "VERSION_CODE": 1321
+      },
+      "1.23.3": {
+        "DATE": "5/22/2025 2:14 PM",
+        "FEATURES": [
+          "Fixed: Can't change rooms when you start the app in Arena mode",
+          "Fixed: You can damage players while they are dead",
+          "Fixed: Moon objects misaligned"
+        ],
+        "BINARY_ID": "9438436482932996",
+        "VERSION_CODE": 1324
+      },
+      "1.23.4": {
+        "DATE": "5/23/2025 2:59 PM",
+        "FEATURES": [
+          "Minor arena lobby changes to improve flow",
+          "Fixed: Some rooms appear stuck in arena mode with the counter at 0:00 and the game not starting",
+          "Fixed: It's possible to end up in the Adventure and Arena scene at the same time"
+        ],
+        "BINARY_ID": "9446074905502487",
+        "VERSION_CODE": 1330
+      }
+    }
+  },
+  "1.24": {
+    "NAME": "Week 46",
+    "FEATURES": [
+      "🌌 Anti-Gravity grenade",
+      "🥁 Bongo drums",
+      "🎸 Ukulele. Strum with your grabbed hand, and grab the neck with your other hand to change the pitch.",
+      "Both instruments will heal nearby players when played 💖",
+      "Various performance improvements to Arena mode.",
+      "Performance improvements in the research world."
+    ],
+    "DATE": "5/28/2025 5:03 PM",
+    "BINARY_ID": "9481659521944025",
+    "VERSION_CODE": 1345,
+    "HOTFIX": {}
+  },
+  "1.25": {
+    "NAME": "Week 47",
+    "FEATURES": [
+      "⚔️ New challenge added to arena: Get 15 kills in a single match to earn a new cosmetic jacket.",
+      "Fixed being safe in the enemy teams safe zone in arena.",
+      "Removed spectator mode from public arena lobbies."
+    ],
+    "DATE": "6/3/2025 2:50 PM",
+    "BINARY_ID": "9526515267458450",
+    "VERSION_CODE": 1360,
+    "HOTFIX": {
+      "1.25.1": {
+        "DATE": "6/3/2025 7:26 PM",
+        "FEATURES": [
+          "Fixed: Objects such as ore and selling machine missing in adventure mode",
+          "Fixed: Games not starting in arena",
+          "Fixed: Some bits of the environment missing",
+          "Fixed: Modded names displayed on the friend board",
+          "Implemented a Nut Cap ™️: Nut balance will be capped at 9,999,999."
+        ],
+        "BINARY_ID": "9528091980634112",
+        "VERSION_CODE": 1362
+      },
+      "1.25.2": {
+        "DATE": "6/4/2025 4:41 PM",
+        "FEATURES": [
+          "New Yeetblade item 🪝🔪",
+          "New Boomspear RPG with Boomspear Ammo items",
+          "New Outfits in Shop",
+          "Turkey is back!! 🦃",
+          "Fixed: Modded color coded text in name tags",
+          "Minor performance improvements"
+        ],
+        "BINARY_ID": "9535247796585197",
+        "VERSION_CODE": 1368
+      },
+      "1.25.3": {
+        "DATE": "6/5/2025 5:00 PM",
+        "FEATURES": [
+          "Appear offline will now save between sessions",
+          "Fixed: Users are able to set their display names to offensive stuff",
+          "Fixed: UserStashDataParseFailed or UserLoadoutDataParseFailed log-in errors; Users seeing this will be prompted to reset their stash"
+        ],
+        "BINARY_ID": "9542890679154242",
+        "VERSION_CODE": 1374
+      }
+    }
+  },
+  "1.26": {
+    "NAME": "Week 48 - Zombie Night Week",
+    "FEATURES": [
+      "🧟‍♂️ Zombie Night Week: Dark Lobby: The Animal Company lobby is now dark with rain and lightning",
+      "Vote on the next zombie wave",
+      "Get Nut rewards every 5 waves you survive",
+      "Temporary gun upgrade: Easy Reloads: Hold the button to auto-reload shotguns and revolvers.",
+      "More Ammo: Revolver ammo temporarily increased to 8!",
+      "Duck animal",
+      "Fixed items hold rotation bug",
+      "Fixed spectators able to damage ore with crossbows",
+      "Improved shield effectiveness against explosions and partially against monsters",
+      "Reduced RPG damage radius and damage falls off at the edges",
+      "Increased quiver base capacity to 15 arrows and is now increased by skills"
+    ],
+    "DATE": "6/10/2025 5:12 PM",
+    "BINARY_ID": "9580044352105541",
+    "VERSION_CODE": 1393,
+    "HOTFIX": {
+      "1.26.1": {
+        "DATE": "6/10/2025 7:28 PM",
+        "FEATURES": [
+          "The lobby is safe - zombies have vanished... for now",
+          "Fixed: Invisible zombies",
+          "Fixed: Day/night sync when joining the first room",
+          "Fixed: Error handling on horde update"
+        ],
+        "BINARY_ID": "9580688648707778",
+        "VERSION_CODE": 1394
+      },
+      "1.26.2": {
+        "DATE": "6/11/2025 1:21 PM",
+        "FEATURES": [
+          "Zombies won’t bother the Animal Company world — but they exist in special rooms (The event button on the computer or private room takes you to a room with zombies)",
+          "Duck Bundle",
+          "Viking Outfits",
+          "Viking Hammers",
+          "Fixed: Room freezing issue caused by zombies",
+          "Fixed: Reset now properly cancels ready state",
+          "Fixed: Reset button sometimes not working"
+        ],
+        "BINARY_ID": "9586425264800783",
+        "VERSION_CODE": 1399
+      },
+      "1.26.3": {
+        "DATE": "6/11/2025 4:11 PM",
+        "FEATURES": [
+          "Fixed: Chameleon eyes don't tint to body color and are not the correct color sometimes",
+          "Fixed: Avatar editor issue with Chameleon"
+        ],
+        "BINARY_ID": "9587320128044630",
+        "VERSION_CODE": 1401
+      },
+      "1.26.4": {
+        "DATE": "6/12/2025 4:19 PM",
+        "FEATURES": [
+          "Melee weapons will be more efficient for zombies",
+          "Fixed: Spammy errors harming the performance",
+          "Fixed: Broken hell entrance area"
+        ],
+        "BINARY_ID": "9595012567275386",
+        "VERSION_CODE": 1404
+      }
+    }
+  },
+  "1.27": {
+    "NAME": "Week 49 - R.A.M. CONSTRUCTION PROJECT",
+    "FEATURES": [
+      "R.A.M. Construction: Deliver Uranium to fuel the reactor and earn a limited Red Hardhat cosmetic.",
+      "Deliver Silver to help finish the facility construction and earn 100 coins.",
+      "Zombies are gone for now.",
+      "Monster HP adjustments: Last week we massively increased monster HP. This week we are reducing it but it will still be quite a lot higher than before."
+    ],
+    "DATE": "6/17/2025 1:45 PM",
+    "BINARY_ID": "9632483006861675",
+    "VERSION_CODE": 1415,
+    "HOTFIX": {
+      "1.27.1": {
+        "DATE": "6/17/2025 3:44 PM",
+        "FEATURES": [
+          "Fixed interacting with items sometimes broken.",
+          "Fixed the reindeer shop option purchasing the turkey instead.",
+          "Fixed giant"
+        ],
+        "BINARY_ID": "9633423273434315",
+        "VERSION_CODE": 1417
+      },
+      "1.27.4": {
+        "DATE": "6/23/2025 12:36 PM",
+        "FEATURES": [
+          "This update introduces a new voice moderation system to help keep Animal Company a welcoming, fun, and safe place for everyone.",
+          "Players who repeatedly use offensive or harmful language may now be automatically muted, removed from a session, or banned."
+        ],
+        "BINARY_ID": "9659918230784819",
+        "VERSION_CODE": 1422
+      }
+    }
+  },
+  "1.28": {
+    "NAME": "Week 50 - R.A.M. CALIBRATION REQUIRED",
+    "FEATURES": [
+      "R.A.M.: Canopy would like to thank everyone who assisted with the R.A.M. construction project.",
+      "The machine has been completed and now needs to be calibrated.",
+      "Input items to charge the machine. More valuable items provide more charge. Outcome not guarunteed.",
+      "Voice Moderation Details: Voice is only monitored in public lobbies. Punishments progressively scale. First offense is only a 5 minute mute.",
+      "Moderation Menu: New today is a moderation menu on the watch!",
+      "You can switch modes on the watch with the left stick.",
+      "While inside mod mode you can select players with a laser pointer. Once selected you can mute or report them.",
+      "Server hosts can kick players."
+    ],
+    "DATE": "6/24/2025 5:35 PM",
+    "BINARY_ID": "9687519974691311",
+    "VERSION_CODE": 1435,
+    "HOTFIX": {}
+  },
+  "1.29": {
+    "NAME": "Week 51 - CRITICAL ERROR - Lake Adventure",
+    "FEATURES": [
+      "Lake Adventure: Spooky adventure at the lake. Lots of LORE.",
+      "2 new monsters",
+      "New valuable loot items to find & mine",
+      "Underwater movement",
+      "Lobby revamped",
+      "Items: Portable Teleporter, Teleport Gun",
+      "⚠️ Hookshots can no longer attach to metal surfaces.",
+      "Fixed bags filled with items reducing FPS.",
+      "Reduced the HP of most monsters."
+    ],
+    "DATE": "7/1/2025 1:43 PM",
+    "BINARY_ID": "9732956513480990",
+    "VERSION_CODE": 1455,
+    "HOTFIX": {}
+  },
+  "1.30": {
+    "NAME": "Week 52",
+    "FEATURES": [
+      "We maybe sorta left an unreleased item in the loading screen... IYKYK",
+      "Various tweaks to the lobby",
+      "Various performance optimizations."
+    ],
+    "DATE": "7/8/2025 3:56 PM",
+    "BINARY_ID": "9794403710669603",
+    "VERSION_CODE": 1478,
+    "HOTFIX": {
+      "1.30.1": {
+        "DATE": "7/9/2025 3:05 PM",
+        "FEATURES": [
+          "New cosmetics in shop! Ranger outfits",
+          "Fixed: Unable to purchase single-animal in shop",
+          "Fixed: Misc issues with the robot monke"
+        ],
+        "BINARY_ID": "9801608926615748",
+        "VERSION_CODE": 1481
+      }
+    }
+  },
+  "1.31": {
+    "NAME": "Week 53 - Broke AF Mode",
+    "FEATURES": [
+      "monke_sad Broke AF Mode: A new adventure mode where nuts, loadout, and your stash don't save.",
+      "Everyone starts fresh.",
+      "This is an additional mode you can opt into. Regular adventure is unchanged. Your nuts and stash are safe.",
+      "New RoboMonke2000 officially added",
+      "New Friend Launcher",
+      "New Grenade Launcher",
+      "Continued to increase the coziness of the lobby",
+      "Performance optimizations."
+    ],
+    "DATE": "7/15/2025 4:18 PM",
+    "BINARY_ID": "9849739575136016",
+    "VERSION_CODE": 1502,
+    "HOTFIX": {}
+  },
+  "1.32": {
+    "NAME": "Week 54",
+    "FEATURES": [
+      "New weekly maps with mines entrance changes",
+      "Minor optimizations",
+      "Broke AF nuts reset when restarting the app or switching modes, but not between server codes"
+    ],
+    "DATE": "7/22/2025 3:01 PM",
+    "BINARY_ID": "9904208976355742",
+    "VERSION_CODE": 1515,
+    "HOTFIX": {}
+  },
+  "1.33": {
+    "NAME": "Week 55 - CAVES ARE BACK",
+    "FEATURES": [
+      "Cave entrance is open, go explore!",
+      "2 New Monsters",
+      "New items (sticky stuff!)",
+      "Lost messages 📰"
+    ],
+    "DATE": "7/29/2025 5:18 PM",
+    "BINARY_ID": "9961465547296751",
+    "VERSION_CODE": 1535,
+    "HOTFIX": {
+      "1.33.1": {
+        "DATE": "7/29/2025 8:15 PM",
+        "FEATURES": [
+          "Fixed major performance issues caused by new monsters and items",
+          "Fixed monsters walking through walls",
+          "Fixed grabbing arena weapons",
+          "Fixed umbrella functionality when glued to items"
+        ],
+        "BINARY_ID": "9962262743883698",
+        "VERSION_CODE": 1538
+      },
+      "1.33.2": {
+        "DATE": "7/30/2025 6:03 PM",
+        "FEATURES": [
+          "New cosmetics!",
+          "Fixed issues with goop: Less crashing, Made it a bit easier to stick objects together",
+          "Fixed fans, hoverpads, and rockets working when glued on to other items",
+          "Fixed bomb and teleport arrows activating",
+          "Fixed broccoli spawning in planetarium",
+          "Fixed pumpkins dropping loot"
+        ],
+        "BINARY_ID": "9969402543169718",
+        "VERSION_CODE": 1540
+      },
+      "1.33.3": {
+        "DATE": "7/31/2025 4:10 PM",
+        "FEATURES": [
+          "Fixed: some duplication glitches / items despawning correctly",
+          "Fixed: earning company coins and research points from mining showing up correctly"
+        ],
+        "BINARY_ID": "9976966895746616",
+        "VERSION_CODE": 1542
+      }
+    }
+  },
+  "1.34": {
+    "NAME": "Week 56",
+    "FEATURES": [
+      "Fixed many issues with goop",
+      "Pogosticks work when glued to other items",
+      "Items take longer to despawn in custom codes",
+      "Fixed haunted house key not unlocking the door",
+      "Fixed tall cowboy hat floating on some animals",
+      "if you like to film videos i think you will enjoy next weeks update"
+    ],
+    "DATE": "8/5/2025 4:23 PM",
+    "BINARY_ID": "10019848354791803",
+    "VERSION_CODE": 1549,
+    "HOTFIX": {}
+  },
+  "1.35": {
+    "NAME": "Week 57 - Creative Studios",
+    "FEATURES": [
+      "Creative Studios: There's a new \"Hollywood backlots\" area with 6 different studios accessible through the lab (shop).",
+      "Studios include: green screen, mini-city / \"Godzilla studio\", podcast studio, news room, streamers room, a huge empty hangar",
+      "🆕 Flotation buoy 🛟 can be found in the lake by the ship.",
+      "🆕 Boomerang 🪃 added to the tech tree",
+      "Canopy Reality division has refactored the simulation. You may see simulation artifacts.",
+      "working on a cool forest update 🦀"
+    ],
+    "DATE": "8/12/2025 3:20 PM",
+    "BINARY_ID": "10081753685267936",
+    "VERSION_CODE": 1574,
+    "HOTFIX": {
+      "1.35.1": {
+        "DATE": "8/13/2025 4:37 PM",
+        "FEATURES": [
+          "🦀 CRAB 🦀",
+          "Interaction colliders for misc animal hands should now work better with buttons and menu",
+          "In studios, you will respawn where you died",
+          "Improved watch positioning for animals with thick hands.",
+          "Fixed: Tripwire explosive vfx bug",
+          "Fixed: Boomerang stops flying mid-air",
+          "Fixed: Hands are messed up after respawning"
+        ],
+        "BINARY_ID": "10090585754384729",
+        "VERSION_CODE": 1578
+      },
+      "1.35.3": {
+        "DATE": "8/16/2025 11:32 AM",
+        "FEATURES": [
+          "Improved positioning of watch on all animals"
+        ],
+        "BINARY_ID": "10099388220171149",
+        "VERSION_CODE": 1581
+      }
+    }
+  },
+  "1.36": {
+    "NAME": "Week 58 - Forest Update",
+    "FEATURES": [
+      "🌲 New Forest Update is live! Explore, chop trees, build bonfires, and survive the night!",
+      "New forest area to explore",
+      "A new monster lurking in the woods at night",
+      "Choppable trees and bonfires to build 🔥",
+      "Earn rewards by surviving the night near a bonfire",
+      "Fixed: Watch placement on some outfits"
+    ],
+    "DATE": "8/19/2025 6:10 PM",
+    "BINARY_ID": "23905036535846417",
+    "VERSION_CODE": 1607,
+    "HOTFIX": {
+      "1.36.1": {
+        "DATE": "8/20/2025 4:48 PM",
+        "FEATURES": [
+          "Bonfire: Expanded nut reward range",
+          "New Dwarf outfits in Shop",
+          "New Gold arms and Coin Eyes in Shop",
+          "Fixed: Glitch where you can spam tree sticks to make the fire huge",
+          "Fixed: Watch placement on misc outfits (for real this time????)",
+          "Fixed: Reflections in the lab are cray"
+        ],
+        "BINARY_ID": "23913259871690750",
+        "VERSION_CODE": 1611
+      },
+      "1.36.2": {
+        "DATE": "8/21/2025 4:22 PM",
+        "FEATURES": [
+          "Fixed: Forest monster doesn't come at night",
+          "Fixed: Gold arms finger issues"
+        ],
+        "BINARY_ID": "23922334654116605",
+        "VERSION_CODE": 1618
+      }
+    }
+  },
+  "1.37": {
+    "NAME": "Week 59",
+    "FEATURES": [
+      "The Office Is Back: You can access the office through the bunker entrance.",
+      "Capybara: added Capybara",
+      "Added a settings menu to the watch.",
+      "Items now display modified size and colors while inside the stash"
+    ],
+    "DATE": "8/26/2025 3:27 PM",
+    "BINARY_ID": "23964751346541602",
+    "VERSION_CODE": 1634,
+    "HOTFIX": {
+      "1.37.1": {
+        "DATE": "8/26/2025 5:16 PM",
+        "FEATURES": [
+          "The weird machine in lobby is gone, it's a mystery what that was and it was totally intentional don't worry guys we're professionals here",
+          "Fixed: Some items in the vending machine appeared tinted"
+        ],
+        "BINARY_ID": "23965709123112491",
+        "VERSION_CODE": 1636
+      }
+    }
+  },
+  "1.38": {
+    "NAME": "Week 60",
+    "FEATURES": [
+      "New monster spotted in the pipes",
+      "It drops a strange larva — Eating it does... nothing? Probably.",
+      "Memory optimizations on Quest/Mobile",
+      "Fixed: items triggering while settings menu is open",
+      "Fixed: voice moderation active when muted"
+    ],
+    "DATE": "9/2/2025 5:17 PM",
+    "BINARY_ID": "24023077714042298",
+    "VERSION_CODE": 1672,
+    "HOTFIX": {
+      "1.38.1": {
+        "DATE": "9/3/2025 3:49 PM",
+        "FEATURES": [
+          "Faster Reviving: Reviving reduced from 3 seconds to 2",
+          "New Pajama and Plushie arms cosmetics in shop!",
+          "Fixed: The Capybara tube in the shop shows a Reindeer instead",
+          "Fixed: Bighead monster gets stuck sometimes",
+          "Fixed: Bighead monster audio keeps playing after you die"
+        ],
+        "BINARY_ID": "24031132826570120",
+        "VERSION_CODE": 1681
+      },
+      "1.38.2": {
+        "DATE": "9/3/2025 10:56 PM",
+        "FEATURES": [
+          "Fixed: Avatar head parts disappearing in mirror",
+          "Fixed: Avatar eyes not mirrored (pug, alien etc)",
+          "Fixed: Changing color doesn't affect head",
+          "Fixed: Clothing also scales with big head",
+          "Fixed: Messed up arms in Mirror (speculative fix)"
+        ],
+        "BINARY_ID": "24033703049646431",
+        "VERSION_CODE": 1683
+      }
+    }
+  },
+  "1.39": {
+    "NAME": "Week 61",
+    "FEATURES": [
+      "Private Codes: Claim private codes to restrict access to members only. It's like a small private club. Find this in the settings menu",
+      "Added arachnophobia mode setting for spiders",
+      "New Squirrel Umbrella",
+      "New Guided Boomerang",
+      "Mole is in the shop!",
+      "New Cavemen outfits",
+      "Fixed some instances of “echoey” audio in certain locations."
+    ],
+    "DATE": "9/9/2025 9:25 PM",
+    "BINARY_ID": "24085098094506926",
+    "VERSION_CODE": 1702,
+    "HOTFIX": {
+      "1.39.1": {
+        "DATE": "9/10/2025 2:14 AM",
+        "FEATURES": [
+          "Fixed: Issues in the Research World",
+          "Fixed: Kick & Ban doesn't work in private codes",
+          "Fixed: Friend names don't show up in fren net"
+        ],
+        "BINARY_ID": "24086737187676350",
+        "VERSION_CODE": 1706
+      }
+    }
+  },
+  "1.40": {
+    "NAME": "Week 62",
+    "FEATURES": [
+      "New Map Table: We added a map table to the lobby!",
+      "You can reveal areas by finding hidden VHS tapes around the map.",
+      "You'll find each tape somewhere inside each area. So the tape for the lake is somewhere in the lake etc....",
+      "Companion app might be a little extra delayed this week srry."
+    ],
+    "DATE": "9/16/2025 5:19 PM",
+    "BINARY_ID": "24141133212236747",
+    "VERSION_CODE": 1721,
+    "HOTFIX": {
+      "1.40.2": {
+        "DATE": "9/17/2025 4:18 PM",
+        "FEATURES": [
+          "Fixed: Map machine areas don't unlock sometimes when you insert tapes",
+          "New cosmetics in shop"
+        ],
+        "BINARY_ID": "24149213788095356",
+        "VERSION_CODE": 1730
+      }
+    }
+  },
+  "1.41": {
+    "NAME": "Week 63",
+    "FEATURES": [
+      "Added 🦇",
+      "Daily Reward is back 🚽",
+      "Map machine is bigger; Made some improvements",
+      "VHS Tapes now have labels",
+      "New Axe Item",
+      "New Alpha Blade Item",
+      "New spooky adventure next week!!",
+      "Fixed: Haunted House ore is missing",
+      "Fixed: Private rooms recharge button is also visible to non-members"
+    ],
+    "DATE": "9/23/2025 4:32 PM",
+    "BINARY_ID": "24201755072841227",
+    "VERSION_CODE": 1760,
+    "HOTFIX": {
+      "1.41.1": {
+        "DATE": "9/24/2025 4:36 PM",
+        "FEATURES": [
+          "Polished map machine visuals",
+          "Fixed: Multiple Chaos Axe bugs"
+        ],
+        "BINARY_ID": "24210737331943001",
+        "VERSION_CODE": 1763
+      },
+      "1.41.3": {
+        "DATE": "9/26/2025 1:31 PM",
+        "FEATURES": [
+          "Chaos Axe: fixed some issues with sound effects",
+          "Chaos Axe: fixed some issues with how these interact with goop",
+          "Alpha Blade: Fixed an issue where the blade was not illuminating its surroundings",
+          "Alpha Blade: Fixed some odd bounciness behavior when throwing it"
+        ],
+        "BINARY_ID": "24228174606865940",
+        "VERSION_CODE": 1772
+      }
+    }
+  },
+  "1.42": {
+    "NAME": "Week 64 - Halloween Pt. 2 - Graveyard",
+    "FEATURES": [
+      "The Graveyard: Explore a spooky graveyard",
+      "Dig up graves and unlock crypts",
+      "Fight zombies and a new monster",
+      "Bring bones to the fire to summon an epic boss.",
+      "The boss will take teamwork to defeat. Drops a new flamethrower item. A rare chance for an extra special flamethrower variant.",
+      "Seasonal changes to the lobby",
+      "New GreatSword item",
+      "New \"Pickups\" you can collect to earn nuts and instantly reload bullets into your gun.",
+      "Hot Tip: shoot the lanterns"
+    ],
+    "DATE": "9/30/2025 4:25 PM",
+    "BINARY_ID": "24265533549796712",
+    "VERSION_CODE": 1794,
+    "HOTFIX": {
+      "1.42.1": {
+        "DATE": "9/30/2025 5:58 PM",
+        "FEATURES": [
+          "Fixed an issue where throwing bones into fire would crash the game",
+          "Greatly reduced the chest monsters hp"
+        ],
+        "BINARY_ID": "24266270639723003",
+        "VERSION_CODE": 1795
+      },
+      "1.42.3": {
+        "DATE": "9/30/2025 9:41 PM",
+        "FEATURES": [
+          "Fixed: Map Machine not working correctly ⚒️"
+        ],
+        "BINARY_ID": "24267403706276363",
+        "VERSION_CODE": 1799
+      },
+      "1.42.4": {
+        "DATE": "10/1/2025 5:30 PM",
+        "FEATURES": [
+          "Map Machine is now part of the safe zone.",
+          "Fixed minor Map Machine issues.",
+          "Added Shovel item. Get digging.",
+          "Fixed bug causing the GreatSword to do extra damage to certain monsters.",
+          "Fixed some misc. bugs with the chest monster."
+        ],
+        "BINARY_ID": "24276220842061316",
+        "VERSION_CODE": 1804
+      }
+    }
+  },
+  "1.43": {
+    "NAME": "Week 65",
+    "FEATURES": [
+      "Zombie Gorilla Animal",
+      "Pumpkin outfits",
+      "Pumpkin Bomb Item 💣",
+      "Hatchet Item 🪓",
+      "Horizon OS v79 and later is required to fix a security issue",
+      "Fixed: Avatar heads sometimes go missing"
+    ],
+    "DATE": "10/7/2025 5:00 PM",
+    "BINARY_ID": "24339925325690867",
+    "VERSION_CODE": 1825,
+    "HOTFIX": {
+      "1.43.1": {
+        "DATE": "10/8/2025 12:31 PM",
+        "FEATURES": [
+          "Fixed: Issues with pumpkin outfits obscuring part of your vision",
+          "Fixed: Hands messed up on some animals with the pumpkin outfits",
+          "Fixed: Sometimes avatars fail to load completely; missing eyes",
+          "Fixed: Misc map machine bugs"
+        ],
+        "BINARY_ID": "24348199098196823",
+        "VERSION_CODE": 1826
+      }
+    }
+  },
+  "1.44": {
+    "NAME": "Week 66",
+    "FEATURES": [
+      "Added a new \"Quest Tracker\" to the world map",
+      "You can track quests to see their steps and rewards.",
+      "⚔️ We will be releasing a limited time quest later this week."
+    ],
+    "DATE": "10/14/2025 3:05 PM",
+    "BINARY_ID": "24413247941691938",
+    "VERSION_CODE": 1841,
+    "HOTFIX": {
+      "1.44.2": {
+        "DATE": "10/16/2025 3:26 PM",
+        "FEATURES": [
+          "Fixed: Cyst can now be killed again",
+          "It Hungers: A strange altar appeared in the molten depths and should be investigated..."
+        ],
+        "BINARY_ID": "24434221562927909",
+        "VERSION_CODE": 1852
+      }
+    }
+  },
+  "1.45": {
+    "NAME": "Week 67 - Halloween Pt. 3 - THE CIRCUS",
+    "FEATURES": [
+      "C͠͡O͜͝M͟͝E͜͝ ͞͝O̷͟N̵͡E̡,͟͞ C̨͝O̷͠M̷͠E͢͡ ͢͝A̸͞L̨͞L̷͢͠͞...",
+      "New circus adventure: Explore the..... circus and what its hiding.",
+      "A spooky 🤡 monster",
+      "Another undisclosed monster 👀",
+      "A quest to get a new prop scanner gadget",
+      "New high-fiber consumables",
+      "New trampoline item",
+      "⚔️ A new major quest with an.... epic ending and some Sp3c1@l R3w@rd$.......",
+      "A bunch of secrets and surprises that I don't want to spoil 🙂",
+      "New Skeleton Deer bundle!"
+    ],
+    "DATE": "10/21/2025 6:25 PM",
+    "BINARY_ID": "24489670127383052",
+    "VERSION_CODE": 1877,
+    "HOTFIX": {
+      "1.45.2": {
+        "DATE": "10/23/2025 1:39 PM",
+        "FEATURES": [
+          "Fixed: Clown sometimes can't send you to the game room"
+        ],
+        "BINARY_ID": "24507838188899579",
+        "VERSION_CODE": 1884
+      },
+      "1.45.3": {
+        "DATE": "10/24/2025 3:04 PM",
+        "FEATURES": [
+          "Fixed multiple issues with the Mama Boss",
+          "Fixed Goop-related crashes and performance drops when interacting with certain items (e.g., Tablet)"
+        ],
+        "BINARY_ID": "24520231534326911",
+        "VERSION_CODE": 1891
+      }
+    }
+  },
+  "1.46": {
+    "NAME": "Week 68",
+    "FEATURES": [
+      "Weekly map update",
+      "Witch Bundle with broom item",
+      "Money Gun",
+      "Mitigated app crashes",
+      "Basketball is now interactable",
+      "Trampoline has been aligned with Canopy Group’s continually evolving safety standards",
+      "Watch is now hidden when you stand still after using the prop scanner",
+      "The puppet is a messier eater"
+    ],
+    "DATE": "10/28/2025 3:58 PM",
+    "BINARY_ID": "24560965743586823",
+    "VERSION_CODE": 1903,
+    "HOTFIX": {}
+  },
+  "1.47": {
+    "NAME": "Week 69 - Progression Update",
+    "FEATURES": [
+      "New Vending Machine: The item vending machine has been reworked to be much easier and quicker to use!",
+      "Scroll through lots of items quickly! Easily view new update items.",
+      "Unlock items directly in the vending machine! Items are no longer unlocked in the research tree.",
+      "All previous purchases will carry over.",
+      "New Skill Tree: The Nut-Horizon research tree has been re-worked with a bunch of new skills.",
+      "The research tree is now exclusively character-upgrades.",
+      "Some epic new upgrades including double jump and auto reload from backpack.",
+      "All previous purchases will carry over.",
+      "Big map table! The map table has been reworked to be... really big!",
+      "Indicators for new quests and lots of other improvements!",
+      "A new mini quest in the lake"
+    ],
+    "DATE": "11/4/2025 4:40 PM",
+    "BINARY_ID": "24627900203560043",
+    "VERSION_CODE": 1954,
+    "HOTFIX": {
+      "1.47.1": {
+        "DATE": "11/5/2025 5:55 PM",
+        "FEATURES": [
+          "New cosmetics in the shop",
+          "New Large Needle item available to unlock",
+          "Option to disable double jump from the watch settings menu",
+          "Fixed a bug where all your skills would keep increasing every time you unlocked any skill",
+          "Fixed tripwire and some other explosions not exploding",
+          "Fixed being able to grab random items out of the nodes in Nut Horizon"
+        ],
+        "BINARY_ID": "24638405192509544",
+        "VERSION_CODE": 1960
+      }
+    }
+  },
+  "1.48": {
+    "NAME": "Week 70 - Reactor",
+    "FEATURES": [
+      "☢️ Reactor ☢️: Clock in with your companions",
+      "Raid the silos",
+      "Operate heavy machinery",
+      "A mysterious appliance...",
+      "░R░a░d░i░a░t░i░o░n░",
+      "New glowblaster item",
+      "New monsters: Man's best friend, I'm feeling watched...",
+      "Cosmetics: New King Croc Bundle"
+    ],
+    "DATE": "11/13/2025 7:31 PM",
+    "BINARY_ID": "24716582584691804",
+    "VERSION_CODE": 1992,
+    "HOTFIX": {
+      "1.48.1": {
+        "DATE": "11/14/2025 3:11 PM",
+        "FEATURES": [
+          "Updated Whiteboard visual",
+          "Changed microwave effects balancing",
+          "Security Scanner keypad has more audio cues",
+          "Fixed overly dark lighting on the crane lever",
+          "Fixed Research map",
+          "Fixed items shrinking from using the stash"
+        ],
+        "BINARY_ID": "24723837370632992",
+        "VERSION_CODE": 1997
+      },
+      "1.48.2": {
+        "DATE": "11/17/2025 2:38 PM",
+        "FEATURES": [
+          "Fixed broken areas in the Circus map"
+        ],
+        "BINARY_ID": "24749216951428367",
+        "VERSION_CODE": 1998
+      }
+    }
+  },
+  "1.49": {
+    "NAME": "Week 71 - Mom Boss Grind Time",
+    "FEATURES": [
+      "Mom Boss Grind Time! Squashed bugs and polished the boss fight",
+      "Beat her once → unlock a special arm piece to flex that “I survived mom” vibe forever 😭🫶",
+      "Fresh weekly map drop!",
+      "Reactor: Improved crane interaction UX",
+      "Reactor: Updated various effect SFX",
+      "Reactor: Performance optimizations",
+      "Guns + Arena: Revolvers and shotguns now are dealing the correct amount of damage"
+    ],
+    "DATE": "11/18/2025 6:31 PM",
+    "BINARY_ID": "24760929886923740",
+    "VERSION_CODE": 2011,
+    "HOTFIX": {}
+  },
+  "1.50": {
+    "NAME": "Week 72",
+    "FEATURES": [
+      "SMSHR RPG",
+      "Blue and Gold Stellar Swords",
+      "Flamethrower",
+      "Viper Shotgun & Dragon Pistol",
+      "Radiation Gun now applies actual radiation to players",
+      "Improved Microwave interface",
+      "Snail reward fixes",
+      "Cosmetics: Stellar Soldier Black Friday Bundle, Cyberpunk Cyber Monday Bundle"
+    ],
+    "DATE": "11/25/2025 5:43 PM",
+    "BINARY_ID": "24822322694117792",
+    "VERSION_CODE": 2041,
+    "HOTFIX": {
+      "1.50.1": {
+        "DATE": "11/25/2025 9:09 PM",
+        "FEATURES": [
+          "Fixed the bug with putting multiple items into backpacks, stash, shredders, etc."
+        ],
+        "BINARY_ID": "24823441467339248",
+        "VERSION_CODE": 2045
+      }
+    }
+  },
+  "1.51": {
+    "NAME": "Week 73",
+    "FEATURES": [
+      "New Winter Fox Character Bundle",
+      "Loadout machine: Use this to quickly equip a set of items",
+      "Goop is purchasable from the shop!",
+      "New crafting items: Robot Head, Robot Arms, Joysticks, Remote Controller",
+      "New construction items: Plank, Wood Pallet, Metal Ball, Metal Plate, Metal Rod, Metal Triangle, Steel Beam, Truss",
+      "Inventions saving machine coming soon!",
+      "Microwave: Fixed door sometimes getting difficult to close"
+    ],
+    "DATE": "12/2/2025 4:38 PM",
+    "BINARY_ID": "24877820025234725",
+    "VERSION_CODE": 2062,
+    "HOTFIX": {
+      "1.51.1": {
+        "DATE": "12/2/2025 11:26 PM",
+        "FEATURES": [
+          "Fixed: Gnarly crashes",
+          "Fixed: Loadout items not loading after restarting the game",
+          "Fixed: Shredder infinite money glitch with the loadout machine",
+          "Fixed: Snail cannot be grabbed"
+        ],
+        "BINARY_ID": "24879980025018725",
+        "VERSION_CODE": 2065
+      },
+      "1.51.2": {
+        "DATE": "12/3/2025 6:04 PM",
+        "FEATURES": [
+          "Fixed: some more crashes",
+          "Item despawn timers will reset when you attach anything to it with goop",
+          "You can now release items held with robot arms by holding A/X buttons for 0.5 seconds then release",
+          "Fixed: Heartgun will only damage yourself when held (and reduced the amount of damage)",
+          "Changed how center of gravity works for goop connected items - they should have better balance",
+          "Movement with items held using robot arms attached to your hips will be less bouncy"
+        ],
+        "BINARY_ID": "24885926244424103",
+        "VERSION_CODE": 2067
+      },
+      "1.51.3": {
+        "DATE": "12/4/2025 6:29 PM",
+        "FEATURES": [
+          "Fixed: some more crashing issues",
+          "Fixed: left robot arm base rotation",
+          "Fixed: melee weapons working in robot arms"
+        ],
+        "BINARY_ID": "24894967843519943",
+        "VERSION_CODE": 2076
+      },
+      "1.51.4": {
+        "DATE": "12/5/2025 7:16 PM",
+        "FEATURES": [
+          "Fixed: some crashes with heartgun and robot arms"
+        ],
+        "BINARY_ID": "24904101562606571",
+        "VERSION_CODE": 2085
+      }
+    }
+  },
+  "1.52": {
+    "NAME": "Week 74 - Winter Update",
+    "FEATURES": [
+      "🎄 Winter Update: Snow has covered the world ❄️",
+      "Expanded spawn",
+      "Gifts are hidden in the lake & forest 🎁",
+      "Monsters now spawn randomly 👾",
+      "Mobile App: It’s stuck in Apple review, we’re working on getting the update out on mobile ASAP.",
+      "Saddle prop flying glitch",
+      "Saddle handles can be grabbed when used with goop",
+      "Loadout machine now spawns weapons with correct ammo amounts",
+      "Items stick to goop more reliably"
+    ],
+    "DATE": "12/9/2025 2:37 PM",
+    "BINARY_ID": "24937078492642211",
+    "VERSION_CODE": 2098,
+    "HOTFIX": {
+      "1.52.1": {
+        "DATE": "12/10/2025 4:59 PM",
+        "FEATURES": [
+          "Removed the box in the forest",
+          "More types of mobs will spawn from the box",
+          "Fixed cases where you can fly with saddle used with goop",
+          "Fixed heart gun picking up items when not held"
+        ],
+        "BINARY_ID": "24946884998328227",
+        "VERSION_CODE": 2107
+      },
+      "1.52.2": {
+        "DATE": "12/12/2025 11:44 AM",
+        "FEATURES": [
+          "Fixed app crashes and various bugs"
+        ],
+        "BINARY_ID": "24956390960710964",
+        "VERSION_CODE": 2109
+      }
+    }
+  },
+  "1.53": {
+    "NAME": "Week 75 - The Mountain",
+    "FEATURES": [
+      "🏔️ The Mountain: Enter the ski-lift in the lobby to access The Mountain",
+      "Grab a free ski-shoe and slide down the mountain!",
+      "Hit sweet tricks off a halfpipe",
+      "Race your friends",
+      "Lots to find and explore...",
+      "Snowboards 😎 67",
+      "Vault Quest: There's a mysterious projector at the bottom of the mountain...",
+      "See the map table for more information"
+    ],
+    "DATE": "12/16/2025 5:26 PM",
+    "BINARY_ID": "24999220769761316",
+    "VERSION_CODE": 2128,
+    "HOTFIX": {
+      "1.53.1": {
+        "DATE": "12/16/2025 9:07 PM",
+        "FEATURES": [
+          "Added missing VHS slots",
+          "Improved voice distance in credits sequence",
+          "Misc Fixes"
+        ],
+        "BINARY_ID": "25000148883001838",
+        "VERSION_CODE": 2132
+      },
+      "1.53.2": {
+        "DATE": "12/17/2025 5:36 PM",
+        "FEATURES": [
+          "Fixed voice distance on the ski mountain (can hear from farther away)",
+          "Adjusted ski challenge",
+          "Fixed hookshot and umbrella issues",
+          "Fixed lighting issues",
+          "Fixed Hell Monster issues"
+        ],
+        "BINARY_ID": "25008278565522203",
+        "VERSION_CODE": 2138
+      },
+      "1.53.3": {
+        "DATE": "12/19/2025 1:25 PM",
+        "FEATURES": [
+          "Fixed: Dam vents blocked by mountain",
+          "Private Codes purchase button is now \"long press\" to avoid accidental purchases",
+          "The game will now trigger downloading the latest update if a new version is required"
+        ],
+        "BINARY_ID": "25017127581303968",
+        "VERSION_CODE": 2141
+      }
+    }
+  },
+  "1.54": {
+    "NAME": "Week 76 - Christmas 2025",
+    "FEATURES": [
+      "🎄 Our last update of the year. Thank you for playing our goofy game! ❤️‍🔥",
+      "Added cozy lights to spawn",
+      "Settings Menu: Added “Smooth” stick turn option, Added master volume setting",
+      "New sales: Holiday Blowout Sale - 10,000 CC, Stocking Stuffer Sale - 2500 CC",
+      "Candy Cane Warrior - Outfit + 3 Items + 2500 CC",
+      "5 New construction items (reskins) for festive goop builds: Peppermint Ball, Festive Plate, Candy Cane Rod, Gingerbread Beam, Candy Cane Truss",
+      "Items gooped together can only be taken apart by the person holding it",
+      "Fixed some goop sticking jankiness"
+    ],
+    "DATE": "12/23/2025 2:49 PM",
+    "BINARY_ID": "25058967947119931",
+    "VERSION_CODE": 2146,
+    "HOTFIX": {}
+  },
+  "1.55": {
+    "NAME": "Week 77",
+    "FEATURES": [
+      "New Axolotl Animal",
+      "Quickly swap items from hand, hip, and back (press A / X to swap) 🔀",
+      "Money Gun is back, money-draining glitch has been fixed",
+      "Unexpectedly dying in parts of the Reactor has been fixed"
+    ],
+    "DATE": "1/6/2026 5:09 PM",
+    "BINARY_ID": "25171325932550798",
+    "VERSION_CODE": 2155,
+    "HOTFIX": {
+      "1.55.1": {
+        "DATE": "1/7/2026 3:03 PM",
+        "FEATURES": [
+          "Fixed a small input problem where players had issues interacting with items previously held by someone else",
+          "Fixed an issue where the menu music was muted for the first few seconds of launching the game"
+        ],
+        "BINARY_ID": "25179261471757244",
+        "VERSION_CODE": 2169
+      }
+    }
+  },
+  "1.56": {
+    "NAME": "Week 78 - GOOP SAVING UPDATE",
+    "FEATURES": [
+      "Nut Horizon Inventions Archive ™ — Save goop inventions and spawn copies",
+      "🐐 GOAT is back in the shop!",
+      "Cube Trident and Tele Pearl items",
+      "The vending machine now has a Construction category",
+      "Pickaxes, crowbars, and similar tools now snap to their intended use position when grabbed through hips.",
+      "Fixed an issue where Cysts (the floating red eyes in the sewers) could wake up by tripping one of their tendrils as a ghost",
+      "Potential fix for an issue where mobs could be spawned by modders.",
+      "BigHead got nerfed a bit",
+      "--Next week we'll add support for spawning inventions from the Shop, Loadout and add ability to store inventions inside the Stash"
+    ],
+    "DATE": "1/13/2026 5:21 PM",
+    "BINARY_ID": "25230308116652579",
+    "VERSION_CODE": 2198,
+    "HOTFIX": {
+      "1.56.1": {
+        "DATE": "1/14/2026 5:46 PM",
+        "FEATURES": [
+          "Increased Invention Machine item limit to 32.",
+          "Fixed an issue where the item limit would count Goop.",
+          "Items are less likely to despawn on the Invention Machine pad.",
+          "Certain items will no longer scan or spawn from the Invention Machine.",
+          "The Invention Machine now needs a minimum of 2 items gooped together to scan.",
+          "You no longer need to have Goop unlocked in the shop to save an invention.",
+          "Fixed robot arms being functional when used in inventions",
+          "Backpack open and flashlight power state is saved"
+        ],
+        "BINARY_ID": "25239423112407746",
+        "VERSION_CODE": 2206
+      },
+      "1.56.2": {
+        "DATE": "1/15/2026 1:38 PM",
+        "FEATURES": [
+          "Potential fix for an issue where mobs could be spawned by modders",
+          "Adjusted backpack grab position",
+          "Bug fixes"
+        ],
+        "BINARY_ID": "25247565361593521",
+        "VERSION_CODE": 2210
+      },
+      "1.56.3": {
+        "DATE": "1/15/2026 6:20 PM",
+        "FEATURES": [
+          "Ukulele rock performances are now a little quieter",
+          "There should now be less glitched item debris in lobby",
+          "Items will have less vertices when far away"
+        ],
+        "BINARY_ID": "25248950958121628",
+        "VERSION_CODE": 2213
+      }
+    }
+  },
+  "1.57": {
+    "NAME": "Week 79",
+    "FEATURES": [
+      "Inventions Archive Improvements: We are now limiting certain items within Inventions. You may have some extra sticks now. Hopefully less laggy.",
+      "Objects floating on the pad should be more performant",
+      "The invention pad now prefers a single item at a time. It has learned to yeet things",
+      "New Items: Butcher Pipe, Butcher Sword, Butcher Spear, Sawblade Launcher (Bundle)",
+      "New Cosmetics: Monster Hunter Bundle (Sawblade + Outfit + 2500cc), Cursed Nurse Outfits, Muscle Arms, Bandage Head, Banana Head Outfit",
+      "Fixed a bug where monsters stacked over time",
+      "Drums no longer can apply permanent and aggressive deafness"
+    ],
+    "DATE": "1/21/2026 2:50 PM",
+    "BINARY_ID": "25304481775901879",
+    "VERSION_CODE": 2239,
+    "HOTFIX": {
+      "1.57.1": {
+        "DATE": "1/22/2026 12:08 PM",
+        "FEATURES": [
+          "Sawblade Launcher: Fixed an issue where sometimes the sawblade launcher won't come out of the backpack when inserted into it",
+          "Fixed an issue where some SFX weren't playing for players who are not controlling it",
+          "Added a nifty spin animation to the sawblade when loading it into the business end of the launcher",
+          "Rebalanced its damage and its behavior when penetrating through monsters and players a little"
+        ],
+        "BINARY_ID": "25313677324982324",
+        "VERSION_CODE": 2243
+      }
+    }
+  },
+  "1.58": {
+    "NAME": "Week 80",
+    "FEATURES": [
+      "OG Forest has returned",
+      "It is no longer snowing",
+      "New item: Bubble Gun",
+      "Balance Changes: Nerfed Cutie monster, Reduced health, Max damage capped at 40"
+    ],
+    "DATE": "1/29/2026 10:47 AM",
+    "BINARY_ID": "25381365004880222",
+    "VERSION_CODE": 2258,
+    "HOTFIX": {
+      "1.58.1": {
+        "DATE": "1/29/2026 6:20 PM",
+        "FEATURES": [
+          "Limited bubble gun to 1 per invention",
+          "Improved bubble gun so it doesn't reduce your fps as much"
+        ],
+        "BINARY_ID": "25384742737875782",
+        "VERSION_CODE": 2260
+      }
+    }
+  },
+  "1.59": {
+    "NAME": "Week 81",
+    "FEATURES": [
+      "OG Sewers has returned",
+      "FROGCAM (in-game camera tablet available above your watch)",
+      "Elephant Animal",
+      "Sewer pipes in the OG forest map were missing in last week's update. It has returned.",
+      "Fixed an issue where some areas in the dark forest weren't \"dark\""
+    ],
+    "DATE": "2/3/2026 4:48 PM",
+    "BINARY_ID": "25429881356695253",
+    "VERSION_CODE": 2274,
+    "HOTFIX": {
+      "1.59.1": {
+        "DATE": "2/3/2026 11:23 PM",
+        "FEATURES": [
+          "Improved in-game camera performance"
+        ],
+        "BINARY_ID": "25431859483164107",
+        "VERSION_CODE": 2277
+      }
+    }
+  },
+  "1.60": {
+    "NAME": "Week 82 - FISHING / Megalodon Adventure",
+    "FEATURES": [
+      "🦈 megalodon adventure!",
+      "🐟 15 underwater creatures to collect",
+      "🎣 3 fishing rods to unlock and upgrade",
+      "💀 lore things...",
+      "Brand new adventure inside the belly of the beast",
+      "Two new monsters to overcome",
+      "Brand new lore to discover",
+      "Multiple rod types with different handling and feel",
+      "Optional bait system that affects quality of fishing outcomes",
+      "Interactive catch minigame with success / fail results and visual + haptic feedback",
+      "Fishing Terminal to buy rods and bait",
+      "Happy Valentine's Day! Map Machine has a new quest to celebrate (and test your fishing prowess)",
+      "Shop: Love Bomber Valentine's Bundle (outfit + love grenade + 2500 CC), Valentines-themed outfits, BACK: Cupid, King & Queen of Hearts outfits"
+    ],
+    "DATE": "2/10/2026 8:38 PM",
+    "BINARY_ID": "25501651116184943",
+    "VERSION_CODE": 2326,
+    "HOTFIX": {}
+  }
+}
