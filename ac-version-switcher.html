@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Updates</title>
+<title>Game Versions</title>
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,10 +11,20 @@
         color: #e0e0e0;
         padding: 20px;
     }
-    h1 {
+    h1, h2, h3 {
         color: #a259ff;
-        text-align: center;
-        margin-bottom: 20px;
+    }
+    button {
+        background-color: #a259ff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        margin: 5px 0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #8b3ddb;
     }
     .update, .hotfix {
         background-color: #2a2a3d;
@@ -25,7 +35,6 @@
     }
     .hotfix {
         background-color: #3a3a5d;
-        margin-top: 10px;
     }
     ul {
         margin: 10px 0 10px 20px;
@@ -34,103 +43,102 @@
         font-size: 0.9em;
         color: #ccc;
     }
-    .pagination {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .pagination button {
-        background-color: #a259ff;
-        border: none;
-        color: #fff;
-        padding: 10px 15px;
-        margin: 0 5px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .pagination button:disabled {
-        background-color: #555;
-        cursor: not-allowed;
+    .hidden {
+        display: none;
     }
 </style>
 </head>
 <body>
-<h1>Game Updates</h1>
 
-<div id="updates"></div>
+<h1>Game Versions</h1>
 
-<div class="pagination">
-    <button id="prev">Previous</button>
-    <span id="pageInfo"></span>
-    <button id="next">Next</button>
+<div id="versionList"></div>
+<div id="versionPage" class="hidden">
+    <button id="backBtn">⬅ Back to Versions</button>
+    <div id="versionContent"></div>
+    <button id="hotfixBtn" class="hidden">Show Hotfixes</button>
+    <div id="hotfixContent" class="hidden"></div>
 </div>
 
 <script>
 const jsonURL = "https://wa1do.pythonanywhere.com/raw/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/game_data.json";
-const updatesPerPage = 5;
-let updatesArray = [];
-let currentPage = 1;
+let gameData = {};
 
-async function fetchUpdates() {
+async function fetchData() {
     try {
         const res = await fetch(jsonURL);
-        const data = await res.json();
-
-        // Flatten all versions and hotfixes into a single array
-        updatesArray = [];
-        for (const verKey in data) {
-            const ver = data[verKey];
-            updatesArray.push({version: verKey, ...ver, isHotfix: false});
-            if (ver.HOTFIX) {
-                for (const hfKey in ver.HOTFIX) {
-                    const hf = ver.HOTFIX[hfKey];
-                    updatesArray.push({version: hfKey, ...hf, isHotfix: true});
-                }
-            }
-        }
-
-        renderPage();
-    } catch (err) {
-        document.getElementById('updates').innerHTML = "Failed to load updates.";
+        gameData = await res.json();
+        renderVersionList();
+    } catch(err) {
+        document.getElementById('versionList').innerHTML = "Failed to load versions.";
         console.error(err);
     }
 }
 
-function renderPage() {
-    const start = (currentPage - 1) * updatesPerPage;
-    const end = start + updatesPerPage;
-    const pageUpdates = updatesArray.slice(start, end);
-
-    const container = document.getElementById("updates");
-    container.innerHTML = "";
-
-    pageUpdates.forEach(upd => {
-        const div = document.createElement("div");
-        div.classList.add(upd.isHotfix ? "hotfix" : "update");
-        div.innerHTML = `
-            <h2>${upd.version} ${upd.isHotfix ? '(Hotfix)' : ''} - ${upd.NAME || ''}</h2>
-            <p class="date">Date: ${upd.DATE}</p>
-            <p>Binary ID: ${upd.BINARY_ID || ''} | Version Code: ${upd.VERSION_CODE || ''}</p>
-            ${upd.FEATURES ? `<ul>${upd.FEATURES.map(f => `<li>${f}</li>`).join("")}</ul>` : ''}
-        `;
-        container.appendChild(div);
-    });
-
-    document.getElementById("pageInfo").textContent = `Page ${currentPage} of ${Math.ceil(updatesArray.length / updatesPerPage)}`;
-    document.getElementById("prev").disabled = currentPage === 1;
-    document.getElementById("next").disabled = currentPage === Math.ceil(updatesArray.length / updatesPerPage);
+// Show main version list
+function renderVersionList() {
+    const listDiv = document.getElementById('versionList');
+    listDiv.innerHTML = "";
+    for (const verKey in gameData) {
+        const ver = gameData[verKey];
+        const btn = document.createElement('button');
+        btn.textContent = `${verKey} - ${ver.NAME || ''}`;
+        btn.addEventListener('click', () => openVersion(verKey));
+        listDiv.appendChild(btn);
+    }
 }
 
-document.getElementById("prev").addEventListener("click", () => {
-    if(currentPage > 1) currentPage--;
-    renderPage();
+// Open a version “page”
+function openVersion(verKey) {
+    const version = gameData[verKey];
+    document.getElementById('versionList').classList.add('hidden');
+    const versionPage = document.getElementById('versionPage');
+    versionPage.classList.remove('hidden');
+
+    const contentDiv = document.getElementById('versionContent');
+    contentDiv.innerHTML = `
+        <h2>${verKey} - ${version.NAME}</h2>
+        <p class="date">Release Date: ${version.DATE}</p>
+        <p>Binary ID: ${version.BINARY_ID || ''} | Version Code: ${version.VERSION_CODE || ''}</p>
+        <h3>Features:</h3>
+        <ul>${version.FEATURES.map(f => `<li>${f}</li>`).join("")}</ul>
+    `;
+
+    const hotfixBtn = document.getElementById('hotfixBtn');
+    const hotfixContent = document.getElementById('hotfixContent');
+    if (version.HOTFIX) {
+        hotfixBtn.classList.remove('hidden');
+        hotfixContent.classList.add('hidden');
+        hotfixContent.innerHTML = "";
+        hotfixBtn.onclick = () => {
+            hotfixContent.innerHTML = "";
+            for (const hfKey in version.HOTFIX) {
+                const hf = version.HOTFIX[hfKey];
+                const div = document.createElement('div');
+                div.classList.add('hotfix');
+                div.innerHTML = `
+                    <h4>${hfKey}</h4>
+                    <p class="date">Date: ${hf.DATE}</p>
+                    <p>Binary ID: ${hf.BINARY_ID || ''} | Version Code: ${hf.VERSION_CODE || ''}</p>
+                    <ul>${hf.FEATURES.map(f => `<li>${f}</li>`).join("")}</ul>
+                `;
+                hotfixContent.appendChild(div);
+            }
+            hotfixContent.classList.remove('hidden');
+        };
+    } else {
+        hotfixBtn.classList.add('hidden');
+        hotfixContent.classList.add('hidden');
+    }
+}
+
+// Back button
+document.getElementById('backBtn').addEventListener('click', () => {
+    document.getElementById('versionPage').classList.add('hidden');
+    document.getElementById('versionList').classList.remove('hidden');
 });
 
-document.getElementById("next").addEventListener("click", () => {
-    if(currentPage < Math.ceil(updatesArray.length / updatesPerPage)) currentPage++;
-    renderPage();
-});
-
-fetchUpdates();
+fetchData();
 </script>
 </body>
 </html>
