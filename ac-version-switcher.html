@@ -1,144 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game Versions</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #1e1e2f;
-        color: #e0e0e0;
-        padding: 20px;
-    }
-    h1, h2, h3 {
-        color: #a259ff;
-    }
-    button {
-        background-color: #a259ff;
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        margin: 5px 0;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #8b3ddb;
-    }
-    .update, .hotfix {
-        background-color: #2a2a3d;
-        padding: 15px;
-        margin-bottom: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-    .hotfix {
-        background-color: #3a3a5d;
-    }
-    ul {
-        margin: 10px 0 10px 20px;
-    }
-    .date {
-        font-size: 0.9em;
-        color: #ccc;
-    }
-    .hidden {
-        display: none;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Versions · Changelog</title>
+    <style>
+        :root {
+            --bg-primary: #0a0c0f;
+            --bg-secondary: #14181c;
+            --bg-card: #1e2329;
+            --bg-hover: #2a313a;
+            --accent: #6366f1;
+            --accent-glow: #818cf8;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border: #2d3748;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            --gradient: linear-gradient(135deg, var(--accent), #8b5cf6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Version List Grid */
+        .version-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .version-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .version-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md), 0 0 0 1px var(--accent-glow);
+            background: var(--bg-hover);
+        }
+
+        .version-badge {
+            background: var(--gradient);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            width: fit-content;
+        }
+
+        .version-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .version-meta {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        /* Detail Page */
+        .detail-page {
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back-button {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent);
+            transform: translateX(-4px);
+        }
+
+        .version-header {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .version-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .version-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .features-list {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            margin-top: 1.5rem;
+        }
+
+        .features-list h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list ul {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: "✨";
+            font-size: 1.1rem;
+        }
+
+        .hotfix-section {
+            margin-top: 2rem;
+        }
+
+        .hotfix-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .hotfix-toggle:hover {
+            background: var(--bg-hover);
+            border-color: var(--warning);
+        }
+
+        .hotfix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hotfix-card {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .hotfix-card h4 {
+            color: var(--warning);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hotfix-card h4::before {
+            content: "🔧";
+        }
+
+        .hotfix-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .hotfix-card li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hotfix-card li::before {
+            content: "•";
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .loading::after {
+            content: "...";
+            animation: dots 1.5s steps(4, end) infinite;
+            width: 24px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ""; }
+            40% { content: "."; }
+            60% { content: ".."; }
+            80%, 100% { content: "..."; }
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-glow);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .version-title {
+                font-size: 1.75rem;
+            }
+            
+            .version-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Game Versions</h1>
+            <p class="subtitle">Track releases, features, and hotfixes</p>
+        </header>
 
-<h1>Game Versions</h1>
+        <div id="versionList" class="version-grid"></div>
+        
+        <div id="versionPage" class="detail-page hidden">
+            <button id="backBtn" class="back-button">
+                <span>←</span> Back to Versions
+            </button>
+            <div id="versionContent"></div>
+            <div id="hotfixSection" class="hotfix-section hidden">
+                <button id="hotfixBtn" class="hotfix-toggle">
+                    <span>🔧 Show Hotfixes</span>
+                    <span>▼</span>
+                </button>
+                <div id="hotfixGrid" class="hotfix-grid hidden"></div>
+            </div>
+        </div>
+    </div>
 
-<div id="versionList"></div>
-<div id="versionPage" class="hidden">
-    <button id="backBtn">⬅ Back to Versions</button>
-    <div id="versionContent"></div>
-    <button id="hotfixBtn" class="hidden">Show Hotfixes</button>
-    <div id="hotfixContent" class="hidden"></div>
-</div>
+    <script>
+        const jsonURL = "https://wa1do.pythonanywhere.com/raw/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/game_data.json";
+        let gameData = {};
+        let currentOpenVersion = null;
 
-<script>
-const jsonURL = "https://wa1do.pythonanywhere.com/raw/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/game_data.json";
-let gameData = {};
+        async function fetchData() {
+            try {
+                const versionList = document.getElementById('versionList');
+                versionList.innerHTML = '<div class="loading">Loading versions</div>';
+                
+                const res = await fetch(jsonURL);
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                gameData = await res.json();
+                renderVersionList();
+            } catch(err) {
+                const versionList = document.getElementById('versionList');
+                versionList.innerHTML = `
+                    <div class="error-message">
+                        <strong>⚠️ Failed to load versions</strong>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">${err.message}</p>
+                        <button onclick="fetchData()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent); border: none; border-radius: 6px; color: white; cursor: pointer;">
+                            Try Again
+                        </button>
+                    </div>
+                `;
+                console.error(err);
+            }
+        }
 
-async function fetchData() {
-    try {
-        const res = await fetch(jsonURL);
-        gameData = await res.json();
-        renderVersionList();
-    } catch(err) {
-        document.getElementById('versionList').innerHTML = "Failed to load versions.";
-        console.error(err);
-    }
-}
+        function renderVersionList() {
+            const listDiv = document.getElementById('versionList');
+            
+            if (Object.keys(gameData).length === 0) {
+                listDiv.innerHTML = '<div class="error-message">No versions available</div>';
+                return;
+            }
 
-// Show main version list
-function renderVersionList() {
-    const listDiv = document.getElementById('versionList');
-    listDiv.innerHTML = "";
-    for (const verKey in gameData) {
-        const ver = gameData[verKey];
-        const btn = document.createElement('button');
-        btn.textContent = `${verKey} - ${ver.NAME || ''}`;
-        btn.addEventListener('click', () => openVersion(verKey));
-        listDiv.appendChild(btn);
-    }
-}
+            listDiv.innerHTML = "";
+            
+            // Sort versions in descending order (newest first)
+            const sortedVersions = Object.keys(gameData).sort().reverse();
+            
+            sortedVersions.forEach(verKey => {
+                const ver = gameData[verKey];
+                const card = document.createElement('div');
+                card.className = 'version-card';
+                
+                const hasHotfix = ver.HOTFIX && Object.keys(ver.HOTFIX).length > 0;
+                
+                card.innerHTML = `
+                    <div class="version-badge">Version</div>
+                    <div class="version-name">${verKey}</div>
+                    <div style="font-size: 1.1rem; font-weight: 500;">${ver.NAME || 'Unnamed Release'}</div>
+                    <div class="version-meta">
+                        <span>📅 ${ver.DATE || 'Date TBD'}</span>
+                        ${hasHotfix ? '<span class="badge">🔧 Hotfixes available</span>' : ''}
+                    </div>
+                    <div style="color: var(--text-secondary); font-size: 0.875rem;">
+                        ${ver.FEATURES ? `${ver.FEATURES.length} features` : '0 features'}
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => openVersion(verKey));
+                listDiv.appendChild(card);
+            });
+        }
 
-// Open a version “page”
-function openVersion(verKey) {
-    const version = gameData[verKey];
-    document.getElementById('versionList').classList.add('hidden');
-    const versionPage = document.getElementById('versionPage');
-    versionPage.classList.remove('hidden');
+        function openVersion(verKey) {
+            currentOpenVersion = verKey;
+            const version = gameData[verKey];
+            
+            document.getElementById('versionList').classList.add('hidden');
+            const versionPage = document.getElementById('versionPage');
+            versionPage.classList.remove('hidden');
 
-    const contentDiv = document.getElementById('versionContent');
-    contentDiv.innerHTML = `
-        <h2>${verKey} - ${version.NAME}</h2>
-        <p class="date">Release Date: ${version.DATE}</p>
-        <p>Binary ID: ${version.BINARY_ID || ''} | Version Code: ${version.VERSION_CODE || ''}</p>
-        <h3>Features:</h3>
-        <ul>${version.FEATURES.map(f => `<li>${f}</li>`).join("")}</ul>
-    `;
+            const contentDiv = document.getElementById('versionContent');
+            
+            // Format features as list items
+            const featuresHtml = version.FEATURES && version.FEATURES.length > 0 
+                ? version.FEATURES.map(f => `<li>${f}</li>`).join('')
+                : '<li style="color: var(--text-secondary);">No features listed</li>';
 
-    const hotfixBtn = document.getElementById('hotfixBtn');
-    const hotfixContent = document.getElementById('hotfixContent');
-    if (version.HOTFIX) {
-        hotfixBtn.classList.remove('hidden');
-        hotfixContent.classList.add('hidden');
-        hotfixContent.innerHTML = "";
-        hotfixBtn.onclick = () => {
-            hotfixContent.innerHTML = "";
-            for (const hfKey in version.HOTFIX) {
-                const hf = version.HOTFIX[hfKey];
+            contentDiv.innerHTML = `
+                <div class="version-header">
+                    <div class="version-title">${verKey}</div>
+                    <div class="version-subtitle">${version.NAME || 'Unnamed Release'}</div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-label">Release Date</div>
+                            <div class="info-value">📅 ${version.DATE || 'TBD'}</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Binary ID</div>
+                            <div class="info-value">${version.BINARY_ID || '—'}</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Version Code</div>
+                            <div class="info-value">${version.VERSION_CODE || '—'}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="features-list">
+                        <h3>✨ Features</h3>
+                        <ul>${featuresHtml}</ul>
+                    </div>
+                </div>
+            `;
+
+            // Handle hotfixes
+            const hotfixSection = document.getElementById('hotfixSection');
+            const hotfixBtn = document.getElementById('hotfixBtn');
+            const hotfixGrid = document.getElementById('hotfixGrid');
+
+            if (version.HOTFIX && Object.keys(version.HOTFIX).length > 0) {
+                hotfixSection.classList.remove('hidden');
+                hotfixGrid.classList.add('hidden');
+                
+                // Remove old click listeners by cloning
+                const newHotfixBtn = hotfixBtn.cloneNode(true);
+                hotfixBtn.parentNode.replaceChild(newHotfixBtn, hotfixBtn);
+                
+                newHotfixBtn.addEventListener('click', () => {
+                    if (hotfixGrid.classList.contains('hidden')) {
+                        renderHotfixes(version.HOTFIX, hotfixGrid);
+                        hotfixGrid.classList.remove('hidden');
+                        newHotfixBtn.innerHTML = '<span>🔧 Hide Hotfixes</span><span>▲</span>';
+                    } else {
+                        hotfixGrid.classList.add('hidden');
+                        newHotfixBtn.innerHTML = '<span>🔧 Show Hotfixes</span><span>▼</span>';
+                    }
+                });
+            } else {
+                hotfixSection.classList.add('hidden');
+            }
+        }
+
+        function renderHotfixes(hotfixData, container) {
+            container.innerHTML = "";
+            
+            Object.keys(hotfixData).sort().reverse().forEach(hfKey => {
+                const hf = hotfixData[hfKey];
                 const div = document.createElement('div');
-                div.classList.add('hotfix');
+                div.className = 'hotfix-card';
+                
+                const featuresHtml = hf.FEATURES && hf.FEATURES.length > 0
+                    ? hf.FEATURES.map(f => `<li>${f}</li>`).join('')
+                    : '<li style="color: var(--text-secondary);">No features listed</li>';
+                
                 div.innerHTML = `
                     <h4>${hfKey}</h4>
-                    <p class="date">Date: ${hf.DATE}</p>
-                    <p>Binary ID: ${hf.BINARY_ID || ''} | Version Code: ${hf.VERSION_CODE || ''}</p>
-                    <ul>${hf.FEATURES.map(f => `<li>${f}</li>`).join("")}</ul>
+                    <div style="display: grid; gap: 0.5rem;">
+                        <div style="display: flex; gap: 1rem; font-size: 0.875rem;">
+                            <span style="color: var(--text-secondary);">📅 ${hf.DATE || 'Date TBD'}</span>
+                            <span style="color: var(--text-secondary);">📦 ${hf.BINARY_ID || '—'}</span>
+                        </div>
+                        <ul>${featuresHtml}</ul>
+                    </div>
                 `;
-                hotfixContent.appendChild(div);
-            }
-            hotfixContent.classList.remove('hidden');
-        };
-    } else {
-        hotfixBtn.classList.add('hidden');
-        hotfixContent.classList.add('hidden');
-    }
-}
+                
+                container.appendChild(div);
+            });
+        }
 
-// Back button
-document.getElementById('backBtn').addEventListener('click', () => {
-    document.getElementById('versionPage').classList.add('hidden');
-    document.getElementById('versionList').classList.remove('hidden');
-});
+        // Back button
+        document.getElementById('backBtn').addEventListener('click', () => {
+            document.getElementById('versionPage').classList.add('hidden');
+            document.getElementById('versionList').classList.remove('hidden');
+            currentOpenVersion = null;
+        });
 
-fetchData();
-</script>
+        // Initialize
+        fetchData();
+    </script>
 </body>
 </html>
