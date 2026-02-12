@@ -755,8 +755,8 @@
                     <h4>${escapeHtml(hfKey)}</h4>
                     <div style="display: grid; gap: 0.5rem;">
                         <div style="display: flex; gap: 1rem; font-size: 0.8rem; color: #aaa;">
-                            <span style="color: #8e9aaf;">📅 ${escapeHtml(hf.DATE || 'Date TBD')}</span>
-                            <span style="color: #8e9aaf;">🆔 ${escapeHtml(hf.BINARY_ID || '—')}</span>
+                            <span style="color: #8e9aaf;">${escapeHtml(hf.DATE || 'Date TBD')}</span>
+                            <span style="color: #8e9aaf;">${escapeHtml(hf.BINARY_ID || '—')}</span>
                         </div>
                         <ul>${featuresHtml}</ul>
                         ${downloadButton}
