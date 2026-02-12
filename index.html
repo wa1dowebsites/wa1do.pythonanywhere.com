@@ -288,30 +288,6 @@
             border: 1px solid #444;
         }
 
-        .status {
-            padding: 16px 20px;
-            border-radius: 20px;
-            margin-top: 24px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            background: #0a0a0a;
-            border: 1px solid #333;
-            color: #ccc;
-        }
-
-        .status.success {
-            background: #0f0f0f;
-            border-color: #aaa;
-            color: #eee;
-        }
-
-        .status.error {
-            background: #1a0f0f;
-            border-color: #ff8888;
-            color: #ffc0c0;
-        }
-
         .json-output {
             background: #050505;
             border-radius: 20px;
@@ -503,9 +479,6 @@
                     </div>
                     <button class="btn btn-generate" id="giveawayGenerateBtn" disabled>Generate JSON</button>
                     <button class="btn btn-download" id="giveawayDownloadBtn" disabled>Download output.json</button>
-                    <div id="giveawayStatus" class="status info">
-                        Upload your econ JSON file
-                    </div>
                 </div>
                 <div class="output-section">
                     <h2 style="color:white; font-weight:600; margin-bottom:18px;">OUTPUT</h2>
@@ -542,9 +515,6 @@
                     </div>
                     <button class="btn btn-generate" id="grenadeGenerateBtn" disabled>Generate JSON</button>
                     <button class="btn btn-download" id="grenadeDownloadBtn" disabled>Download output.json</button>
-                    <div id="grenadeStatus" class="status info">
-                        Upload econ JSON to start
-                    </div>
                 </div>
                 <div class="output-section">
                     <h2 style="color:white; font-weight:600; margin-bottom:18px;">OUTPUT</h2>
@@ -570,7 +540,6 @@
                 this.generateBtn = document.getElementById('giveawayGenerateBtn');
                 this.downloadBtn = document.getElementById('giveawayDownloadBtn');
                 this.jsonOutput = document.getElementById('giveawayJsonOutput');
-                this.statusDiv = document.getElementById('giveawayStatus');
                 this.itemCountDiv = document.getElementById('giveawayItemCount');
                 this.heartgunCountDiv = document.getElementById('giveawayHeartgunCount');
                 this.fileNameDiv = document.getElementById('giveawayFileName');
@@ -596,11 +565,9 @@
                         this.itemIds = [];
                         for (const item of jsonData) if (item?.id) this.itemIds.push(item.id);
                         if (this.itemIds.length === 0) throw new Error("No item IDs");
-                        this.showStatus(`Loaded ${this.itemIds.length} items`, 'success');
                         this.generateBtn.disabled = false;
                         this.itemCountDiv.textContent = this.itemIds.length;
                     } catch(error) {
-                        this.showStatus(`${error.message}`, 'error');
                         this.generateBtn.disabled = true;
                     }
                 };
@@ -609,7 +576,6 @@
 
             loadFromURL: async function() {
                 try {
-                    this.showStatus("Fetching from GitHub...", "info");
                     const res = await fetch(ECON_JSON_URL);
                     if (!res.ok) throw new Error("fetch failed");
                     const jsonData = await res.json();
@@ -618,7 +584,6 @@
                     this.itemCountDiv.textContent = this.itemIds.length;
                     this.generateBtn.disabled = false;
                 } catch (err) {
-                    this.showStatus("Auto-load failed. Upload file.", "info");
                 }
             },
             
@@ -628,9 +593,7 @@
             },
             
             generateJSON: function() {
-                if (this.itemIds.length === 0) { this.showStatus('Upload JSON first', 'error'); return; }
                 const amount = parseInt(this.heartgunAmountInput.value);
-                if (amount < 1 || amount > 100) { this.showStatus('1–100 only', 'error'); return; }
                 const backpackType = document.querySelector('input[name="giveawayBackpackType"]:checked')?.value || 'item_quiver';
                 
                 this.generatedData = { version:1, items:[{ itemID:"item_crowbar", stuckChildren:[], stashPos:0 }], materials:[] };
@@ -657,7 +620,6 @@
                 }
                 this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
                 this.downloadBtn.disabled = false;
-                this.showStatus(`Generated ${amount} Heart Guns`, 'success');
             },
             
             downloadJSON: function() {
@@ -667,9 +629,7 @@
                 a.href = URL.createObjectURL(blob);
                 a.download = 'giveaway_output.json';
                 a.click();
-                this.showStatus('Downloaded giveaway_output.json', 'success');
             },
-            showStatus: function(m,t) { this.statusDiv.textContent = m; this.statusDiv.className = 'status ' + t; }
         };
 
         // ---------- GRENADE GENERATOR ----------
@@ -683,7 +643,6 @@
                 this.generateBtn = document.getElementById('grenadeGenerateBtn');
                 this.downloadBtn = document.getElementById('grenadeDownloadBtn');
                 this.jsonOutput = document.getElementById('grenadeJsonOutput');
-                this.statusDiv = document.getElementById('grenadeStatus');
                 this.itemCountDiv = document.getElementById('grenadeItemCount');
                 this.launcherCountDiv = document.getElementById('grenadeLauncherCount');
                 this.fileNameDiv = document.getElementById('grenadeFileName');
@@ -719,12 +678,10 @@
                         let d = c.trim().startsWith('[') ? JSON.parse(c) : JSON.parse('['+c+']');
                         this.itemIds = d.map(i=>i.id).filter(Boolean);
                         if (!this.itemIds.length) throw new Error('No IDs');
-                        this.showStatus(`Loaded ${this.itemIds.length} items`, 'success');
                         this.generateBtn.disabled = false;
                         this.itemCountDiv.textContent = this.itemIds.length;
                         this.jsonOutput.textContent = `// ${this.itemIds.length} items ready\n${this.itemIds.slice(0,10).map(i=>'// '+i).join('\n')}`;
                     } catch(error) {
-                        this.showStatus('Invalid JSON', 'error');
                         this.generateBtn.disabled = true;
                     }
                 };
@@ -737,9 +694,7 @@
             },
             
             generateJSON: function() {
-                if (this.itemIds.length === 0) { this.showStatus('Upload JSON', 'error'); return; }
                 const amount = parseInt(this.launcherAmountInput.value);
-                if (amount<1||amount>100) { this.showStatus('1–100 only', 'error'); return; }
                 const backpackType = document.querySelector('input[name="grenadeBackpackType"]:checked')?.value || 'item_quiver';
                 
                 this.generatedData = { version:1, items:[{ itemID:"item_arrow", stuckChildren:[], stashPos:0 }], materials:[] };
@@ -760,16 +715,13 @@
                 }
                 this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
                 this.downloadBtn.disabled = false;
-                this.showStatus(`Generated ${amount} Grenade Launchers`, 'success');
             },
             downloadJSON: function() {
                 if (!this.generatedData) return;
                 const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type:'application/json'});
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(blob); a.download = 'grenade_launcher_output.json'; a.click();
-                this.showStatus('Downloaded grenade_launcher_output.json', 'success');
             },
-            showStatus: function(m,t) { this.statusDiv.textContent = m; this.statusDiv.className = 'status ' + t; }
         };
 
         // ---------- INIT ----------
