@@ -485,11 +485,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>🔫 Amount of Heart Guns</label>
+                        <label>Amount of Heart Guns</label>
                         <input type="number" id="giveawayHeartgunAmount" min="1" max="100" value="5">
                     </div>
                     <div class="form-group">
-                        <label>🎒 Type of Bag</label>
+                        <label>Type of Bag</label>
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" id="giveawayQuiver" name="giveawayBackpackType" value="item_quiver" checked>
@@ -501,10 +501,10 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-generate" id="giveawayGenerateBtn" disabled>▣ Generate JSON</button>
-                    <button class="btn btn-download" id="giveawayDownloadBtn" disabled>⬇ Download output.json</button>
+                    <button class="btn btn-generate" id="giveawayGenerateBtn" disabled>Generate JSON</button>
+                    <button class="btn btn-download" id="giveawayDownloadBtn" disabled>Download output.json</button>
                     <div id="giveawayStatus" class="status info">
-                        ⚡ Upload your econ JSON file
+                        Upload your econ JSON file
                     </div>
                 </div>
                 <div class="output-section">
@@ -540,29 +540,15 @@
                         <label>Amount of Grenade Launchers</label>
                         <input type="number" id="grenadeLauncherAmount" min="1" max="100" value="5">
                     </div>
-                    <div class="form-group">
-                        <label>Bag Type</label>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="grenadeQuiver" name="grenadeBackpackType" value="item_quiver" checked>
-                                <label for="grenadeQuiver">Quiver</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="grenadeBackpack" name="grenadeBackpackType" value="item_backpack_large_base">
-                                <label for="grenadeBackpack">Backpack</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-generate" id="grenadeGenerateBtn" disabled>▣ Generate JSON</button>
-                    <button class="btn btn-download" id="grenadeDownloadBtn" disabled>⬇ Download output.json</button>
+                    <button class="btn btn-generate" id="grenadeGenerateBtn" disabled>Generate JSON</button>
+                    <button class="btn btn-download" id="grenadeDownloadBtn" disabled>Download output.json</button>
                     <div id="grenadeStatus" class="status info">
-                        ⚡ Upload econ JSON to start
+                        Upload econ JSON to start
                     </div>
                 </div>
                 <div class="output-section">
                     <h2 style="color:white; font-weight:600; margin-bottom:18px;">⧉ OUTPUT</h2>
                     <div class="json-output" id="grenadeJsonOutput">
-// Ready for grenade launcher generation
                     </div>
                 </div>
             </div>
@@ -610,12 +596,11 @@
                         this.itemIds = [];
                         for (const item of jsonData) if (item?.id) this.itemIds.push(item.id);
                         if (this.itemIds.length === 0) throw new Error("No item IDs");
-                        this.showStatus(`✅ Loaded ${this.itemIds.length} items`, 'success');
+                        this.showStatus(`Loaded ${this.itemIds.length} items`, 'success');
                         this.generateBtn.disabled = false;
                         this.itemCountDiv.textContent = this.itemIds.length;
-                        this.jsonOutput.textContent = `// Loaded ${this.itemIds.length} items from ${file.name}\n${this.itemIds.slice(0,12).map(id=>`// - ${id}`).join('\n')}${this.itemIds.length>12?'\n// ...':''}`;
                     } catch(error) {
-                        this.showStatus(`❌ ${error.message}`, 'error');
+                        this.showStatus(`${error.message}`, 'error');
                         this.generateBtn.disabled = true;
                     }
                 };
@@ -633,9 +618,9 @@
                     this.itemCountDiv.textContent = this.itemIds.length;
                     this.generateBtn.disabled = false;
                     this.jsonOutput.textContent = `// GitHub: ${this.itemIds.length} items ready\n${this.itemIds.slice(0,15).map(i=>"// - "+i).join("\n")}`;
-                    this.showStatus(`✅ Loaded ${this.itemIds.length} items from GitHub`, "success");
+                    this.showStatus(`Loaded ${this.itemIds.length} items from GitHub`, "success");
                 } catch (err) {
-                    this.showStatus("⚠️ Auto-load failed. Upload file.", "info");
+                    this.showStatus("Auto-load failed. Upload file.", "info");
                 }
             },
             
@@ -674,7 +659,7 @@
                 }
                 this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
                 this.downloadBtn.disabled = false;
-                this.showStatus(`▣ Generated ${amount} Heart Guns`, 'success');
+                this.showStatus(`Generated ${amount} Heart Guns`, 'success');
             },
             
             downloadJSON: function() {
@@ -684,7 +669,7 @@
                 a.href = URL.createObjectURL(blob);
                 a.download = 'giveaway_output.json';
                 a.click();
-                this.showStatus('⬇ Downloaded giveaway_output.json', 'success');
+                this.showStatus('Downloaded giveaway_output.json', 'success');
             },
             showStatus: function(m,t) { this.statusDiv.textContent = m; this.statusDiv.className = 'status ' + t; }
         };
@@ -722,7 +707,6 @@
                     if (this.itemIds.length) {
                         this.itemCountDiv.textContent = this.itemIds.length;
                         this.generateBtn.disabled = false;
-                        this.jsonOutput.textContent = `// GitHub: ${this.itemIds.length} items loaded`;
                     }
                 } catch(e) {}
             },
@@ -737,12 +721,12 @@
                         let d = c.trim().startsWith('[') ? JSON.parse(c) : JSON.parse('['+c+']');
                         this.itemIds = d.map(i=>i.id).filter(Boolean);
                         if (!this.itemIds.length) throw new Error('No IDs');
-                        this.showStatus(`✅ Loaded ${this.itemIds.length} items`, 'success');
+                        this.showStatus(`Loaded ${this.itemIds.length} items`, 'success');
                         this.generateBtn.disabled = false;
                         this.itemCountDiv.textContent = this.itemIds.length;
                         this.jsonOutput.textContent = `// ${this.itemIds.length} items ready\n${this.itemIds.slice(0,10).map(i=>'// '+i).join('\n')}`;
                     } catch(error) {
-                        this.showStatus('❌ Invalid JSON', 'error');
+                        this.showStatus('Invalid JSON', 'error');
                         this.generateBtn.disabled = true;
                     }
                 };
@@ -778,14 +762,14 @@
                 }
                 this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
                 this.downloadBtn.disabled = false;
-                this.showStatus(`▣ Generated ${amount} Grenade Launchers`, 'success');
+                this.showStatus(`Generated ${amount} Grenade Launchers`, 'success');
             },
             downloadJSON: function() {
                 if (!this.generatedData) return;
                 const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type:'application/json'});
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(blob); a.download = 'grenade_launcher_output.json'; a.click();
-                this.showStatus('⬇ Downloaded grenade_launcher_output.json', 'success');
+                this.showStatus('Downloaded grenade_launcher_output.json', 'success');
             },
             showStatus: function(m,t) { this.statusDiv.textContent = m; this.statusDiv.className = 'status ' + t; }
         };
