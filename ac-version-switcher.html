@@ -551,7 +551,6 @@
             <div id="hotfixSection" class="hotfix-section hidden">
                 <button id="hotfixBtn" class="hotfix-toggle">
                     <span>Show Hotfixes</span>
-                    <span></span>
                 </button>
                 <div id="hotfixGrid" class="hotfix-grid hidden"></div>
             </div>
@@ -703,10 +702,8 @@
                     if (hotfixGrid.classList.contains('hidden')) {
                         renderHotfixes(version.HOTFIX, hotfixGrid);
                         hotfixGrid.classList.remove('hidden');
-                        newHotfixBtn.innerHTML = '<span>Hide Hotfixes</span><span>▲</span>';
                     } else {
                         hotfixGrid.classList.add('hidden');
-                        newHotfixBtn.innerHTML = '<span>Show Hotfixes</span><span>▼</span>';
                     }
                 });
             } else {
