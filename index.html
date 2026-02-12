@@ -617,8 +617,6 @@
                     if (this.itemIds.length === 0) throw new Error("no ids");
                     this.itemCountDiv.textContent = this.itemIds.length;
                     this.generateBtn.disabled = false;
-                    this.jsonOutput.textContent = `// GitHub: ${this.itemIds.length} items ready\n${this.itemIds.slice(0,15).map(i=>"// - "+i).join("\n")}`;
-                    this.showStatus(`Loaded ${this.itemIds.length} items from GitHub`, "success");
                 } catch (err) {
                     this.showStatus("Auto-load failed. Upload file.", "info");
                 }
