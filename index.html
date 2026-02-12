@@ -765,7 +765,7 @@
                 this.downloadBtn = document.getElementById('crossbowDownloadBtn');
                 this.jsonOutput = document.getElementById('crossbowJsonOutput');
                 this.itemCountDiv = document.getElementById('crossbowItemCount');
-                this.launcherCountDiv = document.getElementById('crossbowCount');
+                //this.launcherCountDiv = document.getElementById('crossbowCount');
                 this.fileNameDiv = document.getElementById('crossbowFileName');
                 
                 //this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
@@ -797,7 +797,7 @@
             
             updateLauncherCount: function() {
                 let c = parseInt(this.launcherAmountInput.value) || 0;
-                this.launcherCountDiv.textContent = c;
+                //this.launcherCountDiv.textContent = c;
             },
             
             generateJSON: function() {
@@ -820,7 +820,7 @@
                 if (!this.generatedData) return;
                 const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type:'application/json'});
                 const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob); a.download = 'grenade_launcher_output.json'; a.click();
+                a.href = URL.createObjectURL(blob); a.download = 'crossbow_output.json'; a.click();
             },
         };
 
