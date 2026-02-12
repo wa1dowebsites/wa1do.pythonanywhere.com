@@ -575,7 +575,7 @@
                 this.heartgunCountDiv = document.getElementById('giveawayHeartgunCount');
                 this.fileNameDiv = document.getElementById('giveawayFileName');
                 
-                this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
+                //this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
                 this.heartgunAmountInput.addEventListener('input', () => this.updateHeartgunCount());
                 this.generateBtn.addEventListener('click', () => this.generateJSON());
                 this.downloadBtn.addEventListener('click', () => this.downloadJSON());
@@ -609,7 +609,7 @@
 
             loadFromURL: async function() {
                 try {
-                    this.showStatus("⬇ Fetching from GitHub...", "info");
+                    this.showStatus("Fetching from GitHub...", "info");
                     const res = await fetch(ECON_JSON_URL);
                     if (!res.ok) throw new Error("fetch failed");
                     const jsonData = await res.json();
@@ -690,7 +690,7 @@
                 this.launcherCountDiv = document.getElementById('grenadeLauncherCount');
                 this.fileNameDiv = document.getElementById('grenadeFileName');
                 
-                this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
+                //this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
                 this.launcherAmountInput.addEventListener('input', () => this.updateLauncherCount());
                 this.generateBtn.addEventListener('click', () => this.generateJSON());
                 this.downloadBtn.addEventListener('click', () => this.downloadJSON());
