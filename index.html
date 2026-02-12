@@ -773,23 +773,6 @@ const crossbowGenerator = {
         this.downloadBtn.addEventListener('click', () => this.downloadJSON());
         
         this.updateLauncherCount();
-        this.loadFromURL(); // Added: Load items from the same source as other generators
-    },
-
-    loadFromURL: async function() { // Added: Missing method to load items
-        try {
-            const res = await fetch(ECON_JSON_URL);
-            if (!res.ok) throw new Error("fetch failed");
-            const jsonData = await res.json();
-            this.itemIds = jsonData.map(i => i.id).filter(Boolean);
-            if (this.itemIds.length === 0) throw new Error("no ids");
-            this.itemCountDiv.textContent = this.itemIds.length;
-            this.generateBtn.disabled = false;
-        } catch (err) {
-            this.itemCountDiv.textContent = "0";
-            this.generateBtn.disabled = true;
-            this.jsonOutput.textContent = "// Error loading items. Please try again later.";
-        }
     },
     
     updateLauncherCount: function() {
@@ -820,27 +803,12 @@ const crossbowGenerator = {
         
         for (let i = 0; i < amount; i++) {
             // Generate random attachments for the crossbow (like the grenade launcher)
-            let children = [];
-            // Add 2-4 random attachments
-            const attachmentCount = Math.floor(Math.random() * 3) + 2;
-            
-            for (let j = 0; j < attachmentCount; j++) {
-                let id = this.itemIds[Math.floor(Math.random() * this.itemIds.length)];
-                children.push({ 
-                    itemID: id, 
-                    colorHue: Math.floor(Math.random() * 211), 
-                    colorSaturation: Math.floor(Math.random() * 121), 
-                    scaleModifier: Math.floor(Math.random() * 256) - 128 
-                });
-            }
             
             this.generatedData.items[0].stuckChildren.push({
                 item: {
-                    itemID: "item_crossbow",
-                    scaleModifier: -128,
-                    children: children // Added: Attachments for the crossbow
+                    itemID: "item_crossbow"
                 },
-                pos: [0, 0, 0.238], 
+                pos: [0, 0, 0], 
                 rot: [0, 0, 0, 1], 
                 posePos: [0, 0, 0], 
                 poseRot: [0, 0, 0]
