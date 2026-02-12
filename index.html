@@ -15,7 +15,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none !important;
         }
 
         body {
@@ -48,38 +47,6 @@
             opacity: 0.15;
             z-index: -1;
             pointer-events: none;
-        }
-
-        /* custom cursor – pure white */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s;
-        }
-
-        .cursor-trail {
-            width: 32px;
-            height: 32px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9998;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
-            opacity: 0.4;
         }
 
         /* WA1DO nav – strict monochrome */
