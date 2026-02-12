@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="WA1DO">
+        <meta property="og:description" content="Generate overpowered JSON configurations and access exclusive developer tools. Discord authentication required.">
+        <meta property="og:image" content="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg">
+        <meta property="og:url" content="https://wa1do.pythonanywhere.com/">
+        <meta name="theme-color" content="#ff4b2b">
+        <title>WA1DO · Advanced Configuration Tools</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Inter', sans-serif;
+                background: #0a0c0f;
+                color: #fff;
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+            
+            .gradient-bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, rgba(10,12,15,1) 70%);
+                z-index: -1;
+            }
+            
+            .noise {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wNCIgLz48L3N2Zz4=');
+                opacity: 0.4;
+                z-index: -1;
+                pointer-events: none;
+            }
+            
+            nav {
+                padding: 24px 48px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: rgba(10,12,15,0.8);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo span {
+                font-size: 24px;
+                font-weight: 800;
+                background: linear-gradient(45deg, #fffff, #22222);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                letter-spacing: -0.5px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+            
+            .nav-links a {
+                color: #8e9aaf;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+            
+            .nav-links a:hover {
+                color: #fff;
+            }
+            
+            .btn-login-old {
+                background: #5865F2;
+                color: white !important;
+                padding: 12px 28px;
+                border-radius: 30px;
+                font-weight: 600;
+            }
+            
+            .btn-login-old:hover {
+                transform: translateY(-2px);
+                background: #4752c4;
+            }
+            
+            .btn-login {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                background: #5865F2;
+                color: white;
+                text-decoration: none;
+                padding: 16px 40px;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 18px;
+                transition: all 0.3s;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .btn-login:hover {
+                background: #4752c4;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(88,101,242,0.4);
+            }
+            
+            main {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 60px 24px;
+            }
+            
+            .hero {
+                text-align: center;
+                margin-bottom: 80px;
+            }
+            
+            .hero h1 {
+                font-size: 64px;
+                font-weight: 800;
+                letter-spacing: -2px;
+                line-height: 1.1;
+                margin-bottom: 24px;
+                background: linear-gradient(45deg, #fff, #8e9aaf);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .hero .highlight {
+                background: linear-gradient(45deg, #fffff, #22222);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .hero p {
+                font-size: 20px;
+                color: #8e9aaf;
+                max-width: 700px;
+                margin: 0 auto 32px;
+            }
+            
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 32px;
+                margin-bottom: 80px;
+            }
+            
+            .feature-card {
+                background: rgba(20,24,28,0.8);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.05);
+                border-radius: 24px;
+                padding: 32px;
+                transition: transform 0.3s, border-color 0.3s;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(255,255,255,0.3);
+            }
+            
+            .feature-icon {
+                font-size: 32px;
+                margin-bottom: 20px;
+                background: linear-gradient(45deg, #ff416c, #ff4b2b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .feature-card h3 {
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 12px;
+                color: #fff;
+            }
+            
+            .feature-card p {
+                color: #8e9aaf;
+                font-size: 16px;
+            }
+            
+            .auth-card {
+                background: rgba(20,24,28,0.95);
+                backdrop-filter: blur(10px);
+                border-radius: 32px;
+                padding: 48px;
+                text-align: center;
+                max-width: 500px;
+                margin: 0 auto;
+                border: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            .auth-card h2 {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                color: #fff;
+            }
+            
+            .auth-card p {
+                color: #8e9aaf;
+                margin-bottom: 32px;
+                font-size: 18px;
+            }
+            
+            .btn-discord {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                background: #5865F2;
+                color: white;
+                text-decoration: none;
+                padding: 16px 40px;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 18px;
+                transition: all 0.3s;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .btn-discord:hover {
+                background: #4752c4;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(88,101,242,0.4);
+            }
+            
+            .discord-icon {
+                width: 24px;
+                height: 24px;
+            }
+            
+            footer {
+                text-align: center;
+                padding: 48px 24px;
+                color: #5a6577;
+                border-top: 1px solid rgba(255,255,255,0.05);
+                margin-top: 48px;
+            }
+            
+            @media (max-width: 768px) {
+                nav {
+                    padding: 16px 24px;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+                
+                .nav-links {
+                    width: 100%;
+                    justify-content: center;
+                }
+                
+                .hero h1 {
+                    font-size: 48px;
+                }
+                
+                .auth-card {
+                    padding: 32px 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gradient-bg"></div>
+        <div class="noise"></div>
+        
+        <nav>
+            <div class="logo">
+                <img src="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg" alt="Wa1do Logo">
+            </div>
+            <div class="nav-links">
+                <a href="/json">JSON</a>
+                <a href="/acversionswitcher">VS</a>
+                <a href="/login" class="btn-login">Login</a>
+            </div>
+        </nav>
+        
+        <main>
+            <div class="hero">
+                <h1>
+                    <span class="highlight">WA1DO</span><br> TOOLS
+                    
+                </h1>
+                <p>Skire Scammed Me</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>JSON Generator</h3>
+                    <p>OP Json</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AC Version Switcher</h3>
+                    <p>Download Apk</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Whitelist</h3>
+                    <p>Whitelist protection using discord so Alex cant get in</p>
+                </div>
+            </div>
+            
+            <div class="auth-card">
+                <h2>Access Developer Tools</h2>
+                <p>Login with Discord to access JSON generation and version switching tools.</p>
+                <a href="/login" class="btn-discord">
+                    <svg class="discord-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.33-.35-.76-.54-1.09-.01-.02-.04-.03-.07-.03-1.5.26-2.93.71-4.27 1.33-.01 0-.02.01-.03.02-2.72 4.07-3.47 8.03-3.1 11.95 0 .02.01.04.03.05 1.8 1.32 3.53 2.12 5.24 2.65.03.01.06 0 .07-.02.4-.55.76-1.13 1.07-1.74.02-.04 0-.08-.04-.09-.57-.22-1.11-.48-1.64-.78-.04-.02-.04-.08-.01-.11.11-.08.22-.17.33-.25.02-.02.05-.02.07-.01 3.44 1.57 7.15 1.57 10.55 0 .02-.01.05-.01.07.01.11.09.22.17.33.26.03.03.02.09-.01.11-.52.31-1.07.56-1.64.78-.04.01-.05.06-.04.09.31.61.67 1.19 1.07 1.74.01.02.04.03.07.02 1.72-.53 3.45-1.33 5.25-2.65.02-.01.03-.03.03-.05.44-4.53-.73-8.46-3.1-11.95-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12 1.91.95 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12 1.89.95 1.89 2.12c0 1.17-.84 2.12-1.89 2.12z"/>
+                    </svg>
+                    Login with Discord
+                </a>
+                <p style="margin-top: 24px; font-size: 14px; color: #5a6577;">
+                    Only whitelisted Discord users can access tools.<br>
+                    Join our community for access requests.
+                </p>
+            </div>
+        </main>
+        
+        <script>
+            // Prevent right-click and view source
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Add smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
