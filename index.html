@@ -801,7 +801,7 @@ const crossbowGenerator = {
     },
     
     generateJSON: function() {
-        const amount = parseInt(this.launcherAmountInput.value) || 5;
+        const amount = parseInt(this.launcherAmountInput.value) || 0;
         
         // Check if we have items loaded
         if (this.itemIds.length === 0) {
