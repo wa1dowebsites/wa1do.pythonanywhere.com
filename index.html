@@ -795,6 +795,7 @@ const crossbowGenerator = {
     updateLauncherCount: function() {
         let c = parseInt(this.launcherAmountInput.value) || 0;
         if (this.launcherCountDiv) { // Added: Check if element exists
+            this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
             this.launcherCountDiv.textContent = c;
         }
     },
