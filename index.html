@@ -8,7 +8,7 @@
     <meta property="og:image" content="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg">
     <meta property="og:url" content="https://wa1do.pythonanywhere.com/">
     <meta name="theme-color" content="#ffffff">
-    <title>WA1DO · B&W JSON Tools</title>
+    <title>WA1DO</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -500,15 +500,9 @@
         <div class="container" id="giveaway-container">
             <header>
                 <h1>GIVEAWAY BAG GEN</h1>
-                <p class="subtitle">Heart Guns · 23 random items in backpack/quiver</p>
             </header>
             <div class="main-content">
                 <div class="input-section">
-                    <div class="file-input-container">
-                        <label for="giveawayJsonFile" class="file-input-label">⏹ Upload econ_gameplay_items.json</label>
-                        <input type="file" id="giveawayJsonFile" class="json-file" accept=".json">
-                        <div id="giveawayFileName"></div>
-                    </div>
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-value" id="giveawayItemCount">0</div>
@@ -549,10 +543,6 @@
                 <div class="output-section">
                     <h2 style="color:white; font-weight:600; margin-bottom:18px;">⧉ OUTPUT</h2>
                     <div class="json-output" id="giveawayJsonOutput">
-// Upload your econ_gameplay_items.json
-// 
-// Example:
-// [{"id": "item_pistol"}, ...]
                     </div>
                 </div>
             </div>
@@ -562,15 +552,9 @@
         <div class="container" id="grenade-container">
             <header>
                 <h1>GRENADE LAUNCHER GEN</h1>
-                <p class="subtitle">Grenade Launchers · 5 random items attached</p>
             </header>
             <div class="main-content">
                 <div class="input-section">
-                    <div class="file-input-container">
-                        <label for="grenadeJsonFile" class="file-input-label">⏹ Upload econ_gameplay_items.json</label>
-                        <input type="file" id="grenadeJsonFile" class="json-file" accept=".json">
-                        <div id="grenadeFileName"></div>
-                    </div>
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-value" id="grenadeItemCount">0</div>
@@ -586,11 +570,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>💥 Amount of Grenade Launchers</label>
+                        <label>Amount of Grenade Launchers</label>
                         <input type="number" id="grenadeLauncherAmount" min="1" max="100" value="5">
                     </div>
                     <div class="form-group">
-                        <label>🎒 Bag Type</label>
+                        <label>Bag Type</label>
                         <div class="radio-group">
                             <div class="radio-option">
                                 <input type="radio" id="grenadeQuiver" name="grenadeBackpackType" value="item_quiver" checked>
@@ -618,16 +602,6 @@
         </div>
     </div>
     
-    <!-- WA1DO monochrome badge -->
-    <div style="max-width:2100px; margin:20px auto 0; text-align:center; padding:20px;">
-        <div class="wa1do-badge">
-            ⚡ Whitelist protection — Skire Scammed Me
-        </div>
-    </div>
-
-    <footer>
-        WA1DO · Monochrome Tools · Black & White
-    </footer>
 
     <script>
         const ECON_JSON_URL = "https://raw.githubusercontent.com/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/econ_gameplay_items.json";
@@ -854,71 +828,6 @@
             giveawayGenerator.init();
             grenadeGenerator.init();
         });
-
-        // ------- CUSTOM CURSOR (B&W) -------
-        (function() {
-            const dot = document.createElement('div');
-            dot.className = 'cursor-dot';
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            document.body.appendChild(dot); document.body.appendChild(trail);
-            let mx = 0, my = 0, tx = 0, ty = 0;
-            document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-            function anim() {
-                dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-                tx += (mx - tx) * 0.18; ty += (my - ty) * 0.18;
-                trail.style.left = tx + 'px'; trail.style.top = ty + 'px';
-                requestAnimationFrame(anim);
-            }
-            anim();
-        })();
-
-        // ------- ANIMATED DOTS (MONOCHROME) -------
-        (function() {
-            const canvas = document.getElementById('dotsCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let w, h;
-            function resize() { w = window.innerWidth; h = window.innerHeight; canvas.width = w; canvas.height = h; }
-            window.addEventListener('resize', resize);
-            resize();
-            
-            const mouse = { x: 0, y: 0, radius: 140 };
-            document.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
-            
-            let dots = [];
-            function initDots() {
-                dots = [];
-                for (let i=0; i<140; i++) {
-                    let x = Math.random() * w, y = Math.random() * h;
-                    dots.push({ x, y, ox: x, oy: y, size: Math.random()*2+1.2 });
-                }
-            }
-            initDots();
-            
-            function draw() {
-                ctx.clearRect(0,0,w,h);
-                for (let d of dots) {
-                    let dx = mouse.x - d.x, dy = mouse.y - d.y, dist = Math.hypot(dx, dy);
-                    if (dist < mouse.radius) {
-                        let force = (1 - dist / mouse.radius) * 18;
-                        let ang = Math.atan2(dy, dx);
-                        d.x -= Math.cos(ang) * force;
-                        d.y -= Math.sin(ang) * force;
-                    } else {
-                        d.x += (d.ox - d.x) * 0.03;
-                        d.y += (d.oy - d.y) * 0.03;
-                    }
-                    ctx.beginPath();
-                    ctx.arc(d.x, d.y, d.size, 0, Math.PI*2);
-                    ctx.fillStyle = `rgba(255,255,255,0.4)`;
-                    ctx.fill();
-                }
-                requestAnimationFrame(draw);
-            }
-            draw();
-            window.addEventListener('resize', () => { resize(); initDots(); });
-        })();
     </script>
     <script>
         document.addEventListener('contextmenu', e => e.preventDefault());
