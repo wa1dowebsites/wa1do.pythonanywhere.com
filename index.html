@@ -524,7 +524,38 @@
             </div>
         </div>
     </div>
-    
+    <!-- Crossbow Generator -->
+        <div class="container" id="crossbow-container">
+            <header>
+                <h1>CROSSBOW GEN</h1>
+            </header>
+            <div class="main-content">
+                <div class="input-section">
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="crossbowItemCount">0</div>
+                            <div class="stat-label">Items</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="crossbowLauncherCount">5</div>
+                            <div class="stat-label">Crossbows</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount of Crossbows</label>
+                        <input type="number" id="crossbowLauncherAmount" min="1" max="100" value="5">
+                    </div>
+                    <button class="btn btn-generate" id="crossbowGenerateBtn" disabled>Generate JSON</button>
+                    <button class="btn btn-download" id="crossbowDownloadBtn" disabled>Download output.json</button>
+                </div>
+                <div class="output-section">
+                    <h2 style="color:white; font-weight:600; margin-bottom:18px;">OUTPUT</h2>
+                    <div class="json-output" id="crossbowJsonOutput">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const ECON_JSON_URL = "https://raw.githubusercontent.com/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/econ_gameplay_items.json";
@@ -724,10 +755,81 @@
             },
         };
 
+                // ---------- GRENADE GENERATOR ----------
+        const crossbowGenerator = {
+            itemIds: [],
+            generatedData: null,
+            
+            init: function() {
+                this.launcherAmountInput = document.getElementById('crossbowAmount');
+                this.generateBtn = document.getElementById('crossbowGenerateBtn');
+                this.downloadBtn = document.getElementById('crossbowDownloadBtn');
+                this.jsonOutput = document.getElementById('crossbowJsonOutput');
+                this.itemCountDiv = document.getElementById('crossbowItemCount');
+                this.launcherCountDiv = document.getElementById('crossbowCount');
+                this.fileNameDiv = document.getElementById('crossbowFileName');
+                
+                //this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
+                this.launcherAmountInput.addEventListener('input', () => this.updateLauncherCount());
+                this.generateBtn.addEventListener('click', () => this.generateJSON());
+                this.downloadBtn.addEventListener('click', () => this.downloadJSON());
+                this.updateLauncherCount();
+            },
+
+            handleFileUpload: function(e) {
+                const file = e.target.files[0]; if(!file) return;
+                this.fileNameDiv.textContent = `📎 ${file.name}`;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    try {
+                        let c = ev.target.result;
+                        let d = c.trim().startsWith('[') ? JSON.parse(c) : JSON.parse('['+c+']');
+                        this.itemIds = d.map(i=>i.id).filter(Boolean);
+                        if (!this.itemIds.length) throw new Error('No IDs');
+                        this.generateBtn.disabled = false;
+                        this.itemCountDiv.textContent = this.itemIds.length;
+                        this.jsonOutput.textContent = `// ${this.itemIds.length} items ready\n${this.itemIds.slice(0,10).map(i=>'// '+i).join('\n')}`;
+                    } catch(error) {
+                        this.generateBtn.disabled = true;
+                    }
+                };
+                reader.readAsText(file);
+            },
+            
+            updateLauncherCount: function() {
+                let c = parseInt(this.launcherAmountInput.value) || 0;
+                this.launcherCountDiv.textContent = c;
+            },
+            
+            generateJSON: function() {
+                const amount = parseInt(this.launcherAmountInput.value);
+                const backpackType = document.querySelector('input[name="grenadeBackpackType"]:checked')?.value || 'item_quiver';
+                
+                this.generatedData = { version:1, items:[{ itemID:"item_crowbar", stuckChildren:[], stashPos:0 }], materials:[] };
+                for (let i=0; i<amount; i++) {
+                    this.generatedData.items[0].stuckChildren.push({
+                        item: {
+                            itemID: "item_crossbow",
+                        },
+                        pos: [0,0,0.238], rot: [0,0,0,1], posePos: [0,0,0], poseRot: [0,0,0]
+                    });
+                }
+                this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
+                this.downloadBtn.disabled = false;
+            },
+            downloadJSON: function() {
+                if (!this.generatedData) return;
+                const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type:'application/json'});
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob); a.download = 'grenade_launcher_output.json'; a.click();
+            },
+        };
+
         // ---------- INIT ----------
         window.addEventListener('DOMContentLoaded', function() {
             giveawayGenerator.init();
             grenadeGenerator.init();
+            crossbowGenerator.init();
         });
     </script>
     <script>
