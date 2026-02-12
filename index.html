@@ -783,7 +783,7 @@ const crossbowGenerator = {
             const jsonData = await res.json();
             this.itemIds = jsonData.map(i => i.id).filter(Boolean);
             if (this.itemIds.length === 0) throw new Error("no ids");
-            this.itemCountDiv.textContent = this.itemCountDiv +1;
+            this.itemCountDiv.textContent = this.launcherCountDiv.textContent + 1;
             this.generateBtn.disabled = false;
         } catch (err) {
             this.itemCountDiv.textContent = "0";
