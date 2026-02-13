@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- PAGE METADATA - Update these for each new page -->
-    <meta property="og:title" content="WA1DO - {{PAGE_TITLE}}">
-    <meta property="og:description" content="{{PAGE_DESCRIPTION}}">
+    <meta property="og:title" content="WA1DO - Mods">
+    <meta property="og:description" content="Download community mods for Wa1do. Enhance your experience with custom tweaks, visual packs, and gameplay adjustments.">
     <meta property="og:image" content="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg">
-    <meta property="og:url" content="https://wa1do.pythonanywhere.com/{{PAGE_PATH}}">
+    <meta property="og:url" content="https://wa1do.pythonanywhere.com/mods">
     <meta name="theme-color" content="#ff4b2b">
     
-    <title>WA1DO</title>
+    <title>WA1DO · Mods</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -125,14 +125,14 @@
             transform: translateY(-2px);
         }
         
-        /* Main Content Area - Add your page content here */
+        /* Main Content Area */
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* Page Header - Optional, remove if not needed */
+        /* Page Header */
         .page-header {
             padding: 28px 30px;
             background: #0a0a0a;
@@ -264,10 +264,149 @@
         }
     </style>
     
-    <!-- PAGE-SPECIFIC STYLES - Add custom CSS for this page here -->
+    <!-- MODS PAGE SPECIFIC STYLES -->
     <style>
-        /* {{PAGE_NAME}} specific styles */
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .mod-card {
+            background: rgba(20,24,28,0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            padding: 32px;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
         
+        .mod-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .mod-badge {
+            display: inline-block;
+            background: linear-gradient(145deg, #ff416c, #ff4b2b);
+            color: black;
+            font-weight: 800;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mod-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .mod-features {
+            list-style: none;
+            margin: 20px 0;
+            flex: 1;
+        }
+
+        .mod-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #b0b7c5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mod-features li::before {
+            content: "▹";
+            color: #ff4b2b;
+            font-weight: bold;
+        }
+
+        .download-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+        }
+
+        .version {
+            color: #8e9aaf;
+            font-size: 14px;
+            font-weight: 500;
+            background: #1e1e1e;
+            padding: 6px 12px;
+            border-radius: 30px;
+        }
+
+        .btn-download {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #444;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-download:hover {
+            background: #2a2a2a;
+            border-color: #ff4b2b;
+            color: white;
+        }
+
+        .upload-cta {
+            background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+            border: 1px dashed #ff4b2b;
+            margin-top: 48px;
+            text-align: center;
+            padding: 48px 32px;
+            border-radius: 48px;
+        }
+
+        .upload-cta h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .upload-cta p {
+            color: #8e9aaf;
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .btn-upload {
+            background: transparent;
+            border: 2px solid #ff4b2b;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-weight: 700;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-upload:hover {
+            background: #ff4b2b;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -287,53 +426,125 @@
     </nav>
     
     <main>
-        <!-- 
-            ========================================
-            PAGE CONTENT - Replace everything below
-            ========================================
-        -->
-        
-        <!-- Optional Page Header -->
+        <!-- Page Header -->
         <div class="page-header">
-            <h1>MODS</h1>
-            <p>Post ur mods here</p>
+            <h1>⚡ MODS</h1>
+            <p>Post your mods here · community curated · always free</p>
         </div>
         
-        <!-- Your page content goes here -->
-        <div class="container">
-            <!-- 
-                Example content structure - replace with your own:
-                
-                <div class="card">
-                    <h2>Section Title</h2>
-                    <p>Your content here...</p>
-                    <button class="btn">Action Button</button>
+        <!-- Mods Grid -->
+        <div class="mod-grid">
+            <!-- Mod 1 - Visual pack -->
+            <div class="mod-card">
+                <span class="mod-badge">#visual</span>
+                <h2>NEON TWEAK</h2>
+                <ul class="mod-features">
+                    <li>Enhanced HUD colors &amp; contrast</li>
+                    <li>Bloom &amp; glow effects</li>
+                    <li>Custom crosshair pack</li>
+                </ul>
+                <div class="download-row">
+                    <span class="version">v2.1.0</span>
+                    <a href="#" class="btn-download" onclick="alert('Simulated download: neon-tweak.zip'); return false;">⬇️ Download</a>
                 </div>
-                
-                <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 32px;">
-                    <div class="card">Card 1</div>
-                    <div class="card">Card 2</div>
-                    <div class="card">Card 3</div>
-                </div>
-            -->
-            
-            <!-- TEMPLATE PLACEHOLDER - Replace this section -->
-            <div class="card" style="text-align: center; padding: 60px;">
-                <h1 style="font-size: 48px; margin-bottom: 20px;">Mod title</h1>
-                <p style="color: #8e9aaf; font-size: 18px; max-width: 600px; margin: 0 auto 30px;">
-                    Feature 1 /n
-                    Feature 2 /n
-                    Feature 3 /n
-                </p>
-                <button class="btn" style="color: #5a6577;">
-                    Download
-                </button>
             </div>
-            <!-- END TEMPLATE PLACEHOLDER -->
-            
+
+            <!-- Mod 2 - Gameplay -->
+            <div class="mod-card">
+                <span class="mod-badge">#gameplay</span>
+                <h2>PRECISION ARSENAL</h2>
+                <ul class="mod-features">
+                    <li>Weapon recoil rebalance</li>
+                    <li>New attachment animations</li>
+                    <li>Tactical sprint tweaks</li>
+                </ul>
+                <div class="download-row">
+                    <span class="version">v1.4.2</span>
+                    <a href="#" class="btn-download" onclick="alert('Simulated download: precision-arsenal.zip'); return false;">⬇️ Download</a>
+                </div>
+            </div>
+
+            <!-- Mod 3 - Audio -->
+            <div class="mod-card">
+                <span class="mod-badge">#audio</span>
+                <h2>IMMERSIVE SOUND</h2>
+                <ul class="mod-features">
+                    <li>HQ weapon sounds</li>
+                    <li>Ambient overhauls</li>
+                    <li>Footstep EQ</li>
+                </ul>
+                <div class="download-row">
+                    <span class="version">v3.0.1</span>
+                    <a href="#" class="btn-download" onclick="alert('Simulated download: immersive-sound.zip'); return false;">⬇️ Download</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second row / extra mods (optional) -->
+        <div class="mod-grid" style="margin-top: 16px;">
+            <!-- Mod 4 - Utility -->
+            <div class="mod-card">
+                <span class="mod-badge">#utility</span>
+                <h2>DEVMODE UNLOCK</h2>
+                <ul class="mod-features">
+                    <li>Enable hidden console</li>
+                    <li>FPS &amp; net stats overlay</li>
+                    <li>Variable dumper</li>
+                </ul>
+                <div class="download-row">
+                    <span class="version">v0.9.3</span>
+                    <a href="#" class="btn-download" onclick="alert('Simulated download: devmode-unlock.zip'); return false;">⬇️ Download</a>
+                </div>
+            </div>
+
+            <!-- Mod 5 - Cosmetics -->
+            <div class="mod-card">
+                <span class="mod-badge">#cosmetic</span>
+                <h2>SKIN VAULT</h2>
+                <ul class="mod-features">
+                    <li>20+ community skins</li>
+                    <li>Weapon charm pack</li>
+                    <li>Minimal UI theme</li>
+                </ul>
+                <div class="download-row">
+                    <span class="version">v5.2</span>
+                    <a href="#" class="btn-download" onclick="alert('Simulated download: skin-vault.zip'); return false;">⬇️ Download</a>
+                </div>
+            </div>
+
+            <!-- Mod 6 - Performance -->
+            <div class="mod-card">
+                <span class="mod-badge">#performance</span>
+                <h2>OPTIMIZE BLACK</h2>
+                <ul class="mod-features">
+                    <li>Reduced input lag</li>
+                    <li>Texture streaming tweaks</li>
+                    <li>Shader cache booster</li>
+                </ul>
+                <div class="download-row">
+                    <span class="version">v2.0.5</span>
+                    <a href="#" class="btn-download" onclick="alert('Simulated download: optimize-black.zip'); return false;">⬇️ Download</a>
+                </div>
+            </div>
         </div>
         
+        <!-- Call to action - upload your mod -->
+        <div class="upload-cta">
+            <h3>📦 SHARE YOUR CREATION</h3>
+            <p>Got a mod? Pack it and upload to the community repository. All mods are reviewed.</p>
+            <button class="btn-upload" onclick="alert('Upload portal — coming soon. For now, join our Discord.'); return false;">➕ Submit a mod</button>
+            <div style="margin-top: 24px;">
+                <a href="#" class="btn-discord" style="display: inline-flex; padding: 14px 32px;" onclick="alert('Discord invite — wa1do.gg/discord (simulated)'); return false;">
+                    <svg class="discord-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515c-.207.39-.456.92-.598 1.335a18.284 18.284 0 0 0-5.487 0 12.64 12.64 0 0 0-.6-1.335 19.736 19.736 0 0 0-4.886 1.515c-2.88 4.291-3.657 8.445-3.228 12.484a20.234 20.234 0 0 0 6.103 2.996c.494-.666 1.04-1.453 1.417-2.222a13.064 13.064 0 0 1-2.235-1.068c.188-.137.37-.28.546-.428a14.732 14.732 0 0 0 12.577 0c.178.148.36.291.546.428-.695.418-1.436.79-2.235 1.068.377.77.923 1.556 1.417 2.222a20.137 20.137 0 0 0 6.101-2.996c.498-4.603-.822-8.712-3.286-12.484zM8.68 14.51c-.993 0-1.803-.907-1.803-2.017 0-1.11.79-2.017 1.803-2.017 1.012 0 1.822.907 1.803 2.017 0 1.11-.79 2.017-1.803 2.017zm6.64 0c-.993 0-1.803-.907-1.803-2.017 0-1.11.79-2.017 1.803-2.017 1.012 0 1.822.907 1.803 2.017 0 1.11-.79 2.017-1.803 2.017z"/></svg>
+                    <span>Join Discord</span>
+                </a>
+            </div>
+        </div>
     </main>
+    
+    <footer>
+        WA1DO · community mods · all rights reserved · data mods are user-uploaded
+    </footer>
     
     <script>
         // Prevent right-click and view source
@@ -345,22 +556,22 @@
             }
         });
         
-        // Add smooth scroll for anchor links
+        // Smooth scroll for anchor links (if any)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-        
-        // PAGE-SPECIFIC SCRIPTS - Add custom JavaScript here
-        // {{PAGE_NAME}} scripts
-        
+
+        // additional small interaction: simulate download alert but keep things clean
+        // already handled with onclick on demo buttons
+
+        // page specific: log
+        console.log('WA1DO mods page loaded — replace demo data with real mods.');
     </script>
 </body>
 </html>
