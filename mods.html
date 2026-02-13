@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="WA1DO">
+        <meta property="og:description" content="Generate overpowered JSON configurations and access exclusive developer tools. Discord authentication required.">
+        <meta property="og:image" content="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg">
+        <meta property="og:url" content="https://wa1do.pythonanywhere.com/">
+        <meta name="theme-color" content="#ff4b2b">
+        <title>WA1DO</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+            
+            .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, #000000 90%);
+            z-index: -2;
+        }
+            
+            .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wNCIgLz48L3N2Zz4=');
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+            
+            /* WA1DO nav – strict monochrome */
+        nav {
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px;
+            margin-bottom: 40px;
+            max-width: 2100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            filter: brightness(1.2) grayscale(100%);
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+            
+            .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+            
+            .btn-login-old {
+                background: #5865F2;
+                color: white !important;
+                padding: 12px 28px;
+                border-radius: 30px;
+                font-weight: 600;
+            }
+            
+            .btn-login-old:hover {
+                transform: translateY(-2px);
+                background: #4752c4;
+            }
+            
+            .btn-login {
+            background: #1a1a1a;
+            color: white !important;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            border: 1px solid #444;
+            transition: all 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #2a2a2a;
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+            
+           header {
+            padding: 28px 30px;
+            background: #0a0a0a;
+            border-bottom: 1px solid #2a2a2a;
+            border-radius: 32px 32px 0 0;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: -1px;
+            font-size: 30px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+            
+            .hero {
+                text-align: center;
+                margin-bottom: 80px;
+            }
+            
+            .hero h1 {
+                font-size: 64px;
+                font-weight: 800;
+                letter-spacing: -2px;
+                line-height: 1.1;
+                margin-bottom: 24px;
+                background: linear-gradient(45deg, #fff, #8e9aaf);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .hero .highlight {
+                background: linear-gradient(45deg, #fffff, #22222);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .hero p {
+                font-size: 20px;
+                color: #8e9aaf;
+                max-width: 700px;
+                margin: 0 auto 32px;
+            }
+            
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 32px;
+                margin-bottom: 80px;
+            }
+            
+            .feature-card {
+                background: rgba(20,24,28,0.8);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.05);
+                border-radius: 24px;
+                padding: 32px;
+                transition: transform 0.3s, border-color 0.3s;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(255,255,255,0.3);
+            }
+            
+            .feature-icon {
+                font-size: 32px;
+                margin-bottom: 20px;
+                background: linear-gradient(45deg, #ff416c, #ff4b2b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            
+            .feature-card h3 {
+                font-size: 22px;
+                font-weight: 700;
+                margin-bottom: 12px;
+                color: #fff;
+            }
+            
+            .feature-card p {
+                color: #8e9aaf;
+                font-size: 16px;
+            }
+            
+            .auth-card {
+                background: rgba(20,24,28,0.95);
+                backdrop-filter: blur(10px);
+                border-radius: 32px;
+                padding: 48px;
+                text-align: center;
+                max-width: 500px;
+                margin: 0 auto;
+                border: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            .auth-card h2 {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                color: #fff;
+            }
+            
+            .auth-card p {
+                color: #8e9aaf;
+                margin-bottom: 32px;
+                font-size: 18px;
+            }
+            
+            .btn-discord {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                background: #5865F2;
+                color: white;
+                text-decoration: none;
+                padding: 16px 40px;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 18px;
+                transition: all 0.3s;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            .btn-discord:hover {
+                background: #4752c4;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(88,101,242,0.4);
+            }
+            
+            .discord-icon {
+                width: 24px;
+                height: 24px;
+            }
+            
+            footer {
+                text-align: center;
+                padding: 48px 24px;
+                color: #5a6577;
+                border-top: 1px solid rgba(255,255,255,0.05);
+                margin-top: 48px;
+            }
+            .btn {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #444;
+            padding: 16px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.2s;
+            margin-top: 10px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #2a2a2a;
+            border-color: #fff;
+            transform: scale(0.98);
+            color: white;
+        }
+
+        }
+            
+            @media (max-width: 768px) {
+                nav {
+                    padding: 16px 24px;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+                
+                .nav-links {
+                    width: 100%;
+                    justify-content: center;
+                }
+                
+                .hero h1 {
+                    font-size: 48px;
+                }
+                
+                .auth-card {
+                    padding: 32px 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="gradient-bg"></div>
+        <div class="noise"></div>
+        
+        <nav>
+            <div class="logo">
+                <img src="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg" alt="Wa1do Logo">
+                <span>WA1DO</span>
+            </div>
+            <div class="nav-links">
+                <a href="/json">JSON</a>
+                <a href="/acversionswitcher">VS</a>
+                <a href="/login" class="btn-login">Login</a>
+            </div>
+        </nav>
+        
+        <main>
+        </main>
+        
+        <script>
+            // Prevent right-click and view source
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Add smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
