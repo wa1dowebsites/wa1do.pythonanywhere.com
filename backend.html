@@ -288,6 +288,18 @@
             border: 1px solid #444;
         }
 
+        .btn-delete {
+            background: #330000;
+            border: 1px solid #660000;
+            color: #ff9999;
+        }
+
+        .btn-delete:hover {
+            background: #440000;
+            border-color: #ff0000;
+            color: #ffffff;
+        }
+
         .json-output {
             background: #050505;
             border-radius: 20px;
@@ -403,6 +415,47 @@
             font-size: 14px;
         }
 
+        .response-container {
+            margin-top: 20px;
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 16px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .response-title {
+            color: #aaa;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .response-content {
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .response-content.error {
+            color: #ff6666;
+        }
+
+        .token-input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 1px solid #3a3a3a;
+            background: #050505;
+            color: #ffffff;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -432,31 +485,50 @@
         </div>
         <div class="nav-links">
             <a href="/json">JSON</a>
-                <a href="/acversionswitcher">VS</a>
-                <a href="/login" class="btn-login">Login</a>
+            <a href="/acversionswitcher">VS</a>
+            <a href="/login" class="btn-login">Login</a>
         </div>
     </nav>
 
+    <!-- Tools Row – two generators, monochrome aesthetic -->
     <div class="tools-container">
-        <div class="container" id="giveaway-container">
+        <!-- New Account Deletion Tool -->
+        <div class="container" id="account-deletion-container">
             <header>
-                <h1>ACCOUNT DELETER</h1>
+                <h1>ACCOUNT DELETION</h1>
+                <div class="subtitle">DELETE /v2/account?usernames={username}</div>
             </header>
             <div class="main-content">
                 <div class="input-section">
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="number" id="giveawayHeartgunAmount" min="1" max="100" value="5">
+                        <label>Auth Token (Bearer)</label>
+                        <input type="text" id="authToken" class="token-input" placeholder="Enter your bearer token">
                     </div>
                     <div class="form-group">
-                        <label>Token</label>
-                        <input type="number" id="giveawayHeartgunAmount" min="1" max="100" value="5">
+                        <label>Username</label>
+                        <input type="text" id="targetUsername" placeholder="Enter username to delete">
+                    </div>
+                    <button class="btn btn-delete" id="deleteAccountBtn">DELETE ACCOUNT</button>
+                    
+                    <div class="response-container">
+                        <div class="response-title">RESPONSE</div>
+                        <div id="deleteResponse" class="response-content">// Ready to delete</div>
+                    </div>
+                </div>
+                <div class="output-section">
+                    <h2 style="color:white; font-weight:600; margin-bottom:18px;">INFO</h2>
+                    <div class="json-output" style="height: 380px;">
+                        <p style="color: #aaa; margin-bottom: 15px;">DELETE Request Details:</p>
+                        <p style="color: #ddd; margin-bottom: 10px;">Endpoint: <span style="color: #fff;">https://animalcompany.us-east1.nakamacloud.io:443/v2/account?usernames={username}</span></p>
+                        <p style="color: #ddd; margin-bottom: 10px;">Method: <span style="color: #ff6666;">DELETE</span></p>
+                        <p style="color: #ddd; margin-bottom: 10px;">Headers:</p>
+                        <p style="color: #ddd; margin-left: 20px;">Authorization: Bearer &lt;token&gt;</p>
+                        <p style="color: #ddd; margin-left: 20px;">Content-Type: application/json</p>
+                        <p style="color: #ddd; margin-top: 15px;">⚠️ This action is irreversible. The account will be permanently deleted.</p>
                     </div>
                 </div>
             </div>
         </div>
-
-        
     </div>
 
     <script>
@@ -657,98 +729,161 @@
             },
         };
 
-// ---------- CROSSBOW GENERATOR ----------
-const crossbowGenerator = {
-    itemIds: [],
-    generatedData: null,
-    
-    init: function() {
-        this.launcherAmountInput = document.getElementById('crossbowAmount');
-        this.generateBtn = document.getElementById('crossbowGenerateBtn');
-        this.downloadBtn = document.getElementById('crossbowDownloadBtn');
-        this.jsonOutput = document.getElementById('crossbowJsonOutput');
-        this.itemCountDiv = document.getElementById('crossbowItemCount');
-        this.launcherCountDiv = document.getElementById('crossbowLauncherCount'); // Fixed: Added this reference
-        
-        // Load items from the econ JSON
-        this.launcherAmountInput.addEventListener('input', () => this.updateLauncherCount());
-        this.generateBtn.addEventListener('click', () => this.generateJSON());
-        this.downloadBtn.addEventListener('click', () => this.downloadJSON());
-        
-        this.updateLauncherCount();
-        this.loadFromURL();
-    },
-
-        loadFromURL: async function() { // ← THIS METHOD WAS MISSING
-        try {
-            const res = await fetch(ECON_JSON_URL);
-            if (!res.ok) throw new Error("fetch failed");
-            const jsonData = await res.json();
-            this.itemIds = jsonData.map(i => i.id).filter(Boolean);
-            if (this.itemIds.length === 0) throw new Error("no ids");
-            this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
-            this.generateBtn.disabled = false;
-        } catch (err) {
-            this.itemCountDiv.textContent = "0";
-            this.generateBtn.disabled = true;
-            this.jsonOutput.textContent = "// Error loading items. Please try again later.";
-        }
-    },
-    
-    updateLauncherCount: function() {
-        let c = parseInt(this.launcherAmountInput.value) || 0;
-        if (this.launcherCountDiv) { // Added: Check if element exists
-            this.launcherCountDiv.textContent = c;
-            this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
-        }
-    },
-    
-    generateJSON: function() {
-        const amount = parseInt(this.launcherAmountInput.value) || 0;
-        
-        // Check if we have items loaded
-        if (this.itemIds.length === 0) {
-            this.jsonOutput.textContent = "// Error: No items loaded. Please refresh the page.";
-            return;
-        }
-        
-        this.generatedData = { 
-            version: 1, 
-            items: [{ 
-                itemID: "item_crowbar", 
-                stuckChildren: [], 
-                stashPos: 0 
-            }], 
-            materials: [] 
-        };
-        
-        for (let i = 0; i < amount; i++) {
-            // Generate random attachments for the crossbow (like the grenade launcher)
+        // ---------- CROSSBOW GENERATOR ----------
+        const crossbowGenerator = {
+            itemIds: [],
+            generatedData: null,
             
-            this.generatedData.items[0].stuckChildren.push({
-                item: {
-                    itemID: "item_crossbow"
-                },
-                pos: [0, 0, 0], 
-                rot: [0, 0, 0, 1], 
-                posePos: [0, 0, 0], 
-                poseRot: [0, 0, 0]
+            init: function() {
+                this.launcherAmountInput = document.getElementById('crossbowAmount');
+                this.generateBtn = document.getElementById('crossbowGenerateBtn');
+                this.downloadBtn = document.getElementById('crossbowDownloadBtn');
+                this.jsonOutput = document.getElementById('crossbowJsonOutput');
+                this.itemCountDiv = document.getElementById('crossbowItemCount');
+                this.launcherCountDiv = document.getElementById('crossbowLauncherCount');
+                
+                this.launcherAmountInput.addEventListener('input', () => this.updateLauncherCount());
+                this.generateBtn.addEventListener('click', () => this.generateJSON());
+                this.downloadBtn.addEventListener('click', () => this.downloadJSON());
+                
+                this.updateLauncherCount();
+                this.loadFromURL();
+            },
+
+            loadFromURL: async function() {
+                try {
+                    const res = await fetch(ECON_JSON_URL);
+                    if (!res.ok) throw new Error("fetch failed");
+                    const jsonData = await res.json();
+                    this.itemIds = jsonData.map(i => i.id).filter(Boolean);
+                    if (this.itemIds.length === 0) throw new Error("no ids");
+                    this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
+                    this.generateBtn.disabled = false;
+                } catch (err) {
+                    this.itemCountDiv.textContent = "0";
+                    this.generateBtn.disabled = true;
+                    this.jsonOutput.textContent = "// Error loading items. Please try again later.";
+                }
+            },
+            
+            updateLauncherCount: function() {
+                let c = parseInt(this.launcherAmountInput.value) || 0;
+                if (this.launcherCountDiv) {
+                    this.launcherCountDiv.textContent = c;
+                    this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
+                }
+            },
+            
+            generateJSON: function() {
+                const amount = parseInt(this.launcherAmountInput.value) || 0;
+                
+                if (this.itemIds.length === 0) {
+                    this.jsonOutput.textContent = "// Error: No items loaded. Please refresh the page.";
+                    return;
+                }
+                
+                this.generatedData = { 
+                    version: 1, 
+                    items: [{ 
+                        itemID: "item_crowbar", 
+                        stuckChildren: [], 
+                        stashPos: 0 
+                    }], 
+                    materials: [] 
+                };
+                
+                for (let i = 0; i < amount; i++) {
+                    this.generatedData.items[0].stuckChildren.push({
+                        item: {
+                            itemID: "item_crossbow"
+                        },
+                        pos: [0, 0, 0], 
+                        rot: [0, 0, 0, 1], 
+                        posePos: [0, 0, 0], 
+                        poseRot: [0, 0, 0]
+                    });
+                }
+                
+                this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
+                this.downloadBtn.disabled = false;
+            },
+            
+            downloadJSON: function() {
+                if (!this.generatedData) return;
+                const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type: 'application/json'});
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob); 
+                a.download = 'crossbow_output.json'; 
+                a.click();
+            },
+        };
+
+        // ---------- ACCOUNT DELETION FUNCTIONALITY ----------
+        document.addEventListener('DOMContentLoaded', function() {
+            const deleteBtn = document.getElementById('deleteAccountBtn');
+            const authTokenInput = document.getElementById('authToken');
+            const usernameInput = document.getElementById('targetUsername');
+            const responseDiv = document.getElementById('deleteResponse');
+
+            deleteBtn.addEventListener('click', async function() {
+                const token = authTokenInput.value.trim();
+                const username = usernameInput.value.trim();
+
+                if (!token) {
+                    responseDiv.textContent = '// Error: Auth token is required';
+                    responseDiv.className = 'response-content error';
+                    return;
+                }
+
+                if (!username) {
+                    responseDiv.textContent = '// Error: Username is required';
+                    responseDiv.className = 'response-content error';
+                    return;
+                }
+
+                // Confirm deletion
+                if (!confirm(`Are you sure you want to DELETE the account "${username}"? This action cannot be undone.`)) {
+                    return;
+                }
+
+                responseDiv.textContent = '// Sending DELETE request...';
+                responseDiv.className = 'response-content';
+
+                try {
+                    const url = `https://animalcompany.us-east1.nakamacloud.io:443/v2/account?usernames=${encodeURIComponent(username)}`;
+                    
+                    const response = await fetch(url, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    let responseText = '';
+                    try {
+                        const data = await response.json();
+                        responseText = JSON.stringify(data, null, 2);
+                    } catch {
+                        responseText = await response.text() || 'No response body';
+                    }
+
+                    const statusInfo = `Status: ${response.status} ${response.statusText}\n\n`;
+                    
+                    if (response.ok) {
+                        responseDiv.textContent = statusInfo + responseText;
+                        responseDiv.className = 'response-content';
+                    } else {
+                        responseDiv.textContent = '// Error: ' + statusInfo + responseText;
+                        responseDiv.className = 'response-content error';
+                    }
+
+                } catch (error) {
+                    responseDiv.textContent = `// Network Error: ${error.message}`;
+                    responseDiv.className = 'response-content error';
+                }
             });
-        }
-        
-        this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
-        this.downloadBtn.disabled = false;
-    },
-    
-    downloadJSON: function() {
-        if (!this.generatedData) return;
-        const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type: 'application/json'});
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob); 
-        a.download = 'crossbow_output.json'; 
-        a.click();
-    },
-};
+        });
 
         // ---------- INIT ----------
         window.addEventListener('DOMContentLoaded', function() {
