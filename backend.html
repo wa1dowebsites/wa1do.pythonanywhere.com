@@ -437,123 +437,26 @@
         </div>
     </nav>
 
-    <!-- Tools Row – two generators, monochrome aesthetic -->
     <div class="tools-container">
-        <!-- Giveaway Bag Generator -->
         <div class="container" id="giveaway-container">
             <header>
-                <h1>GIVEAWAY BAG GEN</h1>
+                <h1>ACCOUNT DELETER</h1>
             </header>
             <div class="main-content">
                 <div class="input-section">
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-value" id="giveawayItemCount">0</div>
-                            <div class="stat-label">Items</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="giveawayHeartgunCount">5</div>
-                            <div class="stat-label">Heart Guns</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">23</div>
-                            <div class="stat-label">per Bag</div>
-                        </div>
-                    </div>
                     <div class="form-group">
-                        <label>Amount of Heart Guns</label>
+                        <label>Username</label>
                         <input type="number" id="giveawayHeartgunAmount" min="1" max="100" value="5">
                     </div>
                     <div class="form-group">
-                        <label>Type of Bag</label>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="giveawayQuiver" name="giveawayBackpackType" value="item_quiver" checked>
-                                <label for="giveawayQuiver">Quiver</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="giveawayBackpack" name="giveawayBackpackType" value="item_backpack_large_base">
-                                <label for="giveawayBackpack">Backpack</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-generate" id="giveawayGenerateBtn" disabled>Generate JSON</button>
-                    <button class="btn btn-download" id="giveawayDownloadBtn" disabled>Download output.json</button>
-                </div>
-                <div class="output-section">
-                    <h2 style="color:white; font-weight:600; margin-bottom:18px;">OUTPUT</h2>
-                    <div class="json-output" id="giveawayJsonOutput">
+                        <label>Token</label>
+                        <input type="number" id="giveawayHeartgunAmount" min="1" max="100" value="5">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Grenade Launcher Generator -->
-        <div class="container" id="grenade-container">
-            <header>
-                <h1>GRENADE LAUNCHER GEN</h1>
-            </header>
-            <div class="main-content">
-                <div class="input-section">
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-value" id="grenadeItemCount">0</div>
-                            <div class="stat-label">Items</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="grenadeLauncherCount">5</div>
-                            <div class="stat-label">Launchers</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">5</div>
-                            <div class="stat-label">per Launcher</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Amount of Grenade Launchers</label>
-                        <input type="number" id="grenadeLauncherAmount" min="1" max="100" value="5">
-                    </div>
-                    <button class="btn btn-generate" id="grenadeGenerateBtn" disabled>Generate JSON</button>
-                    <button class="btn btn-download" id="grenadeDownloadBtn" disabled>Download output.json</button>
-                </div>
-                <div class="output-section">
-                    <h2 style="color:white; font-weight:600; margin-bottom:18px;">OUTPUT</h2>
-                    <div class="json-output" id="grenadeJsonOutput">
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- Crossbow Generator -->
-        <div class="container" id="crossbow-container">
-            <header>
-                <h1>CROSSBOW GEN</h1>
-            </header>
-            <div class="main-content">
-                <div class="input-section">
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-value" id="crossbowItemCount">0</div>
-                            <div class="stat-label">Items</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value" id="crossbowLauncherCount">5</div>
-                            <div class="stat-label">Crossbows</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Amount of Crossbows</label>
-                        <input type="number" id="crossbowAmount" min="1" max="100" value="5">
-                    </div>
-                    <button class="btn btn-generate" id="crossbowGenerateBtn" disabled>Generate JSON</button>
-                    <button class="btn btn-download" id="crossbowDownloadBtn" disabled>Download output.json</button>
-                </div>
-                <div class="output-section">
-                    <h2 style="color:white; font-weight:600; margin-bottom:18px;">OUTPUT</h2>
-                    <div class="json-output" id="crossbowJsonOutput">
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <script>
