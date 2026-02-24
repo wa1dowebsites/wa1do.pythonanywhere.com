@@ -300,6 +300,20 @@
             color: #ffffff;
         }
 
+        .btn-fetch {
+            background: #1a1a1a;
+            border: 1px solid #444;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding: 12px;
+            font-size: 0.85rem;
+        }
+
+        .btn-fetch:hover {
+            background: #2a2a2a;
+            border-color: #fff;
+        }
+
         .json-output {
             background: #050505;
             border-radius: 20px;
@@ -456,6 +470,34 @@
             margin-bottom: 15px;
         }
 
+        .user-info {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .user-info-item {
+            display: flex;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 8px;
+        }
+
+        .user-info-label {
+            color: #888;
+            width: 80px;
+            font-weight: 600;
+        }
+
+        .user-info-value {
+            color: #fff;
+            flex: 1;
+            word-break: break-all;
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -503,19 +545,71 @@
                     <div class="form-group">
                         <label>Auth Token (Bearer)</label>
                         <input type="text" id="authToken" class="token-input" placeholder="Enter your bearer token">
+                        <button class="btn btn-fetch" id="fetchUserInfoBtn">FETCH USER INFO</button>
                     </div>
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" id="targetUsername" placeholder="Enter username to delete">
+                    
+                    <!-- User Info Display -->
+                    <div id="userInfoDisplay" class="user-info" style="display: none;">
+                        <div class="user-info-item">
+                            <span class="user-info-label">ID:</span>
+                            <span class="user-info-value" id="userId">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Username:</span>
+                            <span class="user-info-value" id="userUsername">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Display:</span>
+                            <span class="user-info-value" id="userDisplayName">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Custom ID:</span>
+                            <span class="user-info-value" id="userCustomId">-</span>
+                        </div>
                     </div>
+                    
                     <button class="btn btn-delete" id="deleteAccountBtn">DELETE ACCOUNT</button>
                     
                     <div class="response-container">
                         <div class="response-title">RESPONSE</div>
-                        <div id="deleteResponse" class="response-content">// Ready to delete</div>
+                        <div id="deleteResponse" class="response-content">// Ready to fetch user info</div>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+        <div class="input-section">
+                    <div class="form-group">
+                        <label>Auth Token (Bearer)</label>
+                        <input type="text" id="authToken" class="token-input" placeholder="Enter your bearer token">
+                        <button class="btn btn-fetch" id="fetchUserInfoBtn">FETCH USER INFO</button>
+                    </div>
+                    
+                    <!-- User Info Display -->
+                    <div id="userInfoDisplay" class="user-info" style="display: none;">
+                        <div class="user-info-item">
+                            <span class="user-info-label">ID:</span>
+                            <span class="user-info-value" id="userId">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Username:</span>
+                            <span class="user-info-value" id="userUsername">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Display:</span>
+                            <span class="user-info-value" id="userDisplayName">-</span>
+                        </div>
+                        <div class="user-info-item">
+                            <span class="user-info-label">Custom ID:</span>
+                            <span class="user-info-value" id="userCustomId">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="response-container">
+                        <div class="response-title">RESPONSE</div>
+                        <div id="deleteResponse" class="response-content">// Ready to fetch user info</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -809,10 +903,93 @@
         // ---------- ACCOUNT DELETION FUNCTIONALITY ----------
         document.addEventListener('DOMContentLoaded', function() {
             const deleteBtn = document.getElementById('deleteAccountBtn');
+            const fetchUserInfoBtn = document.getElementById('fetchUserInfoBtn');
             const authTokenInput = document.getElementById('authToken');
             const usernameInput = document.getElementById('targetUsername');
             const responseDiv = document.getElementById('deleteResponse');
+            const userInfoDisplay = document.getElementById('userInfoDisplay');
+            const userIdSpan = document.getElementById('userId');
+            const userUsernameSpan = document.getElementById('userUsername');
+            const userDisplayNameSpan = document.getElementById('userDisplayName');
+            const userCustomIdSpan = document.getElementById('userCustomId');
 
+            // Fetch user info function
+            async function fetchUserInfo() {
+                const token = authTokenInput.value.trim();
+
+                if (!token) {
+                    responseDiv.textContent = '// Error: Auth token is required';
+                    responseDiv.className = 'response-content error';
+                    return;
+                }
+
+                responseDiv.textContent = '// Fetching user information...';
+                responseDiv.className = 'response-content';
+
+                try {
+                    const url = 'https://animalcompany.us-east1.nakamacloud.io/v2/account';
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    let responseText = '';
+                    let userData = null;
+                    
+                    try {
+                        userData = await response.json();
+                        responseText = JSON.stringify(userData, null, 2);
+                    } catch {
+                        responseText = await response.text() || 'No response body';
+                    }
+
+                    const statusInfo = `Status: ${response.status} ${response.statusText}\n\n`;
+                    
+                    if (response.ok && userData) {
+                        // Display user info
+                        userInfoDisplay.style.display = 'block';
+                        userIdSpan.textContent = userData.user?.id || 'N/A';
+                        userUsernameSpan.textContent = userData.user?.username || 'N/A';
+                        userDisplayNameSpan.textContent = userData.user?.display_name || 'N/A';
+                        userCustomIdSpan.textContent = userData.custom_id || 'N/A';
+                        
+                        // Auto-fill username field
+                        if (userData.user?.username) {
+                            usernameInput.value = userData.user.username;
+                        }
+                        
+                        responseDiv.textContent = '// User info fetched successfully!';
+                        responseDiv.className = 'response-content';
+                    } else {
+                        userInfoDisplay.style.display = 'none';
+                        usernameInput.value = '';
+                        responseDiv.textContent = '// Error: ' + statusInfo + responseText;
+                        responseDiv.className = 'response-content error';
+                    }
+
+                } catch (error) {
+                    userInfoDisplay.style.display = 'none';
+                    usernameInput.value = '';
+                    responseDiv.textContent = `// Network Error: ${error.message}`;
+                    responseDiv.className = 'response-content error';
+                }
+            }
+
+            // Fetch user info on button click
+            fetchUserInfoBtn.addEventListener('click', fetchUserInfo);
+
+            // Also fetch when Enter is pressed in token input
+            authTokenInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    fetchUserInfo();
+                }
+            });
+
+            // Delete account function
             deleteBtn.addEventListener('click', async function() {
                 const token = authTokenInput.value.trim();
                 const username = usernameInput.value.trim();
@@ -824,7 +1001,7 @@
                 }
 
                 if (!username) {
-                    responseDiv.textContent = '// Error: Username is required';
+                    responseDiv.textContent = '// Error: Username is required. Please fetch user info first.';
                     responseDiv.className = 'response-content error';
                     return;
                 }
@@ -861,6 +1038,9 @@
                     if (response.ok) {
                         responseDiv.textContent = statusInfo + responseText;
                         responseDiv.className = 'response-content';
+                        // Clear the user info after successful deletion
+                        userInfoDisplay.style.display = 'none';
+                        usernameInput.value = '';
                     } else {
                         responseDiv.textContent = '// Error: ' + statusInfo + responseText;
                         responseDiv.className = 'response-content error';
