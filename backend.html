@@ -488,7 +488,7 @@
 
         .user-info-label {
             color: #888;
-            width: 80px;
+            width: 120px;
             font-weight: 600;
         }
 
@@ -496,6 +496,30 @@
             color: #fff;
             flex: 1;
             word-break: break-all;
+        }
+
+        .data-row {
+            display: flex;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #0a0a0a;
+            border-radius: 8px;
+            border-left: 3px solid #444;
+        }
+
+        .data-label {
+            color: #aaa;
+            width: 130px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .data-value {
+            color: #fff;
+            flex: 1;
+            font-family: 'Courier New', monospace;
         }
 
         @media (max-width: 768px) {
@@ -532,40 +556,79 @@
         </div>
     </nav>
 
-    <!-- Tools Row – two generators, monochrome aesthetic -->
+    <!-- Tools Row -->
     <div class="tools-container">
+        <!-- Token Input Container -->
         <div class="container" id="get-data">
-
+            <header>
+                <h1>ACCOUNT INFO</h1>
+                <div class="subtitle">Enter your token to fetch account details</div>
+            </header>
             <div class="main-content">
                 <div class="input-section">
                     <div class="form-group">
-                        <label>Token</label>
+                        <label>Bearer Token</label>
                         <input type="text" id="authToken" class="token-input" placeholder="Enter your bearer token">
                         <button class="btn btn-fetch" id="fetchUserInfoBtn">FETCH USER INFO</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Data Display Container -->
         <div class="container" id="data">
-            <div class="main-content">
-                <div class="input-section">
-                    <label>Token: </label>
-                    <label>Username: </label>
-                    <label>Display Name: </label>
-                    <label>Hard Currency: </label>
-                    <label>Soft Currency: </label>
-                    <label>Research Points: </label>
-                </div>
-            </div>
-        </div>
-        <!-- New Account Deletion Tool -->
-        <div class="container" id="account-deletion-container">
             <header>
-                <h1>ACCOUNT DELETION</h1>
-                <div class="subtitle">Resets all data for acc</div>
+                <h1>ACCOUNT DETAILS</h1>
+                <div class="subtitle">Fetched user information</div>
             </header>
             <div class="main-content">
                 <div class="input-section">
+                    <div id="userInfoDisplay">
+                        <div class="data-row">
+                            <span class="data-label">Token:</span>
+                            <span class="data-value" id="displayToken">-</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Username:</span>
+                            <span class="data-value" id="displayUsername">-</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Display Name:</span>
+                            <span class="data-value" id="displayDisplayName">-</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">User ID:</span>
+                            <span class="data-value" id="displayUserId">-</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Company Coins:</span>
+                            <span class="data-value" id="displayHardCurrency">-</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Nuts:</span>
+                            <span class="data-value" id="displaySoftCurrency">-</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">Research Points:</span>
+                            <span class="data-value" id="displayResearchPoints">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Deletion Tool -->
+        <div class="container" id="account-deletion-container">
+            <header>
+                <h1>ACCOUNT DELETION</h1>
+                <div class="subtitle">Resets all data for account</div>
+            </header>
+            <div class="main-content">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Username to Delete</label>
+                        <input type="text" id="targetUsername" placeholder="Username will appear here after fetch" readonly>
+                    </div>
                     <button class="btn btn-delete" id="deleteAccountBtn">DELETE ACCOUNT</button>
                     
                     <div class="response-container">
@@ -575,308 +638,25 @@
                 </div>
             </div>
         </div>
-       
     </div>
 
     <script>
-        const ECON_JSON_URL = "https://raw.githubusercontent.com/wa1dowebsites/wa1do.pythonanywhere.com/refs/heads/main/econ_gameplay_items.json";
-
-        // ---------- GIVEAWAY GENERATOR ----------
-        const giveawayGenerator = {
-            itemIds: [],
-            generatedData: null,
-            
-            init: function() {
-                this.jsonFileInput = document.getElementById('giveawayJsonFile');
-                this.heartgunAmountInput = document.getElementById('giveawayHeartgunAmount');
-                this.generateBtn = document.getElementById('giveawayGenerateBtn');
-                this.downloadBtn = document.getElementById('giveawayDownloadBtn');
-                this.jsonOutput = document.getElementById('giveawayJsonOutput');
-                this.itemCountDiv = document.getElementById('giveawayItemCount');
-                this.heartgunCountDiv = document.getElementById('giveawayHeartgunCount');
-                this.fileNameDiv = document.getElementById('giveawayFileName');
-                
-                //this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
-                this.heartgunAmountInput.addEventListener('input', () => this.updateHeartgunCount());
-                this.generateBtn.addEventListener('click', () => this.generateJSON());
-                this.downloadBtn.addEventListener('click', () => this.downloadJSON());
-                
-                this.updateHeartgunCount();
-                this.loadFromURL();
-            },
-            
-            handleFileUpload: function(event) {
-                const file = event.target.files[0];
-                if (!file) return;
-                this.fileNameDiv.textContent = `📎 ${file.name}`;
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        let content = e.target.result;
-                        let jsonData = content.trim().startsWith('[') ? JSON.parse(content) : JSON.parse('[' + content + ']');
-                        this.itemIds = [];
-                        for (const item of jsonData) if (item?.id) this.itemIds.push(item.id);
-                        if (this.itemIds.length === 0) throw new Error("No item IDs");
-                        this.generateBtn.disabled = false;
-                        this.itemCountDiv.textContent = this.itemIds.length;
-                    } catch(error) {
-                        this.generateBtn.disabled = true;
-                    }
-                };
-                reader.readAsText(file);
-            },
-
-            loadFromURL: async function() {
-                try {
-                    const res = await fetch(ECON_JSON_URL);
-                    if (!res.ok) throw new Error("fetch failed");
-                    const jsonData = await res.json();
-                    this.itemIds = jsonData.map(i => i.id).filter(Boolean);
-                    if (this.itemIds.length === 0) throw new Error("no ids");
-                    this.itemCountDiv.textContent = this.itemIds.length;
-                    this.generateBtn.disabled = false;
-                } catch (err) {
-                }
-            },
-            
-            updateHeartgunCount: function() {
-                let c = parseInt(this.heartgunAmountInput.value) || 0;
-                this.heartgunCountDiv.textContent = c;
-            },
-            
-            generateJSON: function() {
-                const amount = parseInt(this.heartgunAmountInput.value);
-                const backpackType = document.querySelector('input[name="giveawayBackpackType"]:checked')?.value || 'item_quiver';
-                
-                this.generatedData = { version:1, items:[{ itemID:"item_crowbar", stuckChildren:[], stashPos:0 }], materials:[] };
-                for (let i=0; i<amount; i++) {
-                    let children = [];
-                    for (let j=0; j<23; j++) {
-                        let id = this.itemIds[Math.floor(Math.random() * this.itemIds.length)];
-                        children.push({ itemID: id, colorHue: Math.floor(Math.random()*211), colorSaturation: Math.floor(Math.random()*121), scaleModifier: Math.floor(Math.random()*256)-128 });
-                    }
-                    this.generatedData.items[0].stuckChildren.push({
-                        item: {
-                            itemID: "item_heart_gun",
-                            scaleModifier: -128,
-                            children: [{
-                                itemID: backpackType,
-                                colorHue: Math.floor(Math.random()*211),
-                                colorSaturation: Math.floor(Math.random()*121),
-                                scaleModifier: Math.floor(Math.random()*256)-128,
-                                children
-                            }]
-                        },
-                        pos: [0,0.525,0.057], rot: [0,0,0,1], posePos: [0,0,0], poseRot: [0,0,0]
-                    });
-                }
-                this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
-                this.downloadBtn.disabled = false;
-            },
-            
-            downloadJSON: function() {
-                if (!this.generatedData) return;
-                const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], { type: 'application/json' });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = 'giveaway_output.json';
-                a.click();
-            },
-        };
-
-        // ---------- GRENADE GENERATOR ----------
-        const grenadeGenerator = {
-            itemIds: [],
-            generatedData: null,
-            
-            init: function() {
-                this.jsonFileInput = document.getElementById('grenadeJsonFile');
-                this.launcherAmountInput = document.getElementById('grenadeLauncherAmount');
-                this.generateBtn = document.getElementById('grenadeGenerateBtn');
-                this.downloadBtn = document.getElementById('grenadeDownloadBtn');
-                this.jsonOutput = document.getElementById('grenadeJsonOutput');
-                this.itemCountDiv = document.getElementById('grenadeItemCount');
-                this.launcherCountDiv = document.getElementById('grenadeLauncherCount');
-                this.fileNameDiv = document.getElementById('grenadeFileName');
-                
-                //this.jsonFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
-                this.launcherAmountInput.addEventListener('input', () => this.updateLauncherCount());
-                this.generateBtn.addEventListener('click', () => this.generateJSON());
-                this.downloadBtn.addEventListener('click', () => this.downloadJSON());
-                this.updateLauncherCount();
-                this.loadFromURL();
-            },
-
-            loadFromURL: async function() {
-                try {
-                    const res = await fetch(ECON_JSON_URL);
-                    if (!res.ok) return;
-                    const jsonData = await res.json();
-                    this.itemIds = jsonData.map(i => i.id).filter(Boolean);
-                    if (this.itemIds.length) {
-                        this.itemCountDiv.textContent = this.itemIds.length;
-                        this.generateBtn.disabled = false;
-                    }
-                } catch(e) {}
-            },
-            
-            handleFileUpload: function(e) {
-                const file = e.target.files[0]; if(!file) return;
-                this.fileNameDiv.textContent = `📎 ${file.name}`;
-                const reader = new FileReader();
-                reader.onload = (ev) => {
-                    try {
-                        let c = ev.target.result;
-                        let d = c.trim().startsWith('[') ? JSON.parse(c) : JSON.parse('['+c+']');
-                        this.itemIds = d.map(i=>i.id).filter(Boolean);
-                        if (!this.itemIds.length) throw new Error('No IDs');
-                        this.generateBtn.disabled = false;
-                        this.itemCountDiv.textContent = this.itemIds.length;
-                        this.jsonOutput.textContent = `// ${this.itemIds.length} items ready\n${this.itemIds.slice(0,10).map(i=>'// '+i).join('\n')}`;
-                    } catch(error) {
-                        this.generateBtn.disabled = true;
-                    }
-                };
-                reader.readAsText(file);
-            },
-            
-            updateLauncherCount: function() {
-                let c = parseInt(this.launcherAmountInput.value) || 0;
-                this.launcherCountDiv.textContent = c;
-            },
-            
-            generateJSON: function() {
-                const amount = parseInt(this.launcherAmountInput.value);
-                const backpackType = document.querySelector('input[name="grenadeBackpackType"]:checked')?.value || 'item_quiver';
-                
-                this.generatedData = { version:1, items:[{ itemID:"item_arrow", stuckChildren:[], stashPos:0 }], materials:[] };
-                for (let i=0; i<amount; i++) {
-                    let children = [];
-                    for (let j=0; j<5; j++) {
-                        let id = this.itemIds[Math.floor(Math.random() * this.itemIds.length)];
-                        children.push({ itemID: id, colorHue: Math.floor(Math.random()*211), colorSaturation: Math.floor(Math.random()*121), scaleModifier: Math.floor(Math.random()*256)-128 });
-                    }
-                    this.generatedData.items[0].stuckChildren.push({
-                        item: {
-                            itemID: "item_grenade_launcher",
-                            scaleModifier: -128,
-                            children: children
-                        },
-                        pos: [0,0,0.238], rot: [0,0,0,1], posePos: [0,0,0], poseRot: [0,0,0]
-                    });
-                }
-                this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
-                this.downloadBtn.disabled = false;
-            },
-            downloadJSON: function() {
-                if (!this.generatedData) return;
-                const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type:'application/json'});
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob); a.download = 'grenade_launcher_output.json'; a.click();
-            },
-        };
-
-        // ---------- CROSSBOW GENERATOR ----------
-        const crossbowGenerator = {
-            itemIds: [],
-            generatedData: null,
-            
-            init: function() {
-                this.launcherAmountInput = document.getElementById('crossbowAmount');
-                this.generateBtn = document.getElementById('crossbowGenerateBtn');
-                this.downloadBtn = document.getElementById('crossbowDownloadBtn');
-                this.jsonOutput = document.getElementById('crossbowJsonOutput');
-                this.itemCountDiv = document.getElementById('crossbowItemCount');
-                this.launcherCountDiv = document.getElementById('crossbowLauncherCount');
-                
-                this.launcherAmountInput.addEventListener('input', () => this.updateLauncherCount());
-                this.generateBtn.addEventListener('click', () => this.generateJSON());
-                this.downloadBtn.addEventListener('click', () => this.downloadJSON());
-                
-                this.updateLauncherCount();
-                this.loadFromURL();
-            },
-
-            loadFromURL: async function() {
-                try {
-                    const res = await fetch(ECON_JSON_URL);
-                    if (!res.ok) throw new Error("fetch failed");
-                    const jsonData = await res.json();
-                    this.itemIds = jsonData.map(i => i.id).filter(Boolean);
-                    if (this.itemIds.length === 0) throw new Error("no ids");
-                    this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
-                    this.generateBtn.disabled = false;
-                } catch (err) {
-                    this.itemCountDiv.textContent = "0";
-                    this.generateBtn.disabled = true;
-                    this.jsonOutput.textContent = "// Error loading items. Please try again later.";
-                }
-            },
-            
-            updateLauncherCount: function() {
-                let c = parseInt(this.launcherAmountInput.value) || 0;
-                if (this.launcherCountDiv) {
-                    this.launcherCountDiv.textContent = c;
-                    this.itemCountDiv.textContent = parseInt(this.launcherCountDiv.textContent) + 1;
-                }
-            },
-            
-            generateJSON: function() {
-                const amount = parseInt(this.launcherAmountInput.value) || 0;
-                
-                if (this.itemIds.length === 0) {
-                    this.jsonOutput.textContent = "// Error: No items loaded. Please refresh the page.";
-                    return;
-                }
-                
-                this.generatedData = { 
-                    version: 1, 
-                    items: [{ 
-                        itemID: "item_crowbar", 
-                        stuckChildren: [], 
-                        stashPos: 0 
-                    }], 
-                    materials: [] 
-                };
-                
-                for (let i = 0; i < amount; i++) {
-                    this.generatedData.items[0].stuckChildren.push({
-                        item: {
-                            itemID: "item_crossbow"
-                        },
-                        pos: [0, 0, 0], 
-                        rot: [0, 0, 0, 1], 
-                        posePos: [0, 0, 0], 
-                        poseRot: [0, 0, 0]
-                    });
-                }
-                
-                this.jsonOutput.textContent = JSON.stringify(this.generatedData, null, 2);
-                this.downloadBtn.disabled = false;
-            },
-            
-            downloadJSON: function() {
-                if (!this.generatedData) return;
-                const blob = new Blob([JSON.stringify(this.generatedData, null, 2)], {type: 'application/json'});
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob); 
-                a.download = 'crossbow_output.json'; 
-                a.click();
-            },
-        };
-
-        // ---------- ACCOUNT DELETION FUNCTIONALITY ----------
+        // ---------- ACCOUNT INFO FUNCTIONALITY ----------
         document.addEventListener('DOMContentLoaded', function() {
             const deleteBtn = document.getElementById('deleteAccountBtn');
             const fetchUserInfoBtn = document.getElementById('fetchUserInfoBtn');
             const authTokenInput = document.getElementById('authToken');
             const usernameInput = document.getElementById('targetUsername');
             const responseDiv = document.getElementById('deleteResponse');
-            const userInfoDisplay = document.getElementById('userInfoDisplay');
-            const userIdSpan = document.getElementById('userId');
-            const userUsernameSpan = document.getElementById('userUsername');
-            const userDisplayNameSpan = document.getElementById('userDisplayName');
-            const userCustomIdSpan = document.getElementById('userCustomId');
+            
+            // Display elements
+            const displayToken = document.getElementById('displayToken');
+            const displayUsername = document.getElementById('displayUsername');
+            const displayDisplayName = document.getElementById('displayDisplayName');
+            const displayUserId = document.getElementById('displayUserId');
+            const displayHardCurrency = document.getElementById('displayHardCurrency');
+            const displaySoftCurrency = document.getElementById('displaySoftCurrency');
+            const displayResearchPoints = document.getElementById('displayResearchPoints');
 
             // Fetch user info function
             async function fetchUserInfo() {
@@ -887,6 +667,10 @@
                     responseDiv.className = 'response-content error';
                     return;
                 }
+
+                // Display masked token
+                const maskedToken = token.length > 20 ? token.substring(0, 10) + '...' + token.substring(token.length - 10) : token;
+                displayToken.textContent = maskedToken;
 
                 responseDiv.textContent = '// Fetching user information...';
                 responseDiv.className = 'response-content';
@@ -902,8 +686,8 @@
                         }
                     });
 
-                    let responseText = '';
                     let userData = null;
+                    let responseText = '';
                     
                     try {
                         userData = await response.json();
@@ -915,30 +699,50 @@
                     const statusInfo = `Status: ${response.status} ${response.statusText}\n\n`;
                     
                     if (response.ok && userData) {
-                        // Display user info
-                        userInfoDisplay.style.display = 'block';
-                        userIdSpan.textContent = userData.user?.id || 'N/A';
-                        userUsernameSpan.textContent = userData.user?.username || 'N/A';
-                        userDisplayNameSpan.textContent = userData.user?.display_name || 'N/A';
-                        userCustomIdSpan.textContent = userData.custom_id || 'N/A';
-                        
-                        // Auto-fill username field
-                        if (userData.user?.username) {
-                            usernameInput.value = userData.user.username;
+                        // Parse wallet data
+                        let walletData = { hardCurrency: 0, softCurrency: 0, researchPoints: 0 };
+                        try {
+                            if (userData.wallet) {
+                                walletData = JSON.parse(userData.wallet);
+                            }
+                        } catch (e) {
+                            console.error('Error parsing wallet:', e);
                         }
+                        
+                        // Update display fields
+                        displayUsername.textContent = userData.user?.username || 'N/A';
+                        displayDisplayName.textContent = userData.user?.display_name || 'N/A';
+                        displayUserId.textContent = userData.user?.id || 'N/A';
+                        displayHardCurrency.textContent = walletData.hardCurrency || '0';
+                        displaySoftCurrency.textContent = walletData.softCurrency || '0';
+                        displayResearchPoints.textContent = walletData.researchPoints || '0';
+
                         
                         responseDiv.textContent = '// User info fetched successfully!';
                         responseDiv.className = 'response-content';
                     } else {
-                        userInfoDisplay.style.display = 'none';
-                        usernameInput.value = '';
+                        // Clear display fields
+                        displayUsername.textContent = '-';
+                        displayDisplayName.textContent = '-';
+                        displayUserId.textContent = '-';
+                        displayHardCurrency.textContent = '-';
+                        displaySoftCurrency.textContent = '-';
+                        displayResearchPoints.textContent = '-';
+                        
                         responseDiv.textContent = '// Error: ' + statusInfo + responseText;
                         responseDiv.className = 'response-content error';
                     }
 
                 } catch (error) {
-                    userInfoDisplay.style.display = 'none';
+                    // Clear display fields
+                    displayUsername.textContent = '-';
+                    displayDisplayName.textContent = '-';
+                    displayUserId.textContent = '-';
+                    displayHardCurrency.textContent = '-';
+                    displaySoftCurrency.textContent = '-';
+                    displayResearchPoints.textContent = '-';
                     usernameInput.value = '';
+                    
                     responseDiv.textContent = `// Network Error: ${error.message}`;
                     responseDiv.className = 'response-content error';
                 }
@@ -957,7 +761,7 @@
             // Delete account function
             deleteBtn.addEventListener('click', async function() {
                 const token = authTokenInput.value.trim();
-                const username = usernameInput.value.trim();
+                const username = displayDisplayName.value.trim();
 
                 if (!token) {
                     responseDiv.textContent = '// Error: Auth token is required';
@@ -965,11 +769,6 @@
                     return;
                 }
 
-                if (!username) {
-                    responseDiv.textContent = '// Error: Username is required. Please fetch user info first.';
-                    responseDiv.className = 'response-content error';
-                    return;
-                }
 
                 // Confirm deletion
                 if (!confirm(`Are you sure you want to DELETE the account "${username}"? This action cannot be undone.`)) {
@@ -1003,8 +802,16 @@
                     if (response.ok) {
                         responseDiv.textContent = statusInfo + responseText;
                         responseDiv.className = 'response-content';
-                        // Clear the user info after successful deletion
-                        userInfoDisplay.style.display = 'none';
+                        
+                        // Clear the data after successful deletion
+                        displayUsername.textContent = '-';
+                        displayDisplayName.textContent = '-';
+                        displayUserId.textContent = '-';
+                        displayHardCurrency.textContent = '-';
+                        displaySoftCurrency.textContent = '-';
+                        displayResearchPoints.textContent = '-';
+                        displayCustomId.textContent = '-';
+                        displayEdgeCount.textContent = '-';
                         usernameInput.value = '';
                     } else {
                         responseDiv.textContent = '// Error: ' + statusInfo + responseText;
@@ -1018,16 +825,11 @@
             });
         });
 
-        // ---------- INIT ----------
-        window.addEventListener('DOMContentLoaded', function() {
-            giveawayGenerator.init();
-            grenadeGenerator.init();
-            crossbowGenerator.init();
-        });
-    </script>
-    <script>
+        // Prevent right-click and view source
         document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('keydown', function(e) { if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault(); });
+        document.addEventListener('keydown', function(e) { 
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault(); 
+        });
     </script>
 </body>
 </html>
