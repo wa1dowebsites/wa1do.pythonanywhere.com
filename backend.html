@@ -534,6 +534,18 @@
 
     <!-- Tools Row – two generators, monochrome aesthetic -->
     <div class="tools-container">
+        <div class="container" id="get-data">
+
+            <div class="main-content">
+                <div class="input-section">
+                    <div class="form-group">
+                        <label>Token</label>
+                        <input type="text" id="authToken" class="token-input" placeholder="Enter your bearer token">
+                        <button class="btn btn-fetch" id="fetchUserInfoBtn">FETCH USER INFO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- New Account Deletion Tool -->
         <div class="container" id="account-deletion-container">
             <header>
@@ -577,40 +589,7 @@
                 </div>
             </div>
         </div>
-        <div class="input-section">
-                    <div class="form-group">
-                        <label>Auth Token (Bearer)</label>
-                        <input type="text" id="authToken" class="token-input" placeholder="Enter your bearer token">
-                        <button class="btn btn-fetch" id="fetchUserInfoBtn">FETCH USER INFO</button>
-                    </div>
-                    
-                    <!-- User Info Display -->
-                    <div id="userInfoDisplay" class="user-info" style="display: none;">
-                        <div class="user-info-item">
-                            <span class="user-info-label">ID:</span>
-                            <span class="user-info-value" id="userId">-</span>
-                        </div>
-                        <div class="user-info-item">
-                            <span class="user-info-label">Username:</span>
-                            <span class="user-info-value" id="userUsername">-</span>
-                        </div>
-                        <div class="user-info-item">
-                            <span class="user-info-label">Display:</span>
-                            <span class="user-info-value" id="userDisplayName">-</span>
-                        </div>
-                        <div class="user-info-item">
-                            <span class="user-info-label">Custom ID:</span>
-                            <span class="user-info-value" id="userCustomId">-</span>
-                        </div>
-                    </div>
-                    
-                    <div class="response-container">
-                        <div class="response-title">RESPONSE</div>
-                        <div id="deleteResponse" class="response-content">// Ready to fetch user info</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 
     <script>
