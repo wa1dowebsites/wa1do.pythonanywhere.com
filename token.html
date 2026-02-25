@@ -570,13 +570,6 @@
                         <span>{L} = Letter | {N} = Number | {B} = 50/50 | All other text stays fixed</span>
                     </div>
                 </div>
-                
-                <div class="input-group">
-                    <label>Preset Patterns</label>
-                    <select id="pattern-preset">
-                        <option value="">Select a preset...</option>
-                    </select>
-                </div>
             </div>
             
             <div class="pattern-preview" id="patternPreview">
@@ -625,34 +618,6 @@
     
     <script>
         let generatedTokens = [];
-        
-        // Load preset patterns on page load
-        fetch('/patterns')
-            .then(response => response.json())
-            .then(patterns => {
-                const select = document.getElementById('pattern-preset');
-                patterns.forEach(p => {
-                    const option = document.createElement('option');
-                    option.value = p.pattern;
-                    option.textContent = `${p.name}: ${p.pattern}`;
-                    select.appendChild(option);
-                });
-            });
-        
-        // Update pattern when preset is selected
-        document.getElementById('pattern-preset').addEventListener('change', function(e) {
-            if (this.value) {
-                document.getElementById('pattern').value = this.value;
-                updatePatternPreview(this.value);
-                // Auto-generate a preview token
-                generateTokens();
-            }
-        });
-        
-        // Update pattern preview when typing
-        document.getElementById('pattern').addEventListener('input', function(e) {
-            updatePatternPreview(e.target.value);
-        });
         
         function updatePatternPreview(pattern) {
             fetch('/validate-pattern', {
