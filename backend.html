@@ -757,7 +757,7 @@
             // Delete account function
             deleteBtn.addEventListener('click', async function() {
                 const token = authTokenInput.value.trim();
-                const username = displayDisplayName.value.trim();
+                //const username = displayDisplayName.value.trim();
 
                 if (!token) {
                     responseDiv.textContent = '// Error: Auth token is required';
@@ -767,7 +767,7 @@
 
 
                 // Confirm deletion
-                if (!confirm(`Are you sure you want to DELETE the account "${username}"? This action cannot be undone.`)) {
+                if (!confirm(`Are you sure you want to DELETE the account? This action cannot be undone.`)) {
                     return;
                 }
 
@@ -775,7 +775,7 @@
                 responseDiv.className = 'response-content';
 
                 try {
-                    const url = `https://animalcompany.us-east1.nakamacloud.io:443/v2/account?usernames=${encodeURIComponent(username)}`;
+                    const url = `https://animalcompany.us-east1.nakamacloud.io:443/v2/account`;//?usernames=${encodeURIComponent(username)}`;
                     
                     const response = await fetch(url, {
                         method: 'DELETE',
