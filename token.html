@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="WA1DO - Advanced Token Generator">
-    <meta property="og:description" content="Generate customizable tokens with fixed text, letters, numbers, and mixed characters. Create secure tokens with custom prefixes and suffixes.">
+    <meta property="og:title" content="WA1DO - Token Generator">
+    <meta property="og:description" content="Generate customizable tokens with fixed text, letters, numbers, and mixed characters.">
     <meta property="og:image" content="https://cdn.prod.website-files.com/68c5a54e4bcedd5575bdd7b5/68c8a139ee875a9e3060d421_Logo.svg">
     <meta property="og:url" content="https://wa1do.pythonanywhere.com/">
     <meta name="theme-color" content="#ff4b2b">
-    <title>WA1DO - Advanced Token Generator</title>
+    <title>WA1DO - Token Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -239,6 +239,7 @@
             border-radius: 30px;
             font-size: 14px;
             transition: all 0.2s;
+            color: #ffffff;
         }
         
         .token-chip.fixed {
@@ -247,28 +248,17 @@
             color: #cccccc;
         }
         
-        .token-chip.token-l {
-            background: rgba(255,75,43,0.1);
+        .token-chip.token {
+            background: #1a1a1a;
             border-color: #ff4b2b;
             color: #ff4b2b;
-        }
-        
-        .token-chip.token-n {
-            background: rgba(0,255,255,0.1);
-            border-color: #00ffff;
-            color: #00ffff;
-        }
-        
-        .token-chip.token-b {
-            background: rgba(255,255,0,0.1);
-            border-color: #ffff00;
-            color: #ffff00;
         }
         
         .token-chip .token-desc {
             font-size: 12px;
             margin-left: 8px;
             opacity: 0.7;
+            color: #8e9aaf;
         }
         
         .token-display {
@@ -429,6 +419,7 @@
         .feature-icon {
             font-size: 32px;
             margin-bottom: 16px;
+            color: #ffffff;
         }
         
         .feature-card h3 {
@@ -477,9 +468,9 @@
         }
         
         .success-message {
-            background: rgba(0,255,0,0.1);
-            border: 1px solid #00ff00;
-            color: #00ff00;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #ffffff;
+            color: #ffffff;
             padding: 16px;
             border-radius: 16px;
             margin-bottom: 20px;
@@ -567,7 +558,7 @@
     <main class="main-container">
         <div class="generator-card">
             <div class="generator-header">
-                <h1>Advanced Token Generator</h1>
+                <h1>Token Generator</h1>
                 <p>Create tokens with fixed text and variable parts using {L}etters, {N}umbers, and {B}oth</p>
             </div>
             
@@ -632,17 +623,17 @@
         
         <div class="features">
             <div class="feature-card">
-                <div class="feature-icon">📝</div>
+                <div class="feature-icon">📄</div>
                 <h3>Fixed Text Support</h3>
                 <p>Add any fixed text like "BLANKZZ", "PROD-", or "2024" alongside variable parts</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎨</div>
+                <div class="feature-icon">⚙️</div>
                 <h3>Flexible Patterns</h3>
                 <p>Mix and match fixed text with {L}, {N}, and {B} tokens in any order</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon">👁️</div>
                 <h3>Real-time Preview</h3>
                 <p>See how your pattern will be interpreted before generating</p>
             </div>
@@ -671,7 +662,7 @@
     </main>
     
     <footer>
-        <p>© 2024 WA1DO - Advanced Token Generator. All rights reserved.</p>
+        <p>© 2024 WA1DO - Token Generator. All rights reserved.</p>
     </footer>
     
     <script>
@@ -726,7 +717,7 @@
                         chip.classList.add('fixed');
                         chip.innerHTML = `${token.value} <span class="token-desc">fixed</span>`;
                     } else {
-                        chip.classList.add(`token-${token.token.toLowerCase()}`);
+                        chip.classList.add('token');
                         chip.innerHTML = `{${token.token}} <span class="token-desc">${token.description}</span>`;
                     }
                     
@@ -779,14 +770,7 @@
             tokens.forEach(token => {
                 const tokenElement = document.createElement('div');
                 tokenElement.className = 'token-item';
-                
-                // Highlight fixed vs variable parts if pattern is provided
-                if (pattern) {
-                    tokenElement.textContent = token;
-                } else {
-                    tokenElement.textContent = token;
-                }
-                
+                tokenElement.textContent = token;
                 tokenElement.onclick = () => copyToken(token);
                 display.appendChild(tokenElement);
             });
@@ -891,7 +875,6 @@
                 e.preventDefault();
                 return false;
             }
-            // Allow F12 but show warning
             if (e.key === 'F12') {
                 e.preventDefault();
                 showNotification('Developer tools are disabled on this page', 'error');
