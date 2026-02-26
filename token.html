@@ -562,10 +562,13 @@
                 <p>Create tokens with fixed text and variable parts using {L}etters, {N}umbers, and {B}oth</p>
             </div>
             
-            <div class="control-panel">
+                <div class="input-group">
                     <label>Your Pattern</label>
                     <input type="text" id="pattern" value="" placeholder="e.g., PREFIX-{N}{N}{N}-SUFFIX">
-            </div>
+                    <div class="pattern-badge">
+                        <span>{L} = Letter | {N} = Number | {B} = 50/50 | All other text stays fixed</span>
+                    </div>
+                </div>
             
             <div class="pattern-preview" id="patternPreview">
                 <div class="pattern-preview-title">Pattern Interpretation</div>
