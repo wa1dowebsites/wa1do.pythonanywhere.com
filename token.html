@@ -758,30 +758,9 @@
         }
         
         function showError(message) {
-            const display = document.getElementById('tokenDisplay');
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.textContent = message;
-            display.insertBefore(errorDiv, display.firstChild);
-            
-            setTimeout(() => {
-                if (errorDiv.parentNode) {
-                    errorDiv.remove();
-                }
-            }, 3000);
         }
         
         function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = type === 'success' ? 'success-message' : 'error-message';
-            notification.textContent = message;
-            document.querySelector('.generator-card').insertBefore(notification, document.querySelector('.button-group'));
-            
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.remove();
-                }
-            }, 3000);
         }
         
         // Prevent right-click and view source
