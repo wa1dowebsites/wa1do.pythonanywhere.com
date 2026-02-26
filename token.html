@@ -613,6 +613,10 @@
     
     <script>
         let generatedTokens = [];
+
+        document.getElementById('pattern').addEventListener('input', function(e) {
+            updatePatternPreview(e.target.value);
+        });
         
         function updatePatternPreview(pattern) {
             fetch('/validate-pattern', {
