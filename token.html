@@ -124,6 +124,143 @@
             margin: 0 auto;
         }
         
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid #333;
+            color: #ccc;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .tab:hover {
+            border-color: #666;
+            color: #fff;
+        }
+        
+        .tab.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+        
+        /* Game Authentication Panel */
+        .auth-panel {
+            background: rgba(20,24,28,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .auth-panel h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .auth-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .auth-input-group {
+            margin-bottom: 15px;
+        }
+        
+        .auth-input-group label {
+            display: block;
+            color: #cccccc;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .auth-input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        
+        .auth-input-group input:focus {
+            outline: none;
+            border-color: #fff;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.2);
+        }
+        
+        .auth-status {
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .auth-status.success {
+            background: rgba(0,255,0,0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            display: block;
+        }
+        
+        .auth-status.error {
+            background: rgba(255,0,0,0.1);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            display: block;
+        }
+        
+        .auth-status.info {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            display: block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-box {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-box .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .stat-box .label {
+            font-size: 12px;
+            color: #8e9aaf;
+            text-transform: uppercase;
+        }
+        
         .generator-card {
             background: rgba(20,24,28,0.95);
             backdrop-filter: blur(10px);
@@ -368,6 +505,11 @@
             background: rgba(255,255,255,0.1);
         }
         
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -536,6 +678,10 @@
             .stats {
                 grid-template-columns: 1fr 1fr;
             }
+            
+            .auth-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -551,21 +697,31 @@
         <div class="nav-links">
             <a href="/json">JSON</a>
             <a href="/acversionswitcher">VS</a>
+            <a href="/mods">Mods</a>
+            <a href="/backend">Backend</a>
             <a href="/login" class="btn-login">Login</a>
         </div>
     </nav>
     
     <main class="main-container">
-        <div class="generator-card">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('generator')">Token Generator</button>
+            <button class="tab" onclick="switchTab('game')">Game Token System</button>
+            <button class="tab" onclick="switchTab('create')">Create Account</button>
+        </div>
+        
+        <!-- Generator Tab -->
+        <div id="generator-tab" class="generator-card">
             <div class="generator-header">
                 <h1>Token Generator</h1>
                 <p>Create tokens with fixed text and variable parts using {L}etters, {N}umbers, and {B}oth</p>
             </div>
             
-                <div class="input-group">
-                    <label>Your Pattern</label>
-                    <input type="text" id="pattern" value="" placeholder="e.g., PREFIX-{N}{N}{N}-SUFFIX">
-                </div>
+            <div class="input-group">
+                <label>Your Pattern</label>
+                <input type="text" id="pattern" value="GAME-{N}{N}{N}{N}-{L}{L}{L}{L}" placeholder="e.g., PREFIX-{N}{N}{N}-SUFFIX">
+            </div>
             
             <div class="pattern-preview" id="patternPreview">
                 <div class="pattern-preview-title">Pattern Interpretation</div>
@@ -609,12 +765,140 @@
             </div>
         </div>
         
+        <!-- Game Token System Tab -->
+        <div id="game-tab" style="display: none;">
+            <div class="auth-panel">
+                <h2>Game Token Authentication</h2>
+                <p>Enter your Game ID and Key to generate game tokens</p>
+                
+                <div class="auth-grid">
+                    <div class="auth-input-group">
+                        <label>Game ID</label>
+                        <input type="text" id="gameId" placeholder="e.g., MYGAME" value="GAME1">
+                    </div>
+                    
+                    <div class="auth-input-group">
+                        <label>Secret Key</label>
+                        <input type="password" id="gameKey" placeholder="Your secret key" value="secret-key-123">
+                    </div>
+                </div>
+                
+                <div class="auth-grid">
+                    <div class="auth-input-group">
+                        <label>Token Pattern</label>
+                        <input type="text" id="gamePattern" value="GAME-{N}{N}{N}{N}-{L}{L}{L}{L}" placeholder="Token pattern">
+                    </div>
+                    
+                    <div class="auth-input-group">
+                        <label>Number of Tokens</label>
+                        <input type="number" id="gameTokenCount" min="1" max="10" value="3">
+                    </div>
+                </div>
+                
+                <div id="gameAuthStatus" class="auth-status"></div>
+                
+                <div id="gameStats" style="display: none;">
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="value" id="tokensUsed">0</div>
+                            <div class="label">Tokens Used</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value" id="tokensRemaining">0</div>
+                            <div class="label">Remaining</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="value" id="maxTokens">0</div>
+                            <div class="label">Max Tokens</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-primary" onclick="generateGameTokens()">Generate Game Tokens</button>
+                    <button class="btn-secondary" onclick="checkGameStatus()">Check Status</button>
+                    <button class="btn-secondary" onclick="resetGameTokens()">Reset Usage</button>
+                </div>
+            </div>
+            
+            <div class="generator-card">
+                <h2 style="margin-bottom: 20px;">Generated Game Tokens</h2>
+                <div id="gameTokenDisplay" class="token-display" style="min-height: 200px;">
+                    <!-- Game tokens will appear here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Create Account Tab -->
+        <div id="create-tab" style="display: none;">
+            <div class="auth-panel">
+                <h2>Create Token Account</h2>
+                <p>Register a new game to start generating tokens</p>
+                
+                <div class="auth-grid">
+                    <div class="auth-input-group">
+                        <label>Game ID</label>
+                        <input type="text" id="newGameId" placeholder="e.g., MYGAME">
+                    </div>
+                    
+                    <div class="auth-input-group">
+                        <label>Secret Key</label>
+                        <input type="text" id="newGameKey" placeholder="Your secret key">
+                    </div>
+                    
+                    <div class="auth-input-group">
+                        <label>Max Tokens</label>
+                        <input type="number" id="newMaxTokens" value="1000" min="1" max="10000">
+                    </div>
+                </div>
+                
+                <div id="createStatus" class="auth-status"></div>
+                
+                <button class="btn-primary" onclick="createTokenAccount()" style="width: 100%;">Create Account</button>
+            </div>
+            
+            <div class="generator-card">
+                <h2>API Documentation</h2>
+                
+                <div class="feature-card" style="margin-bottom: 15px;">
+                    <h3>Create Account (POST)</h3>
+                    <code>/createtokenaccount</code>
+                    <p style="margin-top: 10px;">Body: { "game_id": "MYGAME", "key": "secret", "max_tokens": 1000 }</p>
+                </div>
+                
+                <div class="feature-card" style="margin-bottom: 15px;">
+                    <h3>Generate Tokens (POST)</h3>
+                    <code>/generatetoken</code>
+                    <p style="margin-top: 10px;">Body: { "game_id": "MYGAME", "key": "secret", "pattern": "{N}{N}{N}", "count": 5 }</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Account Info (GET)</h3>
+                    <code>/accountinfo</code>
+                    <p style="margin-top: 10px;">Header: Authorization: Bearer YOUR_API_TOKEN</p>
+                </div>
+            </div>
+        </div>
     </main>
     
     <script>
         let generatedTokens = [];
+        let gameTokens = [];
+        let currentGameId = '';
+        let currentGameKey = '';
 
-        document.getElementById('pattern').addEventListener('input', function(e) {
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('generator-tab').style.display = tabName === 'generator' ? 'block' : 'none';
+            document.getElementById('game-tab').style.display = tabName === 'game' ? 'block' : 'none';
+            document.getElementById('create-tab').style.display = tabName === 'create' ? 'block' : 'none';
+        }
+
+        // Pattern preview
+        document.getElementById('pattern')?.addEventListener('input', function(e) {
             updatePatternPreview(e.target.value);
         });
         
@@ -639,7 +923,7 @@
                         chip.classList.add('fixed');
                         chip.innerHTML = `${token.value} <span class="token-desc">fixed</span>`;
                     } else {
-                        chip.classList.add('fixed');
+                        chip.classList.add('token');
                         chip.innerHTML = `{${token.token}} <span class="token-desc">${token.description}</span>`;
                     }
                     
@@ -648,17 +932,16 @@
             });
         }
         
+        // Regular token generation
         function generateTokens() {
             const pattern = document.getElementById('pattern').value;
             const count = parseInt(document.getElementById('count').value) || 1;
             
-            // Validate pattern
             if (!pattern) {
-                showError('Please enter a pattern');
+                showNotification('Please enter a pattern', 'error');
                 return;
             }
             
-            // Show loading state
             const display = document.getElementById('tokenDisplay');
             display.innerHTML = '<div class="loading">Generating tokens...</div>';
             
@@ -675,18 +958,150 @@
             .then(response => response.json())
             .then(data => {
                 generatedTokens = data.tokens;
-                displayTokens(generatedTokens, pattern);
+                displayTokens(generatedTokens, 'tokenDisplay');
                 updateStats(generatedTokens, pattern);
                 showNotification(`Generated ${generatedTokens.length} tokens successfully!`, 'success');
             })
             .catch(error => {
-                showError('Error generating tokens. Please try again.');
+                showNotification('Error generating tokens', 'error');
                 console.error('Error:', error);
             });
         }
         
-        function displayTokens(tokens, pattern) {
-            const display = document.getElementById('tokenDisplay');
+        // Game token generation
+        function generateGameTokens() {
+            const gameId = document.getElementById('gameId').value;
+            const gameKey = document.getElementById('gameKey').value;
+            const pattern = document.getElementById('gamePattern').value;
+            const count = parseInt(document.getElementById('gameTokenCount').value) || 1;
+            
+            if (!gameId || !gameKey) {
+                showGameAuthStatus('Please enter Game ID and Key', 'error');
+                return;
+            }
+            
+            currentGameId = gameId;
+            currentGameKey = gameKey;
+            
+            const display = document.getElementById('gameTokenDisplay');
+            display.innerHTML = '<div class="loading">Generating game tokens...</div>';
+            
+            fetch('/generatetoken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    game_id: gameId,
+                    key: gameKey,
+                    pattern: pattern,
+                    count: count
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    showGameAuthStatus(data.error, 'error');
+                    display.innerHTML = '';
+                } else {
+                    gameTokens = data.tokens;
+                    displayTokens(gameTokens, 'gameTokenDisplay');
+                    showGameAuthStatus(`Generated ${gameTokens.length} tokens successfully!`, 'success');
+                    
+                    // Update stats
+                    document.getElementById('tokensUsed').textContent = data.tokens_used || 0;
+                    document.getElementById('tokensRemaining').textContent = data.tokens_remaining || 0;
+                    document.getElementById('maxTokens').textContent = data.max_tokens || '∞';
+                    document.getElementById('gameStats').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                showGameAuthStatus('Error generating tokens', 'error');
+                console.error('Error:', error);
+            });
+        }
+        
+        // Check game status
+        function checkGameStatus() {
+            const gameId = document.getElementById('gameId').value;
+            const gameKey = document.getElementById('gameKey').value;
+            
+            if (!gameId || !gameKey) {
+                showGameAuthStatus('Please enter Game ID and Key', 'error');
+                return;
+            }
+            
+            // Use the same endpoint with count 0 just to check status
+            fetch('/generatetoken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    game_id: gameId,
+                    key: gameKey,
+                    pattern: 'CHECK',
+                    count: 0
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    showGameAuthStatus(data.error, 'error');
+                } else {
+                    showGameAuthStatus(`Account active - Used: ${data.tokens_used || 0}/${data.max_tokens || '∞'}`, 'info');
+                    document.getElementById('tokensUsed').textContent = data.tokens_used || 0;
+                    document.getElementById('tokensRemaining').textContent = data.tokens_remaining || 0;
+                    document.getElementById('maxTokens').textContent = data.max_tokens || '∞';
+                    document.getElementById('gameStats').style.display = 'block';
+                }
+            });
+        }
+        
+        // Reset game tokens
+        function resetGameTokens() {
+            // This would require the API token - you'd need to implement this
+            showGameAuthStatus('Reset requires API token - contact admin', 'info');
+        }
+        
+        // Create token account
+        function createTokenAccount() {
+            const gameId = document.getElementById('newGameId').value;
+            const key = document.getElementById('newGameKey').value;
+            const maxTokens = parseInt(document.getElementById('newMaxTokens').value) || 1000;
+            
+            if (!gameId || !key) {
+                showCreateStatus('Please enter Game ID and Key', 'error');
+                return;
+            }
+            
+            fetch('/createtokenaccount', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    game_id: gameId,
+                    key: key,
+                    max_tokens: maxTokens
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    showCreateStatus(data.error, 'error');
+                } else {
+                    showCreateStatus(`Account created! API Token: ${data.api_token}`, 'success');
+                }
+            })
+            .catch(error => {
+                showCreateStatus('Error creating account', 'error');
+            });
+        }
+        
+        // Display tokens
+        function displayTokens(tokens, elementId) {
+            const display = document.getElementById(elementId);
             display.innerHTML = '';
             
             tokens.forEach(token => {
@@ -706,7 +1121,7 @@
         
         function copyAllTokens() {
             if (generatedTokens.length === 0) {
-                showError('No tokens to copy');
+                showNotification('No tokens to copy', 'error');
                 return;
             }
             
@@ -757,10 +1172,30 @@
             }
         }
         
-        function showError(message) {
+        // Status functions
+        function showGameAuthStatus(message, type) {
+            const status = document.getElementById('gameAuthStatus');
+            status.className = 'auth-status ' + type;
+            status.textContent = message;
+            status.style.display = 'block';
+            
+            if (type === 'success' || type === 'info') {
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        function showCreateStatus(message, type) {
+            const status = document.getElementById('createStatus');
+            status.className = 'auth-status ' + type;
+            status.textContent = message;
+            status.style.display = 'block';
         }
         
         function showNotification(message, type = 'info') {
+            // You can implement a toast notification here
+            console.log(message);
         }
         
         // Prevent right-click and view source
@@ -777,19 +1212,10 @@
             }
         });
         
-        // Add smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
+        // Initialize
         window.onload = function() {
-            updatePatternPreview('');
-            generateTokens();
+            updatePatternPreview(document.getElementById('pattern')?.value || '');
+            generateTokens(); // Generate initial tokens
         };
     </script>
 </body>
